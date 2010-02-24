@@ -1,0 +1,2 @@
+GLOBAL predeactivate
+GLOBAL postdeactivate

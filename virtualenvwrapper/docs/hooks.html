@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Hook Scripts &mdash; virtualenvwrapper v1.24.2 documentation</title>
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '#',
+        VERSION:     '1.24.2',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="virtualenvwrapper v1.24.2 documentation" href="index.html" />
+    <link rel="next" title="Tips and Tricks" href="tips.html" />
+    <link rel="prev" title="Command Reference" href="command_ref.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="tips.html" title="Tips and Tricks"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="command_ref.html" title="Command Reference"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">virtualenvwrapper v1.24.2 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference external" href="#">Hook Scripts</a><ul>
+<li><a class="reference external" href="#environment-hooks">Environment Hooks</a><ul>
+<li><a class="reference external" href="#postactivate">postactivate</a></li>
+<li><a class="reference external" href="#predeactivate">predeactivate</a></li>
+</ul>
+</li>
+<li><a class="reference external" href="#global-hooks">Global Hooks</a><ul>
+<li><a class="reference external" href="#id1">postactivate</a></li>
+<li><a class="reference external" href="#premkvirtualenv">premkvirtualenv</a></li>
+<li><a class="reference external" href="#postmkvirtualenv">postmkvirtualenv</a></li>
+<li><a class="reference external" href="#prermvirtualenv">prermvirtualenv</a></li>
+<li><a class="reference external" href="#postrmvirtualenv">postrmvirtualenv</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="command_ref.html"
+                                  title="previous chapter">Command Reference</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="tips.html"
+                                  title="next chapter">Tips and Tricks</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/hooks.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="hook-scripts">
+<h1>Hook Scripts<a class="headerlink" href="#hook-scripts" title="Permalink to this headline">¶</a></h1>
+<p>virtualenvwrapper adds several hook points you can use to change your settings, shell environment, or other configuration values when creating, deleting, or moving between environments. They are either <em>sourced</em> (allowing them to modify your shell environment) or <em>run</em> as an external program at the appropriate trigger time.</p>
+<div class="section" id="environment-hooks">
+<h2>Environment Hooks<a class="headerlink" href="#environment-hooks" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="postactivate">
+<h3>postactivate<a class="headerlink" href="#postactivate" title="Permalink to this headline">¶</a></h3>
+<p>The <tt class="docutils literal"><span class="pre">$VIRTUAL_ENV/bin/postactivate</span></tt> script is sourced after the new environment is enabled. <tt class="docutils literal"><span class="pre">$VIRTUAL_ENV</span></tt> refers to the new environment at the time the script runs.</p>
+<p>This example script for the PyMOTW environment changes the current working directory and the PATH variable to refer to the source tree containing the PyMOTW source.</p>
+<div class="highlight-python"><pre>pymotw_root=/Users/dhellmann/Documents/PyMOTW
+cd $pymotw_root
+PATH=$pymotw_root/bin:$PATH</pre>
+</div>
+</div>
+<div class="section" id="predeactivate">
+<h3>predeactivate<a class="headerlink" href="#predeactivate" title="Permalink to this headline">¶</a></h3>
+<p>The <tt class="docutils literal"><span class="pre">$VIRTUAL_ENV/bin/predeactivate</span></tt> script is sourced before the current environment is deactivated, and can be used to disable or clear settings in your environment. <tt class="docutils literal"><span class="pre">$VIRTUAL_ENV</span></tt> refers to the old environment at the time the script runs.</p>
+</div>
+</div>
+<div class="section" id="global-hooks">
+<h2>Global Hooks<a class="headerlink" href="#global-hooks" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>postactivate<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>The global <tt class="docutils literal"><span class="pre">$WORKON_HOME/postactivate</span></tt> script is sourced after the new environment is enabled and the new environment&#8217;s postactivate is sourced (if it exists). <tt class="docutils literal"><span class="pre">$VIRTUAL_ENV</span></tt> refers to the new environment at the time the script runs.</p>
+<p>This example script adds a space between the virtual environment name and your old PS1 by making use of <tt class="docutils literal"><span class="pre">_OLD_VIRTUAL_PS1</span></tt>.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">PS1</span><span class="o">=</span><span class="s">&quot;(`basename </span><span class="se">\&quot;</span><span class="s">$VIRTUAL_ENV</span><span class="se">\&quot;</span><span class="s">`) $_OLD_VIRTUAL_PS1&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="premkvirtualenv">
+<h3>premkvirtualenv<a class="headerlink" href="#premkvirtualenv" title="Permalink to this headline">¶</a></h3>
+<p>The <tt class="docutils literal"><span class="pre">$WORKON_HOME/premkvirtualenv</span></tt> script is run as an external program after the virtual environment is created but before the current environment is switched to point to the new env. The current working directory for the script is <tt class="docutils literal"><span class="pre">$WORKON_HOME</span></tt> and the name of the new environment is passed as an argument to the script.</p>
+</div>
+<div class="section" id="postmkvirtualenv">
+<h3>postmkvirtualenv<a class="headerlink" href="#postmkvirtualenv" title="Permalink to this headline">¶</a></h3>
+<p>The <tt class="docutils literal"><span class="pre">$WORKON_HOME/postmkvirtualenv</span></tt> script is sourced after the new environment is created and activated.</p>
+</div>
+<div class="section" id="prermvirtualenv">
+<h3>prermvirtualenv<a class="headerlink" href="#prermvirtualenv" title="Permalink to this headline">¶</a></h3>
+<p>The <tt class="docutils literal"><span class="pre">$WORKON_HOME/prermvirtualenv</span></tt> script is run as an external program before the environment is removed. The full path to the environment directory is passed as an argument to the script.</p>
+</div>
+<div class="section" id="postrmvirtualenv">
+<h3>postrmvirtualenv<a class="headerlink" href="#postrmvirtualenv" title="Permalink to this headline">¶</a></h3>
+<p>The <tt class="docutils literal"><span class="pre">$WORKON_HOME/postrmvirtualenv</span></tt> script is run as an external program after the environment is removed. The full path to the environment directory is passed as an argument to the script.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="tips.html" title="Tips and Tricks"
+             >next</a></li>
+        <li class="right" >
+          <a href="command_ref.html" title="Command Reference"
+             >previous</a> |</li>
+        <li><a href="index.html">virtualenvwrapper v1.24.2 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2009, Doug Hellmann.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.4.
+    </div>
+  </body>
+</html>

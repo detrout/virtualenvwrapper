@@ -1,0 +1,208 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>virtualenvwrapper &mdash; virtualenvwrapper v1.24.2 documentation</title>
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '#',
+        VERSION:     '1.24.2',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="virtualenvwrapper v1.24.2 documentation" href="#" />
+    <link rel="next" title="Command Reference" href="command_ref.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="command_ref.html" title="Command Reference"
+             accesskey="N">next</a></li>
+        <li><a href="#">virtualenvwrapper v1.24.2 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="#">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference external" href="#">virtualenvwrapper</a><ul>
+<li><a class="reference external" href="#features">Features</a></li>
+<li><a class="reference external" href="#quick-setup">Quick Setup</a></li>
+<li><a class="reference external" href="#details">Details</a><ul>
+</ul>
+</li>
+<li><a class="reference external" href="#references">References</a></li>
+<li><a class="reference external" href="#license">License</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Next topic</h4>
+            <p class="topless"><a href="command_ref.html"
+                                  title="next chapter">Command Reference</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/index.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="virtualenvwrapper">
+<h1>virtualenvwrapper<a class="headerlink" href="#virtualenvwrapper" title="Permalink to this headline">¶</a></h1>
+<p>virtualenvwrapper is a set of extensions to Ian Bicking&#8217;s <a class="reference external" href="http://pypi.python.org/pypi/virtualenv">virtualenv</a> tool.  The extensions
+include wrappers for creating and deleting virtual environments and
+otherwise managing your development workflow, making it easier to work
+on more than one project at a time without introducing conflicts in
+their dependencies.</p>
+<div class="section" id="features">
+<h2>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<ol class="arabic simple">
+<li>Organizes all of your virtual environments in one place.</li>
+<li>Wrappers for creating and deleting environments, including user-configurable hooks.</li>
+<li>Use a single command to switch between environments.</li>
+<li>Tab completion for commands that take a virtual environment as argument.</li>
+</ol>
+</blockquote>
+</div>
+<div class="section" id="quick-setup">
+<h2>Quick Setup<a class="headerlink" href="#quick-setup" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">Create a directory to hold all of the virtual environments. The default is
+<tt class="docutils literal"><span class="pre">$HOME/.virtualenvs</span></tt>.</p>
+</li>
+<li><p class="first">Add two lines to your .bashrc to set the location where the virtual environments should
+live and the location of the script installed with this package:</p>
+<div class="highlight-python"><pre>export WORKON_HOME=$HOME/.virtualenvs
+source /usr/local/bin/virtualenvwrapper_bashrc</pre>
+</div>
+</li>
+<li><p class="first">Run: <tt class="docutils literal"><span class="pre">source</span> <span class="pre">~/.bashrc</span></tt></p>
+</li>
+<li><p class="first">Run: <tt class="docutils literal"><span class="pre">workon</span></tt></p>
+</li>
+<li><p class="first">A list of environments, empty, is printed.</p>
+</li>
+<li><p class="first">Run: <tt class="docutils literal"><span class="pre">mkvirtualenv</span> <span class="pre">temp</span></tt></p>
+</li>
+<li><p class="first">A new environment, <tt class="docutils literal"><span class="pre">temp</span></tt> is created and activated.</p>
+</li>
+<li><p class="first">Run: <tt class="docutils literal"><span class="pre">workon</span></tt></p>
+</li>
+<li><p class="first">This time, the <tt class="docutils literal"><span class="pre">temp</span></tt> environment is included.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="details">
+<h2>Details<a class="headerlink" href="#details" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="command_ref.html">Command Reference</a><ul>
+<li class="toctree-l2"><a class="reference external" href="command_ref.html#managing-environments">Managing Environments</a></li>
+<li class="toctree-l2"><a class="reference external" href="command_ref.html#quickly-navigating-to-a-virtualenv">Quickly Navigating to a virtualenv</a></li>
+<li class="toctree-l2"><a class="reference external" href="command_ref.html#path-management">Path Management</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="hooks.html">Hook Scripts</a><ul>
+<li class="toctree-l2"><a class="reference external" href="hooks.html#environment-hooks">Environment Hooks</a></li>
+<li class="toctree-l2"><a class="reference external" href="hooks.html#global-hooks">Global Hooks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="tips.html">Tips and Tricks</a><ul>
+<li class="toctree-l2"><a class="reference external" href="tips.html#zsh-prompt">zsh Prompt</a></li>
+<li class="toctree-l2"><a class="reference external" href="tips.html#updating-cached-path-entries">Updating cached <tt class="docutils literal"><span class="pre">$PATH</span></tt> entries</a></li>
+<li class="toctree-l2"><a class="reference external" href="tips.html#tying-to-pip-s-virtualenv-support">Tying to pip&#8217;s virtualenv support</a></li>
+<li class="toctree-l2"><a class="reference external" href="tips.html#creating-project-work-directories">Creating Project Work Directories</a></li>
+<li class="toctree-l2"><a class="reference external" href="tips.html#automatically-run-workon-when-entering-a-directory">Automatically Run workon When Entering a Directory</a></li>
+<li class="toctree-l2"><a class="reference external" href="tips.html#installing-common-tools-automatically-in-new-environments">Installing Common Tools Automatically in New Environments</a></li>
+<li class="toctree-l2"><a class="reference external" href="tips.html#changing-the-default-behavior-of-cd">Changing the Default Behavior of <tt class="docutils literal"><span class="pre">cd</span></tt></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="history.html">Release History</a></li>
+<li class="toctree-l1"><a class="reference external" href="developers.html">For Developers</a><ul>
+<li class="toctree-l2"><a class="reference external" href="developers.html#building-documentation">Building Documentation</a></li>
+<li class="toctree-l2"><a class="reference external" href="developers.html#running-tests">Running Tests</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="references">
+<span id="id1"></span><h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://pypi.python.org/pypi/virtualenv">virtualenv</a>, from Ian
+Bicking, is a pre-requisite to using these extensions.</p>
+<p>For more details, refer to the column I wrote for the May 2008 issue
+of Python Magazine: <a class="reference external" href="http://www.doughellmann.com/articles/CompletelyDifferent-2008-05-virtualenvwrapper/index.html">virtualenvwrapper | And Now For Something
+Completely Different</a>.</p>
+<p>Rich Leland has created a short <a class="reference external" href="http://mathematism.com/2009/jul/30/presentation-pip-and-virtualenv/">screencast</a>
+showing off the features of virtualenvwrapper.</p>
+</div>
+<div class="section" id="license">
+<h2>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h2>
+<p>Copyright Doug Hellmann, All Rights Reserved</p>
+<p>Permission to use, copy, modify, and distribute this software and its
+documentation for any purpose and without fee is hereby granted,
+provided that the above copyright notice appear in all copies and that
+both that copyright notice and this permission notice appear in
+supporting documentation, and that the name of Doug Hellmann not be
+used in advertising or publicity pertaining to distribution of the
+software without specific, written prior permission.</p>
+<p>DOUG HELLMANN DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE,
+INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, IN NO
+EVENT SHALL DOUG HELLMANN BE LIABLE FOR ANY SPECIAL, INDIRECT OR
+CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF
+USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="command_ref.html" title="Command Reference"
+             >next</a></li>
+        <li><a href="#">virtualenvwrapper v1.24.2 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2009, Doug Hellmann.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.4.
+    </div>
+  </body>
+</html>
