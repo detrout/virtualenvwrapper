@@ -1,0 +1,47 @@
+#!/usr/bin/make -f
+
+override_dh_auto_clean:
+	rm -rf build
+	find -name '._*' -delete
+
+override_dh_auto_build:
+	# nothing to build
+
+override_dh_auto_install:
+	cp -R $(shell find docsource/ -name '*.rst' -printf "%p ") \
+	  debian/virtualenvwrapper/usr/share/doc/virtualenvwrapper/
+	sphinx-build -b html -a -E -N -C -A project=virtualenvwrapper -D master_doc=index \
+	   debian/virtualenvwrapper/usr/share/doc/virtualenvwrapper \
+	   debian/virtualenvwrapper/usr/share/doc/virtualenvwrapper/html
+	rm -rf debian/virtualenvwrapper/usr/share/doc/virtualenvwrapper/history.rst \
+	  debian/virtualenvwrapper/usr/share/doc/virtualenvwrapper/html/.doctrees \
+	  debian/virtualenvwrapper/usr/share/doc/virtualenvwrapper/html/_sources \
+	  debian/virtualenvwrapper/usr/share/doc/virtualenvwrapper/html/_static/jquery.js
+	dh_link /usr/share/javascript/jquery.js \
+	  /usr/share/doc/virtualenvwrapper/html/_static/jquery.js
+	cp virtualenvwrapper_bashrc debian/virtualenvwrapper/etc/bash_completion.d/virtualenvwrapper
+	chmod 0644 debian/virtualenvwrapper/etc/bash_completion.d/virtualenvwrapper
+
+override_dh_compress:
+	dh_compress -i -X.rst -X.js -X.html
+
+override_dh_installchangelogs:
+	dh_installchangelogs docsource/history.rst
+
+%:
+	dh $@
+
+get-orig-source:
+	DFSGVER=$(shell dpkg-parsechangelog | sed -rne 's,^Version: ([^-]+).*,\1,p'); \
+	VER=$(shell dpkg-parsechangelog | sed -rne 's,^Version: ([^+]+).*,\1,p'); \
+	PACKAGE=$(shell dpkg-parsechangelog | sed -rne 's,^Source: (.*),\1,p'); \
+	TMPDIR=`mktemp --directory`; \
+	uscan --force-download --rename --download-version="$${VER}" --destdir="$${TMPDIR}"; \
+	cd "$${TMPDIR}"; \
+	tar xzf "$${PACKAGE}_$${VER}.orig.tar.gz"; \
+	rm -f "$${PACKAGE}-$${VER}/paver-minilib.zip"; \
+	tar czf "$${PACKAGE}_$${DFSGVER}.orig.tar.gz" "$${PACKAGE}-$${VER}"; \
+	cd "$(CURDIR)"; mv "$${TMPDIR}/$${PACKAGE}_$${DFSGVER}.orig.tar.gz" .; \
+	rm -rf "$${TMPDIR}"
+
+.PHONY: get-orig-source

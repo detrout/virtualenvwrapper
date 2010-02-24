@@ -1,0 +1,5 @@
+virtualenvwrapper (1.24.2+dfsg1-1) unstable; urgency=low
+
+  * Initial release. (Closes: #570644)
+
+ -- Jan Dittberner <jandd@debian.org>  Wed, 24 Feb 2010 22:11:28 +0100

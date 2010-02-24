@@ -1,0 +1,81 @@
+Format-Specification: http://svn.debian.org/wsvn/dep/web/deps/dep5.mdwn?op=file&rev=135
+Name: virtualenvwrapper
+Maintainer: Doug Hellmann
+Source: http://www.doughellmann.com/projects/virtualenvwrapper/
+
+Copyright: 2008-2010, Doug Hellmann <doug.hellmann@gmail.com>
+           2008 Alex Satrapa
+           2008 Arthur Koziel
+           2008 John Shimek
+           2008-2009 James Bennett
+           2008 Ted Leung
+           2008 Byron Clark
+           2009 Jorge Vargas
+           2009 Chris Hasenpflug
+           2009 Sander Smits
+License: ISC
+ Copyright Doug Hellmann, All Rights Reserved
+ .
+ Permission to use, copy, modify, and distribute this software and its
+ documentation for any purpose and without fee is hereby granted,
+ provided that the above copyright notice appear in all copies and
+ that both that copyright notice and this permission notice appear in
+ supporting documentation, and that the name of Doug Hellmann not be
+ used in advertising or publicity pertaining to distribution of the
+ software without specific, written prior permission.
+ .
+ DOUG HELLMANN DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE,
+ INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, IN
+ NO EVENT SHALL DOUG HELLMANN BE LIABLE FOR ANY SPECIAL, INDIRECT OR
+ CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS
+ OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE
+ OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE
+ USE OR PERFORMANCE OF THIS SOFTWARE.
+
+Files: debian/*
+Copyright: 2010 Jan Dittberner <jandd@debian.org>
+License: ISC
+ Permission to use, copy, modify, and distribute this software and its
+ documentation for any purpose and without fee is hereby granted,
+ provided that the above copyright notice appear in all copies and
+ that both that copyright notice and this permission notice appear in
+ supporting documentation, and that the name of Jan Dittberner not be
+ used in advertising or publicity pertaining to distribution of the
+ software without specific, written prior permission.
+ .
+ JAN DITTBERNER DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE,
+ INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, IN
+ NO EVENT SHALL DOUG HELLMANN BE LIABLE FOR ANY SPECIAL, INDIRECT OR
+ CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS
+ OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE
+ OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE
+ USE OR PERFORMANCE OF THIS SOFTWARE.
+
+Files: tests/shunit2
+Copyright: 2008, Kate Ward <kate.ward@forestent.com>
+           Bryan Larsen
+           Kevin Van Horn
+           Maciej Bliziński
+           Mario Sparada
+           Mathias Goldau
+           Richard Jensen
+           Rob Holland
+           Rocky Bernstein
+License: LGPL
+ This library is free software; you can redistribute it and/or modify
+ it under the terms of the GNU Lesser General Public License as
+ published by the Free Software Foundation; either version 2.1 of the
+ License, or (at your option) any later version.
+ .
+ This library is distributed in the hope that it will be useful, but
+ WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ Lesser General Public License for more details.
+ .
+ You should have received a copy of the GNU Lesser General Public
+ License along with this library; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301,
+ USA.
+ .
+ On Debian systems, the complete text of the GNU Lesser General Public
+ License can be found in `/usr/share/common-licenses/LGPL-2.1
