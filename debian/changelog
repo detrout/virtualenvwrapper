@@ -1,6 +1,8 @@
 virtualenvwrapper (1.26+dfsg1-1) UNRELEASED; urgency=low
 
   * New upstream version
+  * remove README.html from debian/virtualenvwrapper.docs it has been
+    removed upstream
 
  -- Jan Dittberner <jandd@debian.org>  Sat, 27 Mar 2010 21:14:29 +0100
 
