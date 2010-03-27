@@ -1,11 +1,11 @@
-virtualenvwrapper (1.26+dfsg1-1) UNRELEASED; urgency=low
+virtualenvwrapper (1.26+dfsg1-1) unstable; urgency=low
 
   * New upstream version (Closes: #574586)
   * remove README.html from debian/virtualenvwrapper.docs it has been
     removed upstream
   * switch to source format 3.0 (quilt)
 
- -- Jan Dittberner <jandd@debian.org>  Sat, 27 Mar 2010 21:14:29 +0100
+ -- Jan Dittberner <jandd@debian.org>  Sat, 27 Mar 2010 21:43:41 +0100
 
 virtualenvwrapper (1.24.2+dfsg1-1) unstable; urgency=low
 
