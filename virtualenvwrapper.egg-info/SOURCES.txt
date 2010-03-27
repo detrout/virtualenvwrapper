@@ -1,6 +1,5 @@
 MANIFEST.in
 README
-README.html
 pavement.py
 paver-minilib.zip
 setup.py
@@ -11,12 +10,16 @@ docsource/history.rst
 docsource/hooks.rst
 docsource/index.rst
 docsource/tips.rst
-tests/catch_output
+tests/manual_test_install.sh
 tests/shunit2
 tests/test.sh
-tests/test_install.sh
-tests/test_misconfigured.sh
-virtualenvwrapper/__init__.py
+tests/test_add2virtualenv.sh
+tests/test_cd.sh
+tests/test_ls.sh
+tests/test_mkvirtualenv.sh
+tests/test_rmvirtualenv.sh
+tests/test_run_hook.sh
+tests/test_workon.sh
 virtualenvwrapper.egg-info/PKG-INFO
 virtualenvwrapper.egg-info/SOURCES.txt
 virtualenvwrapper.egg-info/dependency_links.txt

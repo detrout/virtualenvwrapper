@@ -5,13 +5,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Command Reference &mdash; virtualenvwrapper v1.24.2 documentation</title>
+    <title>Command Reference &mdash; virtualenvwrapper v1.26 documentation</title>
     <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '#',
-        VERSION:     '1.24.2',
+        VERSION:     '1.26',
         COLLAPSE_MODINDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -19,7 +19,7 @@
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="virtualenvwrapper v1.24.2 documentation" href="index.html" />
+    <link rel="top" title="virtualenvwrapper v1.26 documentation" href="index.html" />
     <link rel="next" title="Hook Scripts" href="hooks.html" />
     <link rel="prev" title="virtualenvwrapper" href="index.html" /> 
   </head>
@@ -33,7 +33,7 @@
         <li class="right" >
           <a href="index.html" title="virtualenvwrapper"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">virtualenvwrapper v1.24.2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">virtualenvwrapper v1.26 documentation</a> &raquo;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar">
@@ -158,7 +158,17 @@ $ pwd
 <h3>cdsitepackages<a class="headerlink" href="#cdsitepackages" title="Permalink to this headline">¶</a></h3>
 <p>Because the exact path to the site-packages directory in the virtualenv depends on the
 version of Python, <tt class="docutils literal"><span class="pre">cdsitepackages</span></tt> is provided as a shortcut for <tt class="docutils literal"><span class="pre">cdvirtualenv</span>
-<span class="pre">lib/python${pyvers}/site-packages</span></tt>.</p>
+<span class="pre">lib/python${pyvers}/site-packages</span></tt>. An optional argument is also allowed, to specify
+a directory hierarchy within the <tt class="docutils literal"><span class="pre">site-packages</span></tt> directory to change into.</p>
+<dl class="docutils">
+<dt>::</dt>
+<dd>$ workon pymotw
+$ echo $VIRTUAL_ENV
+/Users/dhellmann/.virtualenvs/pymotw
+$ cdsitepackages PyMOTW/bisect/
+$ pwd
+/Users/dhellmann/.virtualenvs/pymotw/lib/python2.6/site-packages/PyMOTW/bisect</dd>
+</dl>
 </div>
 </div>
 <div class="section" id="path-management">
@@ -205,7 +215,7 @@ directory; if this file does not exist, it will be created first.</p>
         <li class="right" >
           <a href="index.html" title="virtualenvwrapper"
              >previous</a> |</li>
-        <li><a href="index.html">virtualenvwrapper v1.24.2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">virtualenvwrapper v1.26 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
