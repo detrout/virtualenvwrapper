@@ -1,3 +1,9 @@
+virtualenvwrapper (1.26+dfsg1-1) UNRELEASED; urgency=low
+
+  * New upstream version
+
+ -- Jan Dittberner <jandd@debian.org>  Sat, 27 Mar 2010 21:14:29 +0100
+
 virtualenvwrapper (1.24.2+dfsg1-1) unstable; urgency=low
 
   * Initial release. (Closes: #570644)
