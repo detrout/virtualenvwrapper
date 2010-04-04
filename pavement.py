@@ -9,6 +9,7 @@
 # Standard library
 import copy
 import os
+import sys
 
 # Third-party
 
@@ -27,7 +28,7 @@ except:
 
 # What project are we building?
 PROJECT = 'virtualenvwrapper'
-VERSION = '1.26'
+VERSION = '1.27'
 os.environ['VERSION'] = VERSION
 
 # Read the long description to give to setup
@@ -194,11 +195,13 @@ def test_install(options):
 def test():
     #test_scripts = glob.glob('./tests/test*.sh')
     test_scripts = path('tests').glob('test*.sh')
+    #print test_scripts
     for shell_cmd in [ 'bash', 'sh', 'SHUNIT_PARENT=%(test_script)s zsh -o shwordsplit' ]:
         for test_script in test_scripts:
             base_cmd = shell_cmd + ' %(test_script)s'
             cmd = base_cmd % locals()
             print '*' * 80
             print
+            sys.stdout.flush()
             sh(cmd)
     return
