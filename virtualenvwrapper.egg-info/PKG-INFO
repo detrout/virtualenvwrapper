@@ -1,12 +1,12 @@
 Metadata-Version: 1.1
 Name: virtualenvwrapper
-Version: 1.26
+Version: 1.27
 Summary: Enhancements to virtualenv
 Home-page: http://www.doughellmann.com/projects/virtualenvwrapper/
 Author: Doug Hellmann
 Author-email: doug.hellmann@gmail.com
 License: UNKNOWN
-Download-URL: http://www.doughellmann.com/downloads/virtualenvwrapper-1.26.tar.gz
+Download-URL: http://www.doughellmann.com/downloads/virtualenvwrapper-1.27.tar.gz
 Description: #################
         virtualenvwrapper
         #################
@@ -24,7 +24,7 @@ Description: #################
         
         1.  Organizes all of your virtual environments in one place.
         
-        2.  Wrappers for creating and deleting environments, including
+        2.  Wrappers for creating, copying and deleting environments, including
         user-configurable hooks.
         
         3.  Use a single command to switch between environments.

@@ -31,6 +31,20 @@ Syntax::
 
     rmvirtualenv ENVNAME
 
+cpvirtualenv
+------------
+
+Duplicate an environment, in the WORKON_HOME.
+
+Syntax::
+
+    cpvirtualenv ENVNAME TARGETENVNAME
+
+.. note::
+
+   The environment created by the copy operation is made `relocatable
+   <http://virtualenv.openplans.org/#making-environments-relocatable>`__.
+
 workon
 ------
 

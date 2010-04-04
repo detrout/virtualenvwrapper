@@ -15,11 +15,13 @@ tests/shunit2
 tests/test.sh
 tests/test_add2virtualenv.sh
 tests/test_cd.sh
+tests/test_cp.sh
 tests/test_ls.sh
 tests/test_mkvirtualenv.sh
 tests/test_rmvirtualenv.sh
 tests/test_run_hook.sh
 tests/test_workon.sh
+virtualenvwrapper/__init__.py
 virtualenvwrapper.egg-info/PKG-INFO
 virtualenvwrapper.egg-info/SOURCES.txt
 virtualenvwrapper.egg-info/dependency_links.txt

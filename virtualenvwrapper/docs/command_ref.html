@@ -5,13 +5,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Command Reference &mdash; virtualenvwrapper v1.26 documentation</title>
+    <title>Command Reference &mdash; virtualenvwrapper v1.27 documentation</title>
     <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '#',
-        VERSION:     '1.26',
+        VERSION:     '1.27',
         COLLAPSE_MODINDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -19,7 +19,7 @@
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="virtualenvwrapper v1.26 documentation" href="index.html" />
+    <link rel="top" title="virtualenvwrapper v1.27 documentation" href="index.html" />
     <link rel="next" title="Hook Scripts" href="hooks.html" />
     <link rel="prev" title="virtualenvwrapper" href="index.html" /> 
   </head>
@@ -33,7 +33,7 @@
         <li class="right" >
           <a href="index.html" title="virtualenvwrapper"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">virtualenvwrapper v1.26 documentation</a> &raquo;</li> 
+        <li><a href="index.html">virtualenvwrapper v1.27 documentation</a> &raquo;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar">
@@ -44,6 +44,7 @@
 <li><a class="reference external" href="#managing-environments">Managing Environments</a><ul>
 <li><a class="reference external" href="#mkvirtualenv">mkvirtualenv</a></li>
 <li><a class="reference external" href="#rmvirtualenv">rmvirtualenv</a></li>
+<li><a class="reference external" href="#cpvirtualenv">cpvirtualenv</a></li>
 <li><a class="reference external" href="#workon">workon</a></li>
 <li><a class="reference external" href="#deactivate">deactivate</a></li>
 </ul>
@@ -112,6 +113,17 @@
 <p>Remove an environment, in the WORKON_HOME.</p>
 <p>Syntax:</p>
 <div class="highlight-python"><pre>rmvirtualenv ENVNAME</pre>
+</div>
+</div>
+<div class="section" id="cpvirtualenv">
+<h3>cpvirtualenv<a class="headerlink" href="#cpvirtualenv" title="Permalink to this headline">¶</a></h3>
+<p>Duplicate an environment, in the WORKON_HOME.</p>
+<p>Syntax:</p>
+<div class="highlight-python"><pre>cpvirtualenv ENVNAME TARGETENVNAME</pre>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The environment created by the copy operation is made <a class="reference external" href="http://virtualenv.openplans.org/#making-environments-relocatable">relocatable</a>.</p>
 </div>
 </div>
 <div class="section" id="workon">
@@ -215,7 +227,7 @@ directory; if this file does not exist, it will be created first.</p>
         <li class="right" >
           <a href="index.html" title="virtualenvwrapper"
              >previous</a> |</li>
-        <li><a href="index.html">virtualenvwrapper v1.26 documentation</a> &raquo;</li> 
+        <li><a href="index.html">virtualenvwrapper v1.27 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

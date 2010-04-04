@@ -2,6 +2,10 @@
 Release History
 ===============
 
+1.27
+  
+  - Added cpvirtualenv command [Thomas Desvenain]
+
 1.26
 
   - Fix a problem with error messages showing up during init for users
