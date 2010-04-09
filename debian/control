@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Jan Dittberner <jandd@debian.org>
 Build-Depends: debhelper (>= 7.0.50)
 Build-Depends-Indep: python (>= 2.5.4-1~), python-sphinx (>= 0.6.1),
- python-support (>= 0.6.4)
+ python-support (>= 0.6.4), python-setuptools (>= 0.6b3)
 Standards-Version: 3.8.4
 Homepage: http://www.doughellmann.com/projects/virtualenvwrapper/
 Vcs-Git: git://git.debian.org/collab-maint/virtualenvwrapper.git

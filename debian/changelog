@@ -6,10 +6,13 @@ virtualenvwrapper (2.0.2-1) UNRELEASED; urgency=low
     minilib.zip anymore
   * modify paths for docs and the script itself in debian/rules to
     new upstream directory structure
-  * add python-support to Build-Depends-Indep and add  to Depends to
-    include upstream's new plugin system
+  * add python-support and python-setuptools to Build-Depends-Indep and
+    add ${python:Depends} to Depends to include upstream's new plugin
+    system
   * remove debian/virtualenvwrapper.docs because README is not included
     anymore
+  * add debian/patches/debianspecific-setup.py.patch and
+    debian/patches/series to adapt to Debian's use of setuptools
 
  -- Jan Dittberner <jandd@debian.org>  Fri, 09 Apr 2010 14:07:18 +0200
 
