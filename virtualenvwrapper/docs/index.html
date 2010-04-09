@@ -5,13 +5,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>virtualenvwrapper &mdash; virtualenvwrapper v1.27 documentation</title>
+    <title>virtualenvwrapper 2.0.2 &mdash; virtualenvwrapper v2.0.2 documentation</title>
     <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '#',
-        VERSION:     '1.27',
+        VERSION:     '2.0.2',
         COLLAPSE_MODINDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -19,7 +19,7 @@
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="virtualenvwrapper v1.27 documentation" href="#" />
+    <link rel="top" title="virtualenvwrapper v2.0.2 documentation" href="#" />
     <link rel="next" title="Command Reference" href="command_ref.html" /> 
   </head>
   <body>
@@ -29,16 +29,23 @@
         <li class="right" style="margin-right: 10px">
           <a href="command_ref.html" title="Command Reference"
              accesskey="N">next</a></li>
-        <li><a href="#">virtualenvwrapper v1.27 documentation</a> &raquo;</li> 
+        <li><a href="#">virtualenvwrapper v2.0.2 documentation</a> &raquo;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
             <h3><a href="#">Table Of Contents</a></h3>
             <ul>
-<li><a class="reference external" href="#">virtualenvwrapper</a><ul>
+<li><a class="reference external" href="#">virtualenvwrapper 2.0.2</a><ul>
 <li><a class="reference external" href="#features">Features</a></li>
-<li><a class="reference external" href="#quick-setup">Quick Setup</a></li>
+<li><a class="reference external" href="#installation">Installation</a><ul>
+<li><a class="reference external" href="#workon-home">WORKON_HOME</a></li>
+<li><a class="reference external" href="#shell-startup-file">Shell Startup File</a></li>
+<li><a class="reference external" href="#quick-start">Quick-Start</a></li>
+<li><a class="reference external" href="#temporary-files">Temporary Files</a></li>
+<li><a class="reference external" href="#upgrading-from-1-x">Upgrading from 1.x</a></li>
+</ul>
+</li>
 <li><a class="reference external" href="#details">Details</a><ul>
 </ul>
 </li>
@@ -77,8 +84,8 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="virtualenvwrapper">
-<h1>virtualenvwrapper<a class="headerlink" href="#virtualenvwrapper" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="virtualenvwrapper-release">
+<h1>virtualenvwrapper 2.0.2<a class="headerlink" href="#virtualenvwrapper-release" title="Permalink to this headline">¶</a></h1>
 <p>virtualenvwrapper is a set of extensions to Ian Bicking&#8217;s <a class="reference external" href="http://pypi.python.org/pypi/virtualenv">virtualenv</a> tool.  The extensions
 include wrappers for creating and deleting virtual environments and
 otherwise managing your development workflow, making it easier to work
@@ -86,55 +93,78 @@ on more than one project at a time without introducing conflicts in
 their dependencies.</p>
 <div class="section" id="features">
 <h2>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h2>
-<blockquote>
 <ol class="arabic simple">
 <li>Organizes all of your virtual environments in one place.</li>
-<li>Wrappers for creating and deleting environments, including user-configurable hooks.</li>
+<li>Wrappers for managing your virtual environments (create, delete,
+copy).</li>
 <li>Use a single command to switch between environments.</li>
-<li>Tab completion for commands that take a virtual environment as argument.</li>
+<li>Tab completion for commands that take a virtual environment as
+argument.</li>
+<li>User-configurable hooks for all operations (see <a class="reference external" href="scripts.html#scripts"><em>Per-User Customization</em></a>).</li>
+<li>Plugin system for more creating sharable extensions (see
+<a class="reference external" href="plugins.html#plugins"><em>Extending Virtualenvwrapper</em></a>).</li>
 </ol>
-</blockquote>
 </div>
-<div class="section" id="quick-setup">
-<h2>Quick Setup<a class="headerlink" href="#quick-setup" title="Permalink to this headline">¶</a></h2>
-<ol class="arabic">
-<li><p class="first">Create a directory to hold all of the virtual environments. The default is
-<tt class="docutils literal"><span class="pre">$HOME/.virtualenvs</span></tt>.</p>
-</li>
-<li><p class="first">Add two lines to your .bashrc to set the location where the virtual environments should
-live and the location of the script installed with this package:</p>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="workon-home">
+<h3>WORKON_HOME<a class="headerlink" href="#workon-home" title="Permalink to this headline">¶</a></h3>
+<p>The variable <tt class="docutils literal"><span class="pre">WORKON_HOME</span></tt> tells virtualenvwrapper where to place
+your virtual environments.  The default is <tt class="docutils literal"><span class="pre">$HOME/.virtualenvs</span></tt>.
+This directory must be created before using any virtualenvwrapper
+commands.</p>
+</div>
+<div class="section" id="shell-startup-file">
+<h3>Shell Startup File<a class="headerlink" href="#shell-startup-file" title="Permalink to this headline">¶</a></h3>
+<p>Add two lines to your shell startup file (<tt class="docutils literal"><span class="pre">.bashrc</span></tt>, <tt class="docutils literal"><span class="pre">.profile</span></tt>,
+etc.) to set the location where the virtual environments should live
+and the location of the script installed with this package:</p>
 <div class="highlight-python"><pre>export WORKON_HOME=$HOME/.virtualenvs
-source /usr/local/bin/virtualenvwrapper_bashrc</pre>
+source /usr/local/bin/virtualenvwrapper.sh</pre>
 </div>
-</li>
-<li><p class="first">Run: <tt class="docutils literal"><span class="pre">source</span> <span class="pre">~/.bashrc</span></tt></p>
-</li>
-<li><p class="first">Run: <tt class="docutils literal"><span class="pre">workon</span></tt></p>
-</li>
-<li><p class="first">A list of environments, empty, is printed.</p>
-</li>
-<li><p class="first">Run: <tt class="docutils literal"><span class="pre">mkvirtualenv</span> <span class="pre">temp</span></tt></p>
-</li>
-<li><p class="first">A new environment, <tt class="docutils literal"><span class="pre">temp</span></tt> is created and activated.</p>
-</li>
-<li><p class="first">Run: <tt class="docutils literal"><span class="pre">workon</span></tt></p>
-</li>
-<li><p class="first">This time, the <tt class="docutils literal"><span class="pre">temp</span></tt> environment is included.</p>
-</li>
+<p>After editing it, reload the startup file (e.g., run: <tt class="docutils literal"><span class="pre">source</span>
+<span class="pre">~/.bashrc</span></tt>).</p>
+</div>
+<div class="section" id="quick-start">
+<h3>Quick-Start<a class="headerlink" href="#quick-start" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>Run: <tt class="docutils literal"><span class="pre">workon</span></tt></li>
+<li>A list of environments, empty, is printed.</li>
+<li>Run: <tt class="docutils literal"><span class="pre">mkvirtualenv</span> <span class="pre">temp</span></tt></li>
+<li>A new environment, <tt class="docutils literal"><span class="pre">temp</span></tt> is created and activated.</li>
+<li>Run: <tt class="docutils literal"><span class="pre">workon</span></tt></li>
+<li>This time, the <tt class="docutils literal"><span class="pre">temp</span></tt> environment is included.</li>
 </ol>
+</div>
+<div class="section" id="temporary-files">
+<h3>Temporary Files<a class="headerlink" href="#temporary-files" title="Permalink to this headline">¶</a></h3>
+<p>virtualenvwrapper creates temporary files in <tt class="docutils literal"><span class="pre">$TMPDIR</span></tt>.  If the
+variable is not set, it uses <tt class="docutils literal"><span class="pre">/tmp</span></tt>.  To change the location of
+temporary files just for virtualenvwrapper, set
+<tt class="docutils literal"><span class="pre">VIRTUALENVWRAPPER_TMPDIR</span></tt>.</p>
+</div>
+<div class="section" id="upgrading-from-1-x">
+<h3>Upgrading from 1.x<a class="headerlink" href="#upgrading-from-1-x" title="Permalink to this headline">¶</a></h3>
+<p>The shell script containing the wrapper functions has been renamed in
+the 2.x series to reflect the fact that shells other than bash are
+supported.  In your startup file, change <tt class="docutils literal"><span class="pre">source</span>
+<span class="pre">/usr/local/bin/virtualenvwrapper_bashrc</span></tt> to <tt class="docutils literal"><span class="pre">source</span>
+<span class="pre">/usr/local/bin/virtualenvwrapper.sh</span></tt>.</p>
+</div>
 </div>
 <div class="section" id="details">
 <h2>Details<a class="headerlink" href="#details" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="command_ref.html">Command Reference</a><ul>
 <li class="toctree-l2"><a class="reference external" href="command_ref.html#managing-environments">Managing Environments</a></li>
+<li class="toctree-l2"><a class="reference external" href="command_ref.html#controlling-the-active-environment">Controlling the Active Environment</a></li>
 <li class="toctree-l2"><a class="reference external" href="command_ref.html#quickly-navigating-to-a-virtualenv">Quickly Navigating to a virtualenv</a></li>
 <li class="toctree-l2"><a class="reference external" href="command_ref.html#path-management">Path Management</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference external" href="hooks.html">Hook Scripts</a><ul>
-<li class="toctree-l2"><a class="reference external" href="hooks.html#environment-hooks">Environment Hooks</a></li>
-<li class="toctree-l2"><a class="reference external" href="hooks.html#global-hooks">Global Hooks</a></li>
+<li class="toctree-l1"><a class="reference external" href="hooks.html">Customizing Virtualenvwrapper</a><ul>
+<li class="toctree-l2"><a class="reference external" href="scripts.html">Per-User Customization</a></li>
+<li class="toctree-l2"><a class="reference external" href="plugins.html">Extending Virtualenvwrapper</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference external" href="tips.html">Tips and Tricks</a><ul>
@@ -147,12 +177,16 @@ source /usr/local/bin/virtualenvwrapper_bashrc</pre>
 <li class="toctree-l2"><a class="reference external" href="tips.html#changing-the-default-behavior-of-cd">Changing the Default Behavior of <tt class="docutils literal"><span class="pre">cd</span></tt></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference external" href="history.html">Release History</a></li>
 <li class="toctree-l1"><a class="reference external" href="developers.html">For Developers</a><ul>
 <li class="toctree-l2"><a class="reference external" href="developers.html#building-documentation">Building Documentation</a></li>
 <li class="toctree-l2"><a class="reference external" href="developers.html#running-tests">Running Tests</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference external" href="extensions.html">Existing Extensions</a><ul>
+<li class="toctree-l2"><a class="reference external" href="extensions.html#user-scripts">user_scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="history.html">Release History</a></li>
 </ul>
 </div>
 <div class="section" id="references">
@@ -197,7 +231,7 @@ PERFORMANCE OF THIS SOFTWARE.</p>
         <li class="right" style="margin-right: 10px">
           <a href="command_ref.html" title="Command Reference"
              >next</a></li>
-        <li><a href="#">virtualenvwrapper v1.27 documentation</a> &raquo;</li> 
+        <li><a href="#">virtualenvwrapper v2.0.2 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

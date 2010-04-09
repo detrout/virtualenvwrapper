@@ -3,13 +3,14 @@
 #set -x
 
 test_dir=$(dirname $0)
-source "$test_dir/../virtualenvwrapper_bashrc"
 
 export WORKON_HOME="${TMPDIR:-/tmp}/WORKON_HOME"
 
 oneTimeSetUp() {
     rm -rf "$WORKON_HOME"
     mkdir -p "$WORKON_HOME"
+    source "$test_dir/../virtualenvwrapper.sh"
+    echo $PYTHONPATH
 }
 
 oneTimeTearDown() {
@@ -28,6 +29,13 @@ test_virtualenvwrapper_initialize() {
         assertTrue "Global $hook was not created" "[ -f $WORKON_HOME/$hook ]"
         assertTrue "Global $hook is not executable" "[ -x $WORKON_HOME/$hook ]"
     done
+    assertTrue "Log file was not created" "[ -f $WORKON_HOME/hook.log ]"
+    export pre_test_dir=$(cd "$test_dir"; pwd)
+    echo "echo GLOBAL initialize >> \"$pre_test_dir/catch_output\"" >> "$WORKON_HOME/initialize"
+    virtualenvwrapper_initialize
+    output=$(cat "$test_dir/catch_output")
+    expected="GLOBAL initialize"
+    assertSame "$expected" "$output"
 }
 
 test_virtualenvwrapper_verify_workon_home() {
@@ -44,7 +52,7 @@ test_virtualenvwrapper_verify_workon_home_missing_dir() {
 test_virtualenvwrapper_verify_workon_home_missing_dir_quiet_init() {
     old_home="$WORKON_HOME"
     export WORKON_HOME="$WORKON_HOME/not_there"
-    output=`$SHELL $test_dir/../virtualenvwrapper_bashrc 2>&1`
+    output=`$SHELL $test_dir/../virtualenvwrapper.sh 2>&1`
     assertSame "" "$output"
     WORKON_HOME="$old_home"
 }
