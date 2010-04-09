@@ -1,4 +1,4 @@
-virtualenvwrapper (2.0.2-1) UNRELEASED; urgency=low
+virtualenvwrapper (2.0.2-1) unstable; urgency=low
 
   * New upstream version.
   * remove debian/README.source and get-orig-source target from
@@ -14,7 +14,7 @@ virtualenvwrapper (2.0.2-1) UNRELEASED; urgency=low
   * add debian/patches/debianspecific-setup.py.patch and
     debian/patches/series to adapt to Debian's use of setuptools
 
- -- Jan Dittberner <jandd@debian.org>  Fri, 09 Apr 2010 14:07:18 +0200
+ -- Jan Dittberner <jandd@debian.org>  Fri, 09 Apr 2010 15:00:34 +0200
 
 virtualenvwrapper (1.27+dfsg1-1) unstable; urgency=low
 
