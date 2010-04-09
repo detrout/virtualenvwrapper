@@ -1,6 +1,13 @@
 virtualenvwrapper (2.0.2-1) UNRELEASED; urgency=low
 
   * New upstream version.
+  * remove debian/README.source and get-orig-source target from
+    debian/rules because upstream does not bundle sourceless paver-
+    minilib.zip anymore
+  * modify paths for docs and the script itself in debian/rules to
+    new upstream directory structure
+  * add python-support to Build-Depends-Indep and add  to Depends to
+    include upstream's new plugin system
 
  -- Jan Dittberner <jandd@debian.org>  Fri, 09 Apr 2010 14:07:18 +0200
 

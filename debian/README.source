@@ -1,5 +1,0 @@
-The upstream tarball has been repacked to remove the sourceless
-paver-minilib.zip from Paver. Paver is available on Debian systems in
-the python-paver package.
-
- -- Jan Dittberner <jandd@debian.org>, Wed, 24 Feb 2010 18:27:22 +0100
