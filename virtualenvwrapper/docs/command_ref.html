@@ -5,13 +5,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Command Reference &mdash; virtualenvwrapper v1.27 documentation</title>
+    <title>Command Reference &mdash; virtualenvwrapper v2.0.2 documentation</title>
     <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '#',
-        VERSION:     '1.27',
+        VERSION:     '2.0.2',
         COLLAPSE_MODINDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -19,21 +19,21 @@
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="virtualenvwrapper v1.27 documentation" href="index.html" />
-    <link rel="next" title="Hook Scripts" href="hooks.html" />
-    <link rel="prev" title="virtualenvwrapper" href="index.html" /> 
+    <link rel="top" title="virtualenvwrapper v2.0.2 documentation" href="index.html" />
+    <link rel="next" title="Customizing Virtualenvwrapper" href="hooks.html" />
+    <link rel="prev" title="virtualenvwrapper 2.0.2" href="index.html" /> 
   </head>
   <body>
     <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="hooks.html" title="Hook Scripts"
+          <a href="hooks.html" title="Customizing Virtualenvwrapper"
              accesskey="N">next</a></li>
         <li class="right" >
-          <a href="index.html" title="virtualenvwrapper"
+          <a href="index.html" title="virtualenvwrapper 2.0.2"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">virtualenvwrapper v1.27 documentation</a> &raquo;</li> 
+        <li><a href="index.html">virtualenvwrapper v2.0.2 documentation</a> &raquo;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar">
@@ -45,6 +45,9 @@
 <li><a class="reference external" href="#mkvirtualenv">mkvirtualenv</a></li>
 <li><a class="reference external" href="#rmvirtualenv">rmvirtualenv</a></li>
 <li><a class="reference external" href="#cpvirtualenv">cpvirtualenv</a></li>
+</ul>
+</li>
+<li><a class="reference external" href="#controlling-the-active-environment">Controlling the Active Environment</a><ul>
 <li><a class="reference external" href="#workon">workon</a></li>
 <li><a class="reference external" href="#deactivate">deactivate</a></li>
 </ul>
@@ -52,11 +55,11 @@
 <li><a class="reference external" href="#quickly-navigating-to-a-virtualenv">Quickly Navigating to a virtualenv</a><ul>
 <li><a class="reference external" href="#cdvirtualenv">cdvirtualenv</a></li>
 <li><a class="reference external" href="#cdsitepackages">cdsitepackages</a></li>
+<li><a class="reference external" href="#lssitepackages">lssitepackages</a></li>
 </ul>
 </li>
 <li><a class="reference external" href="#path-management">Path Management</a><ul>
 <li><a class="reference external" href="#add2virtualenv">add2virtualenv</a></li>
-<li><a class="reference external" href="#lssitepackages">lssitepackages</a></li>
 </ul>
 </li>
 </ul>
@@ -65,10 +68,10 @@
 
             <h4>Previous topic</h4>
             <p class="topless"><a href="index.html"
-                                  title="previous chapter">virtualenvwrapper</a></p>
+                                  title="previous chapter">virtualenvwrapper 2.0.2</a></p>
             <h4>Next topic</h4>
             <p class="topless"><a href="hooks.html"
-                                  title="next chapter">Hook Scripts</a></p>
+                                  title="next chapter">Customizing Virtualenvwrapper</a></p>
             <h3>This Page</h3>
             <ul class="this-page-menu">
               <li><a href="_sources/command_ref.txt"
@@ -106,13 +109,27 @@
 <p>Syntax:</p>
 <div class="highlight-python"><pre>mkvirtualenv [options] ENVNAME</pre>
 </div>
-<p>(where the options are passed directly to virtualenv)</p>
+<p>(any options are passed directly to <tt class="docutils literal"><span class="pre">virtualenv</span></tt>)</p>
+<div class="admonition-see-also admonition seealso">
+<p class="first admonition-title">See also</p>
+<ul class="last simple">
+<li><a class="reference external" href="scripts.html#scripts-premkvirtualenv"><em>premkvirtualenv</em></a></li>
+<li><a class="reference external" href="scripts.html#scripts-postmkvirtualenv"><em>postmkvirtualenv</em></a></li>
+</ul>
+</div>
 </div>
 <div class="section" id="rmvirtualenv">
 <h3>rmvirtualenv<a class="headerlink" href="#rmvirtualenv" title="Permalink to this headline">¶</a></h3>
 <p>Remove an environment, in the WORKON_HOME.</p>
 <p>Syntax:</p>
 <div class="highlight-python"><pre>rmvirtualenv ENVNAME</pre>
+</div>
+<div class="admonition-see-also admonition seealso">
+<p class="first admonition-title">See also</p>
+<ul class="last simple">
+<li><a class="reference external" href="scripts.html#scripts-prermvirtualenv"><em>prermvirtualenv</em></a></li>
+<li><a class="reference external" href="scripts.html#scripts-postrmvirtualenv"><em>postrmvirtualenv</em></a></li>
+</ul>
 </div>
 </div>
 <div class="section" id="cpvirtualenv">
@@ -126,6 +143,9 @@
 <p class="last">The environment created by the copy operation is made <a class="reference external" href="http://virtualenv.openplans.org/#making-environments-relocatable">relocatable</a>.</p>
 </div>
 </div>
+</div>
+<div class="section" id="controlling-the-active-environment">
+<h2>Controlling the Active Environment<a class="headerlink" href="#controlling-the-active-environment" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="workon">
 <h3>workon<a class="headerlink" href="#workon" title="Permalink to this headline">¶</a></h3>
 <p>List or change working virtual environments</p>
@@ -133,28 +153,55 @@
 <div class="highlight-python"><div class="highlight"><pre><span class="n">workon</span> <span class="p">[</span><span class="n">environment_name</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>If no <tt class="docutils literal"><span class="pre">environment_name</span></tt> is given the list of available environments is printed to stdout.</p>
+<p>If no <tt class="docutils literal"><span class="pre">environment_name</span></tt> is given the list of available environments
+is printed to stdout.</p>
+<div class="admonition-see-also admonition seealso">
+<p class="first admonition-title">See also</p>
+<ul class="last simple">
+<li><a class="reference external" href="scripts.html#scripts-predeactivate"><em>predeactivate</em></a></li>
+<li><a class="reference external" href="scripts.html#scripts-postdeactivate"><em>postdeactivate</em></a></li>
+<li><a class="reference external" href="scripts.html#scripts-preactivate"><em>preactivate</em></a></li>
+<li><a class="reference external" href="scripts.html#scripts-postactivate"><em>postactivate</em></a></li>
+</ul>
+</div>
 </div>
 <div class="section" id="deactivate">
 <h3>deactivate<a class="headerlink" href="#deactivate" title="Permalink to this headline">¶</a></h3>
-<p>Switch from a virtual environment to the system-installed version of Python.</p>
+<p>Switch from a virtual environment to the system-installed version of
+Python.</p>
 <p>Syntax:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">deactivate</span>
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">This command is actually part of virtualenv, but is wrapped to provide before and after hooks, just as workon does for activate.</p>
+<p class="last">This command is actually part of virtualenv, but is wrapped to
+provide before and after hooks, just as workon does for activate.</p>
+</div>
+<div class="admonition-see-also admonition seealso">
+<p class="first admonition-title">See also</p>
+<ul class="last simple">
+<li><a class="reference external" href="scripts.html#scripts-predeactivate"><em>predeactivate</em></a></li>
+<li><a class="reference external" href="scripts.html#scripts-postdeactivate"><em>postdeactivate</em></a></li>
+</ul>
 </div>
 </div>
 </div>
 <div class="section" id="quickly-navigating-to-a-virtualenv">
 <h2>Quickly Navigating to a virtualenv<a class="headerlink" href="#quickly-navigating-to-a-virtualenv" title="Permalink to this headline">¶</a></h2>
-<p>There are two functions to provide shortcuts to navigate into the the currently-active
-virtualenv.</p>
+<p>There are two functions to provide shortcuts to navigate into the the
+currently-active virtualenv.</p>
 <div class="section" id="cdvirtualenv">
 <h3>cdvirtualenv<a class="headerlink" href="#cdvirtualenv" title="Permalink to this headline">¶</a></h3>
-<p>Calling <tt class="docutils literal"><span class="pre">cdvirtualenv</span></tt> changes the current working directory to the top of the virtualenv (<tt class="docutils literal"><span class="pre">$VIRTUAL_ENV</span></tt>).  An optional argument is appended to the path, allowing navigation directly into a subdirectory.</p>
+<p>Change the current working directory to <tt class="docutils literal"><span class="pre">$VIRTUAL_ENV</span></tt>.</p>
+<p>Syntax:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">cdvirtualenv</span> <span class="p">[</span><span class="n">subdir</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Calling <tt class="docutils literal"><span class="pre">cdvirtualenv</span></tt> changes the current working directory to the
+top of the virtualenv (<tt class="docutils literal"><span class="pre">$VIRTUAL_ENV</span></tt>).  An optional argument is
+appended to the path, allowing navigation directly into a
+subdirectory.</p>
 <div class="highlight-python"><pre>$ workon pymotw
 $ echo $VIRTUAL_ENV
 /Users/dhellmann/.virtualenvs/pymotw
@@ -168,46 +215,61 @@ $ pwd
 </div>
 <div class="section" id="cdsitepackages">
 <h3>cdsitepackages<a class="headerlink" href="#cdsitepackages" title="Permalink to this headline">¶</a></h3>
-<p>Because the exact path to the site-packages directory in the virtualenv depends on the
-version of Python, <tt class="docutils literal"><span class="pre">cdsitepackages</span></tt> is provided as a shortcut for <tt class="docutils literal"><span class="pre">cdvirtualenv</span>
-<span class="pre">lib/python${pyvers}/site-packages</span></tt>. An optional argument is also allowed, to specify
-a directory hierarchy within the <tt class="docutils literal"><span class="pre">site-packages</span></tt> directory to change into.</p>
-<dl class="docutils">
-<dt>::</dt>
-<dd>$ workon pymotw
+<p>Change the current working directory to the <tt class="docutils literal"><span class="pre">site-packages</span></tt> for
+<tt class="docutils literal"><span class="pre">$VIRTUAL_ENV</span></tt>.</p>
+<p>Syntax:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">cdsitepackages</span> <span class="p">[</span><span class="n">subdir</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Because the exact path to the site-packages directory in the
+virtualenv depends on the version of Python, <tt class="docutils literal"><span class="pre">cdsitepackages</span></tt> is
+provided as a shortcut for <tt class="docutils literal"><span class="pre">cdvirtualenv</span>
+<span class="pre">lib/python${pyvers}/site-packages</span></tt>. An optional argument is also
+allowed, to specify a directory hierarchy within the <tt class="docutils literal"><span class="pre">site-packages</span></tt>
+directory to change into.</p>
+<div class="highlight-python"><pre>$ workon pymotw
 $ echo $VIRTUAL_ENV
 /Users/dhellmann/.virtualenvs/pymotw
 $ cdsitepackages PyMOTW/bisect/
 $ pwd
-/Users/dhellmann/.virtualenvs/pymotw/lib/python2.6/site-packages/PyMOTW/bisect</dd>
-</dl>
+/Users/dhellmann/.virtualenvs/pymotw/lib/python2.6/site-packages/PyMOTW/bisect</pre>
+</div>
+</div>
+<div class="section" id="lssitepackages">
+<h3>lssitepackages<a class="headerlink" href="#lssitepackages" title="Permalink to this headline">¶</a></h3>
+<p>Calling <tt class="docutils literal"><span class="pre">lssitepackages</span></tt> shows the content of the <tt class="docutils literal"><span class="pre">site-packages</span></tt>
+directory of the currently-active virtualenv.</p>
+<p>Syntax:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">lssitepackages</span>
+</pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="path-management">
 <h2>Path Management<a class="headerlink" href="#path-management" title="Permalink to this headline">¶</a></h2>
-<p>Sometimes it is desirable to share installed packages that are not in the system <tt class="docutils literal"><span class="pre">site-pacakges</span></tt> directory and which you do not want to install in each virtualenv.  In this case, you <em>could</em> symlink the source into the environment <tt class="docutils literal"><span class="pre">site-packages</span></tt> directory, but it is also easy to add extra directories to the PYTHONPATH by including them in a .pth file inside <tt class="docutils literal"><span class="pre">site-packages</span></tt> using <tt class="docutils literal"><span class="pre">add2virtualenv</span></tt>.</p>
+<div class="section" id="add2virtualenv">
+<h3>add2virtualenv<a class="headerlink" href="#add2virtualenv" title="Permalink to this headline">¶</a></h3>
+<p>Adds the specified directories to the Python path for the
+currently-active virtualenv.</p>
+<p>Syntax:</p>
+<div class="highlight-python"><pre>add2virtualenv directory1 directory2 ...</pre>
+</div>
+<p>Sometimes it is desirable to share installed packages that are not in
+the system <tt class="docutils literal"><span class="pre">site-pacakges</span></tt> directory and which should not be
+installed in each virtualenv.  One possible solution is to symlink the
+source into the environment <tt class="docutils literal"><span class="pre">site-packages</span></tt> directory, but it is
+also easy to add extra directories to the PYTHONPATH by including them
+in a <tt class="docutils literal"><span class="pre">.pth</span></tt> file inside <tt class="docutils literal"><span class="pre">site-packages</span></tt> using <tt class="docutils literal"><span class="pre">add2virtualenv</span></tt>.</p>
 <ol class="arabic simple">
 <li>Check out the source for a big project, such as Django.</li>
 <li>Run: <tt class="docutils literal"><span class="pre">add2virtualenv</span> <span class="pre">path_to_source</span></tt>.</li>
 <li>Run: <tt class="docutils literal"><span class="pre">add2virtualenv</span></tt>.</li>
 <li>A usage message and list of current &#8220;extra&#8221; paths is printed.</li>
 </ol>
-<div class="section" id="add2virtualenv">
-<h3>add2virtualenv<a class="headerlink" href="#add2virtualenv" title="Permalink to this headline">¶</a></h3>
-<p>Adds the specified directories to the Python path for the currently-active
-virtualenv.</p>
-<p>Syntax:</p>
-<div class="highlight-python"><pre>add2virtualenv directory1 directory2 ...</pre>
-</div>
-<p>Path management for packages outside of the virtual env.
-Based on a contribution from James Bennett and Jannis Leidel.</p>
-<p>This will be done by placing the directory names in a path file
-named <tt class="docutils literal"><span class="pre">virtualenv_path_extensions.pth</span></tt> inside the virtualenv&#8217;s site-packages
-directory; if this file does not exist, it will be created first.</p>
-</div>
-<div class="section" id="lssitepackages">
-<h3>lssitepackages<a class="headerlink" href="#lssitepackages" title="Permalink to this headline">¶</a></h3>
-<p>Calling <tt class="docutils literal"><span class="pre">lssitepackages</span></tt> shows the content of the <tt class="docutils literal"><span class="pre">site-packages</span></tt> directory of the currently-active virtualenv.</p>
+<p>The directory names are added to a path file named
+<tt class="docutils literal"><span class="pre">virtualenv_path_extensions.pth</span></tt> inside the site-packages directory
+for the environment.</p>
+<p><em>Based on a contribution from James Bennett and Jannis Leidel.</em></p>
 </div>
 </div>
 </div>
@@ -222,12 +284,12 @@ directory; if this file does not exist, it will be created first.</p>
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="hooks.html" title="Hook Scripts"
+          <a href="hooks.html" title="Customizing Virtualenvwrapper"
              >next</a></li>
         <li class="right" >
-          <a href="index.html" title="virtualenvwrapper"
+          <a href="index.html" title="virtualenvwrapper 2.0.2"
              >previous</a> |</li>
-        <li><a href="index.html">virtualenvwrapper v1.27 documentation</a> &raquo;</li> 
+        <li><a href="index.html">virtualenvwrapper v2.0.2 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

@@ -2,6 +2,23 @@
 Release History
 ===============
 
+2.0.2
+
+  - Fixed issue #32, making virtualenvwrapper.user_scripts compatible
+    with Python 2.5 again.
+
+2.0.1
+
+  - Fixed issue #29, to use a default value for ``TMPDIR`` if it is
+    not set in the user's shell environment.
+
+2.0
+
+  - Rewrote hook management using Distribute_ entry points to make it
+    easier to share extensions.
+
+.. _Distribute: http://packages.python.org/distribute/
+
 1.27
   
   - Added cpvirtualenv command [Thomas Desvenain]

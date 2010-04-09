@@ -5,13 +5,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>For Developers &mdash; virtualenvwrapper v1.27 documentation</title>
+    <title>For Developers &mdash; virtualenvwrapper v2.0.2 documentation</title>
     <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '#',
-        VERSION:     '1.27',
+        VERSION:     '2.0.2',
         COLLAPSE_MODINDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -19,17 +19,21 @@
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="virtualenvwrapper v1.27 documentation" href="index.html" />
-    <link rel="prev" title="Release History" href="history.html" /> 
+    <link rel="top" title="virtualenvwrapper v2.0.2 documentation" href="index.html" />
+    <link rel="next" title="Existing Extensions" href="extensions.html" />
+    <link rel="prev" title="Tips and Tricks" href="tips.html" /> 
   </head>
   <body>
     <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="history.html" title="Release History"
-             accesskey="P">previous</a></li>
-        <li><a href="index.html">virtualenvwrapper v1.27 documentation</a> &raquo;</li> 
+          <a href="extensions.html" title="Existing Extensions"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="tips.html" title="Tips and Tricks"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">virtualenvwrapper v2.0.2 documentation</a> &raquo;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar">
@@ -44,8 +48,11 @@
 </ul>
 
             <h4>Previous topic</h4>
-            <p class="topless"><a href="history.html"
-                                  title="previous chapter">Release History</a></p>
+            <p class="topless"><a href="tips.html"
+                                  title="previous chapter">Tips and Tricks</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="extensions.html"
+                                  title="next chapter">Existing Extensions</a></p>
             <h3>This Page</h3>
             <ul class="this-page-menu">
               <li><a href="_sources/developers.txt"
@@ -74,138 +81,61 @@
             
   <div class="section" id="for-developers">
 <h1>For Developers<a class="headerlink" href="#for-developers" title="Permalink to this headline">¶</a></h1>
-<p>If you would like to contribute, these instructions should help you
-get started.  Patches, bug reports, and feature requests are all
-welcome through the <a class="reference external" href="http://bitbucket.org/dhellmann/virtualenvwrapper/">BitBucket site</a>.  Contributions
+<p>If you would like to contribute to virtualenvwrapper directly, these
+instructions should help you get started.  Patches, bug reports, and
+feature requests are all welcome through the <a class="reference external" href="http://bitbucket.org/dhellmann/virtualenvwrapper/">BitBucket site</a>.  Contributions
 in the form of patches or pull requests are easier to integrate and
 will receive priority attention.</p>
 <div class="section" id="building-documentation">
 <h2>Building Documentation<a class="headerlink" href="#building-documentation" title="Permalink to this headline">¶</a></h2>
 <p>The documentation for virtualenvwrapper is written in reStructuredText
 and converted to HTML using Sphinx. The build itself is driven by
-Paver.  You will need the following packages in order to build the
+make.  You will need the following packages in order to build the
 docs:</p>
 <ul class="simple">
 <li>Sphinx</li>
-<li>Paver</li>
 <li>docutils</li>
-<li>sphinxcontrib-paverutils</li>
 </ul>
-<p>Once all of them are installed into a virtualenv using easy_install,
-run <tt class="docutils literal"><span class="pre">paver</span> <span class="pre">html</span></tt> to generate the HTML version of the documentation:</p>
-<div class="highlight-python"><pre>$ paver html
----&gt; pavement.html
----&gt; sphinxcontrib.paverutils.html
-mkdir ./docs/html (mode 511)
-sphinx-build  -b html -d ./docs/doctrees -c sphinx/pkg -Aproject=virtualenvwrapper ./docsource ./docs/html
-Running Sphinx v0.6.1
+<p>Once all of the tools are installed into a virtualenv using
+pip, run <tt class="docutils literal"><span class="pre">make</span> <span class="pre">html</span></tt> to generate the HTML version of the
+documentation:</p>
+<div class="highlight-python"><pre>$ make html
+rm -rf virtualenvwrapper/docs
+(cd docs &amp;&amp; make html SPHINXOPTS="-c sphinx/pkg")
+sphinx-build -b html -d build/doctrees  -c sphinx/pkg source build/html
+Running Sphinx v0.6.4
 loading pickled environment... done
-building [html]: targets for 4 source files that are out of date
-updating environment: 1 added, 1 changed, 0 removed
-reading sources... [ 50%] developers
-reading sources... [100%] index
+building [html]: targets for 2 source files that are out of date
+updating environment: 0 added, 2 changed, 0 removed
+reading sources... [ 50%] command_ref
+reading sources... [100%] developers
 
-/Users/dhellmann/Devel/virtualenvwrapper/src/docsource/developers.rst:19: (WARNING/2) Literal block expected; none found.
 looking for now-outdated files... none found
 pickling environment... done
 checking consistency... done
 preparing documents... done
-writing output... [ 20%] command_ref
-writing output... [ 40%] developers
-writing output... [ 60%] history
-writing output... [ 80%] hooks
+writing output... [ 33%] command_ref
+writing output... [ 66%] developers
 writing output... [100%] index
 
 writing additional files... search
-copying static files... WARNING: static directory '/Users/dhellmann/Devel/virtualenvwrapper/src/sphinx/pkg/static' does not exist
+copying static files... WARNING: static directory '/Users/dhellmann/Devel/virtualenvwrapper/plugins/docs/sphinx/pkg/static' does not exist
 done
 dumping search index... done
 dumping object inventory... done
-build succeeded, 2 warnings.
-rmtree virtualenvwrapper/docs () {}
-move docs/html virtualenvwrapper/docs</pre>
+build succeeded, 1 warning.
+
+Build finished. The HTML pages are in build/html.
+cp -r docs/build/html virtualenvwrapper/docs</pre>
 </div>
 <p>The output version of the documentation ends up in
 <tt class="docutils literal"><span class="pre">./virtualenvwrapper/docs</span></tt> inside your sandbox.</p>
 </div>
 <div class="section" id="running-tests">
 <h2>Running Tests<a class="headerlink" href="#running-tests" title="Permalink to this headline">¶</a></h2>
-<p>The test suite for virtualenvwrapper uses <a class="reference external" href="http://shunit2.googlecode.com/">shunit2</a>.  To run the tests under both bash
-and zsh, use <tt class="docutils literal"><span class="pre">paver</span> <span class="pre">test</span></tt>.  To add new tests, modify the
-<tt class="docutils literal"><span class="pre">tests/test.sh</span></tt> script with new test functions.</p>
-<div class="highlight-python"><pre>$ paver test
----&gt; pavement.test
-bash ./tests/test.sh
-
-test_mkvirtualenv
-New python executable in env1/bin/python
-Installing setuptools............done.
-
-test_cdvirtual
-
-test_cdsitepackages
-
-test_mkvirtualenv_activates
-New python executable in env2/bin/python
-Installing setuptools............done.
-
-test_workon
-
-test_postactivate_hook
-
-test_deactivate
-
-test_deactivate_hooks
-
-test_virtualenvwrapper_show_workon_options
-
-test_rmvirtualenv
-New python executable in deleteme/bin/python
-Installing setuptools............done.
-
-test_rmvirtualenv_no_such_env
-
-test_missing_workon_home
-
-Ran 12 tests.
-
-OK
-SHUNIT_PARENT=./tests/test.sh zsh -o shwordsplit ./tests/test.sh
-
-test_mkvirtualenv
-New python executable in env1/bin/python
-Installing setuptools............done.
-
-test_cdvirtual
-
-test_cdsitepackages
-
-test_mkvirtualenv_activates
-New python executable in env2/bin/python
-Installing setuptools............done.
-
-test_workon
-
-test_postactivate_hook
-
-test_deactivate
-
-test_deactivate_hooks
-
-test_virtualenvwrapper_show_workon_options
-
-test_rmvirtualenv
-New python executable in deleteme/bin/python
-Installing setuptools............done.
-
-test_rmvirtualenv_no_such_env
-
-test_missing_workon_home
-
-Ran 12 tests.
-
-OK</pre>
-</div>
+<p>The test suite for virtualenvwrapper uses <a class="reference external" href="http://shunit2.googlecode.com/">shunit2</a>.  To run the tests under bash, sh,
+and zsh, use <tt class="docutils literal"><span class="pre">make</span> <span class="pre">test</span></tt>.  To add new tests, modify or create an
+appropriate script in the <tt class="docutils literal"><span class="pre">tests</span></tt> directory.</p>
 </div>
 </div>
 
@@ -219,9 +149,12 @@ OK</pre>
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="history.html" title="Release History"
-             >previous</a></li>
-        <li><a href="index.html">virtualenvwrapper v1.27 documentation</a> &raquo;</li> 
+          <a href="extensions.html" title="Existing Extensions"
+             >next</a></li>
+        <li class="right" >
+          <a href="tips.html" title="Tips and Tricks"
+             >previous</a> |</li>
+        <li><a href="index.html">virtualenvwrapper v2.0.2 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
