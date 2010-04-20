@@ -1,10 +1,10 @@
-virtualenvwrapper (2.1-1) UNRELEASED; urgency=low
+virtualenvwrapper (2.1-1) unstable; urgency=low
 
   * New upstream version.
   * refresh debian/patches/debianspecific-setup.py.patch
   * add README.txt as document in debian/virtualenvwrapper.docs
 
- -- Jan Dittberner <jandd@debian.org>  Tue, 20 Apr 2010 20:09:14 +0200
+ -- Jan Dittberner <jandd@debian.org>  Tue, 20 Apr 2010 20:29:16 +0200
 
 virtualenvwrapper (2.0.2-1) unstable; urgency=low
 
