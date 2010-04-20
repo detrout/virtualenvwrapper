@@ -1,13 +1,15 @@
 Metadata-Version: 1.1
 Name: virtualenvwrapper
-Version: 2.0.2
+Version: 2.1
 Summary: Enhancements to virtualenv
 Home-page: http://www.doughellmann.com/projects/virtualenvwrapper/
 Author: Doug Hellmann
 Author-email: doug.hellmann@gmail.com
 License: UNKNOWN
-Download-URL: http://www.doughellmann.com/downloads/virtualenvwrapper-2.0.2.tar.gz
-Description: #################
+Download-URL: http://www.doughellmann.com/downloads/virtualenvwrapper-2.1.tar.gz
+Description: ..   -*- mode: rst -*-
+        
+        #################
         virtualenvwrapper
         #################
         
@@ -57,6 +59,17 @@ Description: #################
         /usr/local/bin/virtualenvwrapper_bashrc`` to ``source
         /usr/local/bin/virtualenvwrapper.sh``.
         
+        ============
+        Contributing
+        ============
+        
+        Before contributing new features to virtualenvwrapper core, consider
+        whether they should be implemented as an extension instead.
+        
+        Refer to the `developers docs
+        <http://www.doughellmann.com/docs/virtualenvwrapper/developers.html>`__
+        for tips on contributing patches.
+        
         =======
         License
         =======
@@ -78,6 +91,8 @@ Description: #################
         USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
         OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
         PERFORMANCE OF THIS SOFTWARE.
+        
+        .. _BitBucket: http://bitbucket.org/dhellmann/virtualenvwrapper/overview/
         
 Platform: Any
 Classifier: Development Status :: 5 - Production/Stable

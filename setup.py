@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 PROJECT = 'virtualenvwrapper'
-VERSION = '2.0.2'
+VERSION = '2.1'
 
 # Bootstrap installation of Distribute
 import distribute_setup
@@ -15,7 +15,7 @@ import os
 import sys
 
 try:
-    long_description = open('README.rst', 'rt').read()
+    long_description = open('README.txt', 'rt').read()
 except IOError:
     long_description = ''
 
@@ -165,6 +165,13 @@ setup(
             ],
         'virtualenvwrapper.post_mkvirtualenv_source': [
             'user_scripts = virtualenvwrapper.user_scripts:post_mkvirtualenv_source',
+            ],
+
+        'virtualenvwrapper.pre_cpvirtualenv': [
+            'user_scripts = virtualenvwrapper.user_scripts:pre_cpvirtualenv',
+            ],
+        'virtualenvwrapper.post_cpvirtualenv_source': [
+            'user_scripts = virtualenvwrapper.user_scripts:post_cpvirtualenv_source',
             ],
 
         'virtualenvwrapper.pre_rmvirtualenv': [

@@ -5,13 +5,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Release History &mdash; virtualenvwrapper v2.0.2 documentation</title>
+    <title>Release History &mdash; virtualenvwrapper v2.1 documentation</title>
     <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '#',
-        VERSION:     '2.0.2',
+        VERSION:     '2.1',
         COLLAPSE_MODINDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -19,7 +19,7 @@
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="virtualenvwrapper v2.0.2 documentation" href="index.html" />
+    <link rel="top" title="virtualenvwrapper v2.1 documentation" href="index.html" />
     <link rel="prev" title="Existing Extensions" href="extensions.html" /> 
   </head>
   <body>
@@ -29,7 +29,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="extensions.html" title="Existing Extensions"
              accesskey="P">previous</a></li>
-        <li><a href="index.html">virtualenvwrapper v2.0.2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">virtualenvwrapper v2.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar">
@@ -65,6 +65,33 @@
             
   <div class="section" id="release-history">
 <h1>Release History<a class="headerlink" href="#release-history" title="Permalink to this headline">¶</a></h1>
+<p>2.1</p>
+<blockquote>
+<ul class="simple">
+<li>Add support for ksh.  Thanks to Doug Latornell for doing the
+research on what needed to be changed.</li>
+<li>Test import of virtualenvwrapper.hook_loader on startup and report
+the error in a way that should help the user figure out how to fix
+it (issue #33).</li>
+<li>Update <a class="reference external" href="command_ref.html#command-mkvirtualenv"><em>mkvirtualenv</em></a> documentation to include the
+fact that a new environment is activated immediately after it is
+created (issue #30).</li>
+<li>Added hooks around <a class="reference external" href="command_ref.html#command-cpvirtualenv"><em>cpvirtualenv</em></a>.</li>
+<li>Made deactivation more robust, especially under ksh.</li>
+<li>Use Python&#8217;s <tt class="docutils literal"><span class="pre">tempfile</span></tt> module for creating temporary filenames
+safely and portably.</li>
+<li>Fix a problem with <tt class="docutils literal"><span class="pre">virtualenvwrapper_show_workon_options</span></tt> that
+caused it to show <tt class="docutils literal"><span class="pre">*</span></tt> as the name of a virtualenv when no
+environments had yet been created.</li>
+<li>Change the hook loader so it can be told to run only a set of
+named hooks.</li>
+<li>Add support for listing the available hooks, to be used in help
+output of commands like virtualenvwrapper.project&#8217;s mkproject.</li>
+<li>Fix mkvirtualenv -h option behavior.</li>
+<li>Change logging so the $WORKON_HOME/hook.log file rotates after
+10KiB.</li>
+</ul>
+</blockquote>
 <p>2.0.2</p>
 <blockquote>
 <ul class="simple">
@@ -301,7 +328,7 @@ Jeff Forcier for pointing out the errors.</li>
         <li class="right" style="margin-right: 10px">
           <a href="extensions.html" title="Existing Extensions"
              >previous</a></li>
-        <li><a href="index.html">virtualenvwrapper v2.0.2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">virtualenvwrapper v2.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

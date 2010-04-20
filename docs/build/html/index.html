@@ -5,13 +5,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>virtualenvwrapper 2.0.2 &mdash; virtualenvwrapper v2.0.2 documentation</title>
+    <title>virtualenvwrapper 2.1 &mdash; virtualenvwrapper v2.1 documentation</title>
     <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '#',
-        VERSION:     '2.0.2',
+        VERSION:     '2.1',
         COLLAPSE_MODINDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -19,33 +19,26 @@
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="virtualenvwrapper v2.0.2 documentation" href="#" />
-    <link rel="next" title="Command Reference" href="command_ref.html" /> 
+    <link rel="top" title="virtualenvwrapper v2.1 documentation" href="#" />
+    <link rel="next" title="Installation" href="install.html" /> 
   </head>
   <body>
     <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="command_ref.html" title="Command Reference"
+          <a href="install.html" title="Installation"
              accesskey="N">next</a></li>
-        <li><a href="#">virtualenvwrapper v2.0.2 documentation</a> &raquo;</li> 
+        <li><a href="#">virtualenvwrapper v2.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
             <h3><a href="#">Table Of Contents</a></h3>
             <ul>
-<li><a class="reference external" href="#">virtualenvwrapper 2.0.2</a><ul>
+<li><a class="reference external" href="#">virtualenvwrapper 2.1</a><ul>
 <li><a class="reference external" href="#features">Features</a></li>
-<li><a class="reference external" href="#installation">Installation</a><ul>
-<li><a class="reference external" href="#workon-home">WORKON_HOME</a></li>
-<li><a class="reference external" href="#shell-startup-file">Shell Startup File</a></li>
-<li><a class="reference external" href="#quick-start">Quick-Start</a></li>
-<li><a class="reference external" href="#temporary-files">Temporary Files</a></li>
-<li><a class="reference external" href="#upgrading-from-1-x">Upgrading from 1.x</a></li>
-</ul>
-</li>
+<li><a class="reference external" href="#introduction">Introduction</a></li>
 <li><a class="reference external" href="#details">Details</a><ul>
 </ul>
 </li>
@@ -56,8 +49,8 @@
 </ul>
 
             <h4>Next topic</h4>
-            <p class="topless"><a href="command_ref.html"
-                                  title="next chapter">Command Reference</a></p>
+            <p class="topless"><a href="install.html"
+                                  title="next chapter">Installation</a></p>
             <h3>This Page</h3>
             <ul class="this-page-menu">
               <li><a href="_sources/index.txt"
@@ -85,7 +78,7 @@
           <div class="body">
             
   <div class="section" id="virtualenvwrapper-release">
-<h1>virtualenvwrapper 2.0.2<a class="headerlink" href="#virtualenvwrapper-release" title="Permalink to this headline">¶</a></h1>
+<h1>virtualenvwrapper 2.1<a class="headerlink" href="#virtualenvwrapper-release" title="Permalink to this headline">¶</a></h1>
 <p>virtualenvwrapper is a set of extensions to Ian Bicking&#8217;s <a class="reference external" href="http://pypi.python.org/pypi/virtualenv">virtualenv</a> tool.  The extensions
 include wrappers for creating and deleting virtual environments and
 otherwise managing your development workflow, making it easier to work
@@ -105,56 +98,138 @@ argument.</li>
 <a class="reference external" href="plugins.html#plugins"><em>Extending Virtualenvwrapper</em></a>).</li>
 </ol>
 </div>
-<div class="section" id="installation">
-<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="workon-home">
-<h3>WORKON_HOME<a class="headerlink" href="#workon-home" title="Permalink to this headline">¶</a></h3>
-<p>The variable <tt class="docutils literal"><span class="pre">WORKON_HOME</span></tt> tells virtualenvwrapper where to place
-your virtual environments.  The default is <tt class="docutils literal"><span class="pre">$HOME/.virtualenvs</span></tt>.
-This directory must be created before using any virtualenvwrapper
-commands.</p>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>The best way to explain the features virtualenvwrapper gives you is to
+show it in use.</p>
+<p>First, some initialization steps.  Most of this only needs to be done
+one time.  You will want to add the command to <tt class="docutils literal"><span class="pre">source</span>
+<span class="pre">/usr/local/bin/virtualenvwrapper.sh</span></tt> to your shell startup file,
+changing the path to virtualenvwrapper.sh depending on where it was
+installed by pip.</p>
+<div class="highlight-python"><pre>$ pip install virtualenvwrapper
+...
+$ export WORKON_HOME=~/Envs
+$ mkdir -p $WORKON_HOME
+$ source /usr/local/bin/virtualenvwrapper.sh
+$ mkvirtualenv env1
+Installing
+distribute..........................................
+....................................................
+....................................................
+...............................done.
+virtualenvwrapper.user_scripts Creating /Users/dhellmann/Envs/env1/bin/predeactivate
+virtualenvwrapper.user_scripts Creating /Users/dhellmann/Envs/env1/bin/postdeactivate
+virtualenvwrapper.user_scripts Creating /Users/dhellmann/Envs/env1/bin/preactivate
+virtualenvwrapper.user_scripts Creating /Users/dhellmann/Envs/env1/bin/postactivate  New python executable in env1/bin/python
+(env1)$ ls $WORKON_HOME
+env1 hook.log</pre>
 </div>
-<div class="section" id="shell-startup-file">
-<h3>Shell Startup File<a class="headerlink" href="#shell-startup-file" title="Permalink to this headline">¶</a></h3>
-<p>Add two lines to your shell startup file (<tt class="docutils literal"><span class="pre">.bashrc</span></tt>, <tt class="docutils literal"><span class="pre">.profile</span></tt>,
-etc.) to set the location where the virtual environments should live
-and the location of the script installed with this package:</p>
-<div class="highlight-python"><pre>export WORKON_HOME=$HOME/.virtualenvs
-source /usr/local/bin/virtualenvwrapper.sh</pre>
+<p>Now we can install some software into the environment.</p>
+<div class="highlight-python"><pre>(env1)$ pip install django
+Downloading/unpacking django
+  Downloading Django-1.1.1.tar.gz (5.6Mb): 5.6Mb downloaded
+  Running setup.py egg_info for package django
+Installing collected packages: django
+  Running setup.py install for django
+    changing mode of build/scripts-2.6/django-admin.py from 644 to 755
+    changing mode of /Users/dhellmann/Envs/env1/bin/django-admin.py to 755
+Successfully installed django</pre>
 </div>
-<p>After editing it, reload the startup file (e.g., run: <tt class="docutils literal"><span class="pre">source</span>
-<span class="pre">~/.bashrc</span></tt>).</p>
+<p>We can see the new package with <tt class="docutils literal"><span class="pre">lssitepackages</span></tt>:</p>
+<div class="highlight-python"><pre>(env1)$ lssitepackages
+Django-1.1.1-py2.6.egg-info     easy-install.pth
+distribute-0.6.10-py2.6.egg     pip-0.6.3-py2.6.egg
+django                          setuptools.pth</pre>
 </div>
-<div class="section" id="quick-start">
-<h3>Quick-Start<a class="headerlink" href="#quick-start" title="Permalink to this headline">¶</a></h3>
-<ol class="arabic simple">
-<li>Run: <tt class="docutils literal"><span class="pre">workon</span></tt></li>
-<li>A list of environments, empty, is printed.</li>
-<li>Run: <tt class="docutils literal"><span class="pre">mkvirtualenv</span> <span class="pre">temp</span></tt></li>
-<li>A new environment, <tt class="docutils literal"><span class="pre">temp</span></tt> is created and activated.</li>
-<li>Run: <tt class="docutils literal"><span class="pre">workon</span></tt></li>
-<li>This time, the <tt class="docutils literal"><span class="pre">temp</span></tt> environment is included.</li>
-</ol>
+<p>Of course we are not limited to a single virtualenv:</p>
+<div class="highlight-python"><pre>(env1)$ ls $WORKON_HOME
+env1            hook.log
+(env1)$ mkvirtualenv env2
+Installing distribute...............................
+....................................................
+....................................................
+........... ...............................done.
+virtualenvwrapper.user_scripts Creating /Users/dhellmann/Envs/env2/bin/predeactivate
+virtualenvwrapper.user_scripts Creating /Users/dhellmann/Envs/env2/bin/postdeactivate
+virtualenvwrapper.user_scripts Creating /Users/dhellmann/Envs/env2/bin/preactivate
+virtualenvwrapper.user_scripts Creating /Users/dhellmann/Envs/env2/bin/postactivate  New python executable in env2/bin/python
+(env2)$ ls $WORKON_HOME
+env1            env2            hook.log</pre>
 </div>
-<div class="section" id="temporary-files">
-<h3>Temporary Files<a class="headerlink" href="#temporary-files" title="Permalink to this headline">¶</a></h3>
-<p>virtualenvwrapper creates temporary files in <tt class="docutils literal"><span class="pre">$TMPDIR</span></tt>.  If the
-variable is not set, it uses <tt class="docutils literal"><span class="pre">/tmp</span></tt>.  To change the location of
-temporary files just for virtualenvwrapper, set
-<tt class="docutils literal"><span class="pre">VIRTUALENVWRAPPER_TMPDIR</span></tt>.</p>
+<p>Switch between environments with <tt class="docutils literal"><span class="pre">workon</span></tt>:</p>
+<div class="highlight-python"><pre>(env2)$ workon env1
+(env1)$ echo $VIRTUAL_ENV
+/Users/dhellmann/Envs/env1
+(env1)$</pre>
 </div>
-<div class="section" id="upgrading-from-1-x">
-<h3>Upgrading from 1.x<a class="headerlink" href="#upgrading-from-1-x" title="Permalink to this headline">¶</a></h3>
-<p>The shell script containing the wrapper functions has been renamed in
-the 2.x series to reflect the fact that shells other than bash are
-supported.  In your startup file, change <tt class="docutils literal"><span class="pre">source</span>
-<span class="pre">/usr/local/bin/virtualenvwrapper_bashrc</span></tt> to <tt class="docutils literal"><span class="pre">source</span>
-<span class="pre">/usr/local/bin/virtualenvwrapper.sh</span></tt>.</p>
+<p>The <tt class="docutils literal"><span class="pre">workon</span></tt> command also includes tab completion for the
+environment names, and invokes customization scripts as an environment
+is activated or deactivated (see <a class="reference external" href="scripts.html#scripts"><em>Per-User Customization</em></a>).</p>
+<div class="highlight-python"><pre>(env1)$ echo 'cd $VIRTUAL_ENV' &gt;&gt; $WORKON_HOME/postactivate
+(env1)$ workon env2
+(env2)$ pwd
+/Users/dhellmann/Envs/env2</pre>
 </div>
+<p><a class="reference external" href="scripts.html#scripts-postmkvirtualenv"><em>postmkvirtualenv</em></a> is run when a new environment is
+created, letting you automatically install commonly-used tools.</p>
+<div class="highlight-python"><pre>(env2)$ echo 'pip install sphinx' &gt;&gt; $WORKON_HOME/postmkvirtualenv
+(env3)$ mkvirtualenv env3
+New python executable in env3/bin/python
+Installing distribute...............................
+....................................................
+....................................................
+........... ...............................done.
+virtualenvwrapper.user_scripts Creating /Users/dhellmann/Envs/env3/bin/predeactivate
+virtualenvwrapper.user_scripts Creating /Users/dhellmann/Envs/env3/bin/postdeactivate
+virtualenvwrapper.user_scripts Creating /Users/dhellmann/Envs/env3/bin/preactivate
+virtualenvwrapper.user_scripts Creating /Users/dhellmann/Envs/env3/bin/postactivate
+Downloading/unpacking sphinx
+  Downloading Sphinx-0.6.5.tar.gz (972Kb): 972Kb downloaded
+  Running setup.py egg_info for package sphinx
+    no previously-included directories found matching 'doc/_build'
+Downloading/unpacking Pygments&gt;=0.8 (from sphinx)
+  Downloading Pygments-1.3.1.tar.gz (1.1Mb): 1.1Mb downloaded
+  Running setup.py egg_info for package Pygments
+Downloading/unpacking Jinja2&gt;=2.1 (from sphinx)
+  Downloading Jinja2-2.4.tar.gz (688Kb): 688Kb downloaded
+  Running setup.py egg_info for package Jinja2
+    warning: no previously-included files matching '*' found under directory 'docs/_build/doctrees'
+Downloading/unpacking docutils&gt;=0.4 (from sphinx)
+  Downloading docutils-0.6.tar.gz (1.4Mb): 1.4Mb downloaded
+  Running setup.py egg_info for package docutils
+Installing collected packages: docutils, Jinja2, Pygments, sphinx
+  Running setup.py install for docutils
+  Running setup.py install for Jinja2
+  Running setup.py install for Pygments
+  Running setup.py install for sphinx
+    no previously-included directories found matching 'doc/_build'
+    Installing sphinx-build script to /Users/dhellmann/Envs/env3/bin
+    Installing sphinx-quickstart script to /Users/dhellmann/Envs/env3/bin
+    Installing sphinx-autogen script to /Users/dhellmann/Envs/env3/bin
+Successfully installed docutils Jinja2 Pygments sphinx  (env3)$
+(venv3)$ which sphinx-build
+/Users/dhellmann/Envs/env3/bin/sphinx-build</pre>
+</div>
+<p>Through a combination of the existing functions defined by the core
+package (see <a class="reference external" href="command_ref.html#command"><em>Command Reference</em></a>), third-party plugins (see
+<a class="reference external" href="plugins.html#plugins"><em>Extending Virtualenvwrapper</em></a>), and user-defined scripts (see <a class="reference external" href="scripts.html#scripts"><em>Per-User Customization</em></a>)
+virtualenvwrapper gives you a wide variety of opportunities to
+automate repetitive operations.</p>
 </div>
 <div class="section" id="details">
 <h2>Details<a class="headerlink" href="#details" title="Permalink to this headline">¶</a></h2>
 <ul>
+<li class="toctree-l1"><a class="reference external" href="install.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference external" href="install.html#basic-installation">Basic Installation</a></li>
+<li class="toctree-l2"><a class="reference external" href="install.html#workon-home">WORKON_HOME</a></li>
+<li class="toctree-l2"><a class="reference external" href="install.html#shell-startup-file">Shell Startup File</a></li>
+<li class="toctree-l2"><a class="reference external" href="install.html#python-interpreter-and-path">Python Interpreter and $PATH</a></li>
+<li class="toctree-l2"><a class="reference external" href="install.html#quick-start">Quick-Start</a></li>
+<li class="toctree-l2"><a class="reference external" href="install.html#temporary-files">Temporary Files</a></li>
+<li class="toctree-l2"><a class="reference external" href="install.html#upgrading-from-1-x">Upgrading from 1.x</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference external" href="command_ref.html">Command Reference</a><ul>
 <li class="toctree-l2"><a class="reference external" href="command_ref.html#managing-environments">Managing Environments</a></li>
 <li class="toctree-l2"><a class="reference external" href="command_ref.html#controlling-the-active-environment">Controlling the Active Environment</a></li>
@@ -183,6 +258,8 @@ supported.  In your startup file, change <tt class="docutils literal"><span clas
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference external" href="extensions.html">Existing Extensions</a><ul>
+<li class="toctree-l2"><a class="reference external" href="extensions.html#project">project</a></li>
+<li class="toctree-l2"><a class="reference external" href="extensions.html#emacs-desktop">emacs-desktop</a></li>
 <li class="toctree-l2"><a class="reference external" href="extensions.html#user-scripts">user_scripts</a></li>
 </ul>
 </li>
@@ -229,9 +306,9 @@ PERFORMANCE OF THIS SOFTWARE.</p>
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="command_ref.html" title="Command Reference"
+          <a href="install.html" title="Installation"
              >next</a></li>
-        <li><a href="#">virtualenvwrapper v2.0.2 documentation</a> &raquo;</li> 
+        <li><a href="#">virtualenvwrapper v2.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

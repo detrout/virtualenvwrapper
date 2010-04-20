@@ -2,6 +2,31 @@
 Release History
 ===============
 
+2.1
+
+  - Add support for ksh.  Thanks to Doug Latornell for doing the
+    research on what needed to be changed.
+  - Test import of virtualenvwrapper.hook_loader on startup and report
+    the error in a way that should help the user figure out how to fix
+    it (issue #33).
+  - Update :ref:`command-mkvirtualenv` documentation to include the
+    fact that a new environment is activated immediately after it is
+    created (issue #30).
+  - Added hooks around :ref:`command-cpvirtualenv`.
+  - Made deactivation more robust, especially under ksh.
+  - Use Python's ``tempfile`` module for creating temporary filenames
+    safely and portably.
+  - Fix a problem with ``virtualenvwrapper_show_workon_options`` that
+    caused it to show ``*`` as the name of a virtualenv when no
+    environments had yet been created.
+  - Change the hook loader so it can be told to run only a set of
+    named hooks.
+  - Add support for listing the available hooks, to be used in help
+    output of commands like virtualenvwrapper.project's mkproject.
+  - Fix mkvirtualenv -h option behavior.
+  - Change logging so the $WORKON_HOME/hook.log file rotates after
+    10KiB.
+
 2.0.2
 
   - Fixed issue #32, making virtualenvwrapper.user_scripts compatible

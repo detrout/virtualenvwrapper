@@ -5,13 +5,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Per-User Customization &mdash; virtualenvwrapper v2.0.2 documentation</title>
+    <title>Per-User Customization &mdash; virtualenvwrapper v2.1 documentation</title>
     <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '#',
-        VERSION:     '2.0.2',
+        VERSION:     '2.1',
         COLLAPSE_MODINDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -19,7 +19,7 @@
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="virtualenvwrapper v2.0.2 documentation" href="index.html" />
+    <link rel="top" title="virtualenvwrapper v2.1 documentation" href="index.html" />
     <link rel="up" title="Customizing Virtualenvwrapper" href="hooks.html" />
     <link rel="next" title="Extending Virtualenvwrapper" href="plugins.html" />
     <link rel="prev" title="Customizing Virtualenvwrapper" href="hooks.html" /> 
@@ -34,7 +34,7 @@
         <li class="right" >
           <a href="hooks.html" title="Customizing Virtualenvwrapper"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">virtualenvwrapper v2.0.2 documentation</a> &raquo;</li>
+        <li><a href="index.html">virtualenvwrapper v2.1 documentation</a> &raquo;</li>
           <li><a href="hooks.html" accesskey="U">Customizing Virtualenvwrapper</a> &raquo;</li> 
       </ul>
     </div>
@@ -46,6 +46,8 @@
 <li><a class="reference external" href="#initialize">initialize</a></li>
 <li><a class="reference external" href="#premkvirtualenv">premkvirtualenv</a></li>
 <li><a class="reference external" href="#postmkvirtualenv">postmkvirtualenv</a></li>
+<li><a class="reference external" href="#precpvirtualenv">precpvirtualenv</a></li>
+<li><a class="reference external" href="#postcpvirtualenv">postcpvirtualenv</a></li>
 <li><a class="reference external" href="#preactivate">preactivate</a></li>
 <li><a class="reference external" href="#postactivate">postactivate</a></li>
 <li><a class="reference external" href="#predeactivate">predeactivate</a></li>
@@ -152,6 +154,48 @@ passed as an argument to the script.</p>
 </table>
 </blockquote>
 <p><tt class="docutils literal"><span class="pre">$WORKON_HOME/postmkvirtualenv</span></tt> is sourced after the new environment
+is created and activated.</p>
+</div>
+<div class="section" id="precpvirtualenv">
+<span id="scripts-precpvirtualenv"></span><h2>precpvirtualenv<a class="headerlink" href="#precpvirtualenv" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Global/Local:</th><td class="field-body">global</td>
+</tr>
+<tr class="field"><th class="field-name">Argument(s):</th><td class="field-body">name of original environment, name of new environment</td>
+</tr>
+<tr class="field"><th class="field-name">Sourced/Run:</th><td class="field-body">run</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p><tt class="docutils literal"><span class="pre">$WORKON_HOME/precpvirtualenv</span></tt> is run as an external program after
+the source environment is duplicated and made relocatable, but before
+the <tt class="docutils literal"><span class="pre">premkvirtualenv</span></tt> hook is run or the current environment is
+switched to point to the new env. The current working directory for
+the script is <tt class="docutils literal"><span class="pre">$WORKON_HOME</span></tt> and the names of the source and new
+environments are passed as arguments to the script.</p>
+</div>
+<div class="section" id="postcpvirtualenv">
+<span id="scripts-postcpvirtualenv"></span><h2>postcpvirtualenv<a class="headerlink" href="#postcpvirtualenv" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Global/Local:</th><td class="field-body">global</td>
+</tr>
+<tr class="field"><th class="field-name">Argument(s):</th><td class="field-body">none</td>
+</tr>
+<tr class="field"><th class="field-name">Sourced/Run:</th><td class="field-body">sourced</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p><tt class="docutils literal"><span class="pre">$WORKON_HOME/postcpvirtualenv</span></tt> is sourced after the new environment
 is created and activated.</p>
 </div>
 <div class="section" id="preactivate">
@@ -314,7 +358,7 @@ environment directory is passed as an argument to the script.</p>
         <li class="right" >
           <a href="hooks.html" title="Customizing Virtualenvwrapper"
              >previous</a> |</li>
-        <li><a href="index.html">virtualenvwrapper v2.0.2 documentation</a> &raquo;</li>
+        <li><a href="index.html">virtualenvwrapper v2.1 documentation</a> &raquo;</li>
           <li><a href="hooks.html" >Customizing Virtualenvwrapper</a> &raquo;</li> 
       </ul>
     </div>

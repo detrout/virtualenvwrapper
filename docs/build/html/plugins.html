@@ -5,13 +5,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Extending Virtualenvwrapper &mdash; virtualenvwrapper v2.0.2 documentation</title>
+    <title>Extending Virtualenvwrapper &mdash; virtualenvwrapper v2.1 documentation</title>
     <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '#',
-        VERSION:     '2.0.2',
+        VERSION:     '2.1',
         COLLAPSE_MODINDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -19,7 +19,7 @@
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="virtualenvwrapper v2.0.2 documentation" href="index.html" />
+    <link rel="top" title="virtualenvwrapper v2.1 documentation" href="index.html" />
     <link rel="up" title="Customizing Virtualenvwrapper" href="hooks.html" />
     <link rel="next" title="Tips and Tricks" href="tips.html" />
     <link rel="prev" title="Per-User Customization" href="scripts.html" /> 
@@ -34,7 +34,7 @@
         <li class="right" >
           <a href="scripts.html" title="Per-User Customization"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">virtualenvwrapper v2.0.2 documentation</a> &raquo;</li>
+        <li><a href="index.html">virtualenvwrapper v2.1 documentation</a> &raquo;</li>
           <li><a href="hooks.html" accesskey="U">Customizing Virtualenvwrapper</a> &raquo;</li> 
       </ul>
     </div>
@@ -68,6 +68,7 @@
 <li><a class="reference external" href="#post-rmvirtualenv">post_rmvirtualenv</a></li>
 </ul>
 </li>
+<li><a class="reference external" href="#adding-new-extension-points">Adding New Extension Points</a></li>
 </ul>
 </li>
 </ul>
@@ -106,22 +107,25 @@
             
   <div class="section" id="extending-virtualenvwrapper">
 <span id="plugins"></span><h1>Extending Virtualenvwrapper<a class="headerlink" href="#extending-virtualenvwrapper" title="Permalink to this headline">¶</a></h1>
-<p>Customizing one&#8217;s development environment is a practice adopted from
-other tool-based jobs in which long experience leads to home-grown and
-unique solutions to persistent annoyances.  Carpenters build jigs,
-software developers write shell scripts.  virtualenvwrapper continues
-the tradition of encouraging a craftsman to modify his tools to work
-the way he wants, rather than the other way around.</p>
+<p>Long experience with home-grown solutions for customizing a
+development environment has proven how valuable it can be to have the
+ability to automate common tasks and eliminate persistent annoyances.
+Carpenters build jigs, software developers write shell scripts.
+virtualenvwrapper continues the tradition of encouraging a craftsman
+to modify their tools to work the way they want, rather than the other
+way around.</p>
 <p>Use the hooks provided to eliminate repetitive manual operations and
-streamline your development workflow.  For example, the pre_activate
-and post_activate hooks can trigger an IDE to load a project file to
-reload files from the last editing session, manage time-tracking
-records, or start and stop development versions of an application
-server.  The initialize hook can be used to add entirely new commands
-and hooks to virtualenvwrapper.  And the pre_mkvirtualenv and
-post_mkvirtualenv hooks give you an opportunity to install basic
-requirements into each new development environment, initialize a
-source code control repository, or otherwise set up a new project.</p>
+streamline your development workflow.  For example, set up the
+<a class="reference internal" href="#plugins-pre-activate"><em>pre_activate</em></a> and <a class="reference internal" href="#plugins-post-activate"><em>post_activate</em></a> hooks to
+trigger an IDE to load a project file to reload files from the last
+editing session, manage time-tracking records, or start and stop
+development versions of an application server.  Use the
+<a class="reference internal" href="#plugins-initialize"><em>initialize</em></a> hook to add entirely new commands and hooks
+to virtualenvwrapper.  And the <a class="reference internal" href="#plugins-pre-mkvirtualenv"><em>pre_mkvirtualenv</em></a> and
+<a class="reference internal" href="#plugins-post-mkvirtualenv"><em>post_mkvirtualenv</em></a> hooks give you an opportunity to
+install basic requirements into each new development environment,
+initialize a source code control repository, or otherwise set up a new
+project.</p>
 <p>There are two ways to attach your code so that virtualenvwrapper will
 run it: End-users can use shell scripts or other programs for personal
 customization (see <a class="reference external" href="scripts.html#scripts"><em>Per-User Customization</em></a>).  Extensions can also be
@@ -133,7 +137,7 @@ possible to share common behaviors between systems and developers.</p>
 <p class="first admonition-title">Note</p>
 <p class="last">Virtualenvwrapper is delivered with a plugin for creating and
 running the user customization scripts
-(<a class="reference external" href="extensions.html#extensions-user-scripts"><em>user_scripts</em></a>).  The examples below are taken from
+(<a class="reference external" href="extensions.html#extensions-user-scripts"><em>project</em></a>).  The examples below are taken from
 the implementation of that plugin.</p>
 </div>
 <div class="section" id="code-organization">
@@ -308,10 +312,15 @@ Usage: virtualenvwrapper.hook_loader [options] &lt;hook&gt; [&lt;arguments&gt;]
 Manage hooks for virtualenvwrapper
 
 Options:
-  -h, --help     show this help message and exit
-  -s, --source   Print the shell commands to be run in the current shell
-  -v, --verbose  Show more information on the console
-  -q, --quiet    Show less information on the console</pre>
+  -h, --help            show this help message and exit
+  -s, --source          Print the shell commands to be run in the current
+                        shell
+  -l, --list            Print a list of the plugins available for the given
+                        hook
+  -v, --verbose         Show more information on the console
+  -q, --quiet           Show less information on the console
+  -n NAMES, --name=NAMES
+                        Only run the hook from the named plugin</pre>
 </div>
 <p>To run the extensions for the initialize hook:</p>
 <div class="highlight-python"><pre>$ python -m virtualenvwrapper.hook_loader -v initialize</pre>
@@ -319,6 +328,13 @@ Options:
 <p>To get the shell commands for the initialize hook:</p>
 <div class="highlight-python"><pre>$ python -m virtualenvwrapper.hook_loader --source initialize</pre>
 </div>
+<p>In practice, rather than invoking the hook loader directly it is more
+convenient to use the shell function, <tt class="docutils literal"><span class="pre">virtualenvwrapper_run_hook</span></tt>
+to run the hooks in both modes.:</p>
+<div class="highlight-python"><pre>$ virtualenvwrapper_run_hook initialize</pre>
+</div>
+<p>All of the arguments given to shell function are passed directly to
+the hook loader.</p>
 </div>
 <div class="section" id="logging">
 <h3>Logging<a class="headerlink" href="#logging" title="Permalink to this headline">¶</a></h3>
@@ -416,6 +432,28 @@ an environment is deleted.  The name of the environment being deleted
 is passed as the first argument.</p>
 </div>
 </div>
+<div class="section" id="adding-new-extension-points">
+<h2>Adding New Extension Points<a class="headerlink" href="#adding-new-extension-points" title="Permalink to this headline">¶</a></h2>
+<p>Plugins that define new operations can also define new extension
+points.  No setup needs to be done to allow the hook loader to find
+the extensions; documenting the names and adding calls to
+<tt class="docutils literal"><span class="pre">virtualenvwrapper_run_hook</span></tt> is sufficient to cause them to be
+invoked.</p>
+<p>The hook loader assumes all extension point names start with
+<tt class="docutils literal"><span class="pre">virtualenvwrapper.</span></tt> and new plugins will want to use their own
+namespace qualifier to append to that.  For example, the <a class="reference external" href="http://www.doughellmann.com/projects/virtualenvwrapper.project/">project</a>
+extension defines new events around creating project directories (pre
+and post).  These are called
+<tt class="docutils literal"><span class="pre">virtualenvwrapper.project.pre_mkproject</span></tt> and
+<tt class="docutils literal"><span class="pre">virtualenvwrapper.project.post_mkproject</span></tt>.  These are invoked
+with:</p>
+<div class="highlight-python"><pre>virtualenvwrapper_run_hook project.pre_mkproject $project_name</pre>
+</div>
+<p>and:</p>
+<div class="highlight-python"><pre>virtualenvwrapper_run_hook project.post_mkproject</pre>
+</div>
+<p>respectively.</p>
+</div>
 </div>
 
 
@@ -433,7 +471,7 @@ is passed as the first argument.</p>
         <li class="right" >
           <a href="scripts.html" title="Per-User Customization"
              >previous</a> |</li>
-        <li><a href="index.html">virtualenvwrapper v2.0.2 documentation</a> &raquo;</li>
+        <li><a href="index.html">virtualenvwrapper v2.1 documentation</a> &raquo;</li>
           <li><a href="hooks.html" >Customizing Virtualenvwrapper</a> &raquo;</li> 
       </ul>
     </div>
