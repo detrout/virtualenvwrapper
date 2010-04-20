@@ -5,13 +5,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Command Reference &mdash; virtualenvwrapper v2.0.2 documentation</title>
+    <title>Command Reference &mdash; virtualenvwrapper v2.1 documentation</title>
     <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '#',
-        VERSION:     '2.0.2',
+        VERSION:     '2.1',
         COLLAPSE_MODINDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -19,9 +19,9 @@
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="virtualenvwrapper v2.0.2 documentation" href="index.html" />
+    <link rel="top" title="virtualenvwrapper v2.1 documentation" href="index.html" />
     <link rel="next" title="Customizing Virtualenvwrapper" href="hooks.html" />
-    <link rel="prev" title="virtualenvwrapper 2.0.2" href="index.html" /> 
+    <link rel="prev" title="Installation" href="install.html" /> 
   </head>
   <body>
     <div class="related">
@@ -31,9 +31,9 @@
           <a href="hooks.html" title="Customizing Virtualenvwrapper"
              accesskey="N">next</a></li>
         <li class="right" >
-          <a href="index.html" title="virtualenvwrapper 2.0.2"
+          <a href="install.html" title="Installation"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">virtualenvwrapper v2.0.2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">virtualenvwrapper v2.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar">
@@ -67,8 +67,8 @@
 </ul>
 
             <h4>Previous topic</h4>
-            <p class="topless"><a href="index.html"
-                                  title="previous chapter">virtualenvwrapper 2.0.2</a></p>
+            <p class="topless"><a href="install.html"
+                                  title="previous chapter">Installation</a></p>
             <h4>Next topic</h4>
             <p class="topless"><a href="hooks.html"
                                   title="next chapter">Customizing Virtualenvwrapper</a></p>
@@ -99,17 +99,29 @@
           <div class="body">
             
   <div class="section" id="command-reference">
-<h1>Command Reference<a class="headerlink" href="#command-reference" title="Permalink to this headline">¶</a></h1>
+<span id="command"></span><h1>Command Reference<a class="headerlink" href="#command-reference" title="Permalink to this headline">¶</a></h1>
 <p>All of the commands below are to be used on the Terminal command line.</p>
 <div class="section" id="managing-environments">
 <h2>Managing Environments<a class="headerlink" href="#managing-environments" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="mkvirtualenv">
-<h3>mkvirtualenv<a class="headerlink" href="#mkvirtualenv" title="Permalink to this headline">¶</a></h3>
+<span id="command-mkvirtualenv"></span><h3>mkvirtualenv<a class="headerlink" href="#mkvirtualenv" title="Permalink to this headline">¶</a></h3>
 <p>Create a new environment, in the WORKON_HOME.</p>
 <p>Syntax:</p>
 <div class="highlight-python"><pre>mkvirtualenv [options] ENVNAME</pre>
 </div>
-<p>(any options are passed directly to <tt class="docutils literal"><span class="pre">virtualenv</span></tt>)</p>
+<p>All command line options are passed directly to <tt class="docutils literal"><span class="pre">virtualenv</span></tt>.  The
+new environment is automatically activated after being initialized.</p>
+<div class="highlight-python"><pre>$ workon
+$ mkvirtualenv mynewenv
+New python executable in mynewenv/bin/python
+Installing distribute.............................................
+..................................................................
+..................................................................
+done.
+(mynewenv)$ workon
+mynewenv
+(mynewenv)$</pre>
+</div>
 <div class="admonition-see-also admonition seealso">
 <p class="first admonition-title">See also</p>
 <ul class="last simple">
@@ -124,6 +136,13 @@
 <p>Syntax:</p>
 <div class="highlight-python"><pre>rmvirtualenv ENVNAME</pre>
 </div>
+<p>You must use <a class="reference internal" href="#command-deactivate"><em>deactivate</em></a> before removing the current
+environment.</p>
+<div class="highlight-python"><pre>(mynewenv)$ deactivate
+$ rmvirtualenv mynewenv
+$ workon
+$</pre>
+</div>
 <div class="admonition-see-also admonition seealso">
 <p class="first admonition-title">See also</p>
 <ul class="last simple">
@@ -133,7 +152,7 @@
 </div>
 </div>
 <div class="section" id="cpvirtualenv">
-<h3>cpvirtualenv<a class="headerlink" href="#cpvirtualenv" title="Permalink to this headline">¶</a></h3>
+<span id="command-cpvirtualenv"></span><h3>cpvirtualenv<a class="headerlink" href="#cpvirtualenv" title="Permalink to this headline">¶</a></h3>
 <p>Duplicate an environment, in the WORKON_HOME.</p>
 <p>Syntax:</p>
 <div class="highlight-python"><pre>cpvirtualenv ENVNAME TARGETENVNAME</pre>
@@ -141,6 +160,35 @@
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">The environment created by the copy operation is made <a class="reference external" href="http://virtualenv.openplans.org/#making-environments-relocatable">relocatable</a>.</p>
+</div>
+<div class="highlight-python"><pre>$ workon
+$ mkvirtualenv source
+New python executable in source/bin/python
+Installing distribute.............................................
+..................................................................
+..................................................................
+done.
+(source)$ cpvirtualenv source dest
+Making script /Users/dhellmann/Devel/virtualenvwrapper/tmp/dest/bin/easy_install relative
+Making script /Users/dhellmann/Devel/virtualenvwrapper/tmp/dest/bin/easy_install-2.6 relative
+Making script /Users/dhellmann/Devel/virtualenvwrapper/tmp/dest/bin/pip relative
+Script /Users/dhellmann/Devel/virtualenvwrapper/tmp/dest/bin/postactivate cannot be made relative (it's not a normal script that starts with #!/Users/dhellmann/Devel/virtualenvwrapper/tmp/dest/bin/python)
+Script /Users/dhellmann/Devel/virtualenvwrapper/tmp/dest/bin/postdeactivate cannot be made relative (it's not a normal script that starts with #!/Users/dhellmann/Devel/virtualenvwrapper/tmp/dest/bin/python)
+Script /Users/dhellmann/Devel/virtualenvwrapper/tmp/dest/bin/preactivate cannot be made relative (it's not a normal script that starts with #!/Users/dhellmann/Devel/virtualenvwrapper/tmp/dest/bin/python)
+Script /Users/dhellmann/Devel/virtualenvwrapper/tmp/dest/bin/predeactivate cannot be made relative (it's not a normal script that starts with #!/Users/dhellmann/Devel/virtualenvwrapper/tmp/dest/bin/python)
+(dest)$ workon
+dest
+source
+(dest)$</pre>
+</div>
+<div class="admonition-see-also admonition seealso">
+<p class="first admonition-title">See also</p>
+<ul class="last simple">
+<li><a class="reference external" href="scripts.html#scripts-precpvirtualenv"><em>precpvirtualenv</em></a></li>
+<li><a class="reference external" href="scripts.html#scripts-postcpvirtualenv"><em>postcpvirtualenv</em></a></li>
+<li><a class="reference external" href="scripts.html#scripts-premkvirtualenv"><em>premkvirtualenv</em></a></li>
+<li><a class="reference external" href="scripts.html#scripts-postmkvirtualenv"><em>postmkvirtualenv</em></a></li>
+</ul>
 </div>
 </div>
 </div>
@@ -155,6 +203,30 @@
 </div>
 <p>If no <tt class="docutils literal"><span class="pre">environment_name</span></tt> is given the list of available environments
 is printed to stdout.</p>
+<div class="highlight-python"><pre>$ workon
+$ mkvirtualenv env1
+  New python executable in env1/bin/python
+Installing distribute.............................................
+..................................................................
+..................................................................
+done.
+(env1)$ mkvirtualenv env2
+New python executable in env2/bin/python
+Installing distribute.............................................
+..................................................................
+..................................................................
+done.
+(env2)$ workon
+env1
+env2
+(env2)$ workon env1
+(env1)$ echo $VIRTUAL_ENV
+/Users/dhellmann/Devel/virtualenvwrapper/tmp/env1
+(env1)$ workon env2
+(env2)$ echo $VIRTUAL_ENV
+/Users/dhellmann/Devel/virtualenvwrapper/tmp/env2
+(env2)$</pre>
+</div>
 <div class="admonition-see-also admonition seealso">
 <p class="first admonition-title">See also</p>
 <ul class="last simple">
@@ -166,7 +238,7 @@ is printed to stdout.</p>
 </div>
 </div>
 <div class="section" id="deactivate">
-<h3>deactivate<a class="headerlink" href="#deactivate" title="Permalink to this headline">¶</a></h3>
+<span id="command-deactivate"></span><h3>deactivate<a class="headerlink" href="#deactivate" title="Permalink to this headline">¶</a></h3>
 <p>Switch from a virtual environment to the system-installed version of
 Python.</p>
 <p>Syntax:</p>
@@ -177,6 +249,22 @@ Python.</p>
 <p class="first admonition-title">Note</p>
 <p class="last">This command is actually part of virtualenv, but is wrapped to
 provide before and after hooks, just as workon does for activate.</p>
+</div>
+<div class="highlight-python"><pre>$ workon
+$ echo $VIRTUAL_ENV
+
+$ mkvirtualenv env1
+New python executable in env1/bin/python
+Installing distribute.............................................
+..................................................................
+..................................................................
+done.
+(env1)$ echo $VIRTUAL_ENV
+/Users/dhellmann/Devel/virtualenvwrapper/tmp/env1
+(env1)$ deactivate
+$ echo $VIRTUAL_ENV
+
+$</pre>
 </div>
 <div class="admonition-see-also admonition seealso">
 <p class="first admonition-title">See also</p>
@@ -202,15 +290,20 @@ currently-active virtualenv.</p>
 top of the virtualenv (<tt class="docutils literal"><span class="pre">$VIRTUAL_ENV</span></tt>).  An optional argument is
 appended to the path, allowing navigation directly into a
 subdirectory.</p>
-<div class="highlight-python"><pre>$ workon pymotw
-$ echo $VIRTUAL_ENV
-/Users/dhellmann/.virtualenvs/pymotw
-$ cdvirtualenv
-$ pwd
-/Users/dhellmann/.virtualenvs/pymotw
-$ cdvirtualenv bin
-$ pwd
-/Users/dhellmann/.virtualenvs/pymotw/bin</pre>
+<div class="highlight-python"><pre>$ mkvirtualenv env1
+New python executable in env1/bin/python
+Installing distribute.............................................
+..................................................................
+..................................................................
+done.
+(env1)$ echo $VIRTUAL_ENV
+/Users/dhellmann/Devel/virtualenvwrapper/tmp/env1
+(env1)$ cdvirtualenv
+(env1)$ pwd
+/Users/dhellmann/Devel/virtualenvwrapper/tmp/env1
+(env1)$ cdvirtualenv bin
+(env1)$ pwd
+/Users/dhellmann/Devel/virtualenvwrapper/tmp/env1/bin</pre>
 </div>
 </div>
 <div class="section" id="cdsitepackages">
@@ -227,12 +320,17 @@ provided as a shortcut for <tt class="docutils literal"><span class="pre">cdvirt
 <span class="pre">lib/python${pyvers}/site-packages</span></tt>. An optional argument is also
 allowed, to specify a directory hierarchy within the <tt class="docutils literal"><span class="pre">site-packages</span></tt>
 directory to change into.</p>
-<div class="highlight-python"><pre>$ workon pymotw
-$ echo $VIRTUAL_ENV
-/Users/dhellmann/.virtualenvs/pymotw
-$ cdsitepackages PyMOTW/bisect/
-$ pwd
-/Users/dhellmann/.virtualenvs/pymotw/lib/python2.6/site-packages/PyMOTW/bisect</pre>
+<div class="highlight-python"><pre>$ mkvirtualenv env1
+New python executable in env1/bin/python
+Installing distribute.............................................
+..................................................................
+..................................................................
+done.
+(env1)$ echo $VIRTUAL_ENV
+/Users/dhellmann/Devel/virtualenvwrapper/tmp/env1
+(env1)$ cdsitepackages PyMOTW/bisect/
+(env1)$ pwd
+/Users/dhellmann/Devel/virtualenvwrapper/tmp/env1/lib/python2.6/site-packages/PyMOTW/bisect</pre>
 </div>
 </div>
 <div class="section" id="lssitepackages">
@@ -242,6 +340,17 @@ directory of the currently-active virtualenv.</p>
 <p>Syntax:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">lssitepackages</span>
 </pre></div>
+</div>
+<div class="highlight-python"><pre>$ mkvirtualenv env1
+New python executable in env1/bin/python
+Installing distribute.............................................
+..................................................................
+..................................................................
+done.
+(env1)$ $ workon env1
+(env1)$ lssitepackages
+distribute-0.6.10-py2.6.egg     pip-0.6.3-py2.6.egg
+easy-install.pth                setuptools.pth</pre>
 </div>
 </div>
 </div>
@@ -287,9 +396,9 @@ for the environment.</p>
           <a href="hooks.html" title="Customizing Virtualenvwrapper"
              >next</a></li>
         <li class="right" >
-          <a href="index.html" title="virtualenvwrapper 2.0.2"
+          <a href="install.html" title="Installation"
              >previous</a> |</li>
-        <li><a href="index.html">virtualenvwrapper v2.0.2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">virtualenvwrapper v2.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

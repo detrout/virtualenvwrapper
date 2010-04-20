@@ -6,7 +6,9 @@
 """Load hooks for virtualenvwrapper.
 """
 
+import inspect
 import logging
+import logging.handlers
 import optparse
 import os
 
@@ -24,6 +26,12 @@ def main():
                       dest='sourcing',
                       default=False,
                       )
+    parser.add_option('-l', '--list',
+                      help='Print a list of the plugins available for the given hook',
+                      action='store_true',
+                      default=False,
+                      dest='listing',
+                      )
     parser.add_option('-v', '--verbose',
                       help='Show more information on the console',
                       action='store_const',
@@ -37,15 +45,29 @@ def main():
                       const=0,
                       dest='verbose_level',
                       )
+    parser.add_option('-n', '--name',
+                      help='Only run the hook from the named plugin',
+                      action='append',
+                      dest='names',
+                      default=[],
+                      )
     parser.disable_interspersed_args() # stop when we hit an option without an '-'
     options, args = parser.parse_args()
 
-    # Set up logging to a file and to the console
-    logging.basicConfig(
-        filename=os.path.expandvars(os.path.join('$WORKON_HOME', 'hook.log')),
-        level=logging.DEBUG,
-        format='%(asctime)s %(levelname)s %(name)s %(message)s',
+    root_logger = logging.getLogger('')
+
+    # Set up logging to a file
+    root_logger.setLevel(logging.DEBUG)
+    file_handler = logging.handlers.RotatingFileHandler(
+        os.path.expandvars(os.path.join('$WORKON_HOME', 'hook.log')),
+        maxBytes=10240,
+        backupCount=1,
         )
+    formatter = logging.Formatter('%(asctime)s %(levelname)s %(name)s %(message)s')
+    file_handler.setFormatter(formatter)
+    root_logger.addHandler(file_handler)
+
+    # Send higher-level messages to the console, too
     console = logging.StreamHandler()
     console_level = [ logging.WARNING,
                       logging.INFO,
@@ -54,7 +76,7 @@ def main():
     console.setLevel(console_level)
     formatter = logging.Formatter('%(name)s %(message)s')
     console.setFormatter(formatter)
-    logging.getLogger('').addHandler(console)
+    root_logger.addHandler(console)
 
     #logging.getLogger(__name__).debug('cli args %s', args)
 
@@ -66,7 +88,12 @@ def main():
         hook += '_source'
 
     for ep in pkg_resources.iter_entry_points('virtualenvwrapper.%s' % hook):
+        if options.names and ep.name not in options.names:
+            continue
         plugin = ep.load()
+        if options.listing:
+            print '  {0:10} -- {1}'.format(ep.name, inspect.getdoc(plugin) or '')
+            continue
         if options.sourcing:
             # Show the shell commands so they can
             # be run in the calling shell.
