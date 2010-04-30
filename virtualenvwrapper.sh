@@ -76,11 +76,14 @@ virtualenvwrapper_verify_workon_home () {
 
 # Use Python's tempfile module to create a temporary file
 # with a unique and not-likely-to-be-predictable name.
+# Expects 1 argument, the suffix for the new file.
 virtualenvwrapper_tempfile () {
-    $VIRTUALENVWRAPPER_PYTHON -c "import tempfile; print tempfile.NamedTemporaryFile(prefix='virtualenvwrapper.').name"
-    if [ $? -ne 0 ]
+    typeset base=$("$VIRTUALENVWRAPPER_PYTHON" -c "import tempfile; print tempfile.NamedTemporaryFile(prefix='virtualenvwrapper.').name")
+    if [ -z "$base" ]
     then
-        echo "${TMPDIR:-/tmp}/virtualenvwrapper.$$.`date +%s`"
+        echo "${TMPDIR:-/tmp}/virtualenvwrapper.$$.`date +%s`.$1"
+    else
+        echo "$base.$1"
     fi
 }
 
@@ -89,7 +92,7 @@ virtualenvwrapper_run_hook () {
     # First anything that runs directly from the plugin
     "$VIRTUALENVWRAPPER_PYTHON" -m virtualenvwrapper.hook_loader $HOOK_VERBOSE_OPTION "$@"
     # Now anything that wants to run inside this shell
-    hook_script=$(virtualenvwrapper_tempfile)
+    hook_script="$(virtualenvwrapper_tempfile hook)"
     "$VIRTUALENVWRAPPER_PYTHON" -m virtualenvwrapper.hook_loader $HOOK_VERBOSE_OPTION \
         --source "$@" >>"$hook_script"
     source "$hook_script"
@@ -259,8 +262,8 @@ workon () {
         if [ ! "$1" = "nondestructive" ]
         then
             # Remove this function
-            unset -f virtualenv_deactivate
-            unset -f deactivate
+            unset -f virtualenv_deactivate >/dev/null 2>&1
+            unset -f deactivate >/dev/null 2>&1
         fi
 
     }'
@@ -305,6 +308,9 @@ fi
 
 # Prints the Python version string for the current interpreter.
 virtualenvwrapper_get_python_version () {
+    # Uses the Python from the virtualenv because we're trying to
+    # determine the version installed there so we can build
+    # up the path to the site-packages directory.
     python -c 'import sys; print ".".join(str(p) for p in sys.version_info[:2])'
 }
 
@@ -354,7 +360,7 @@ add2virtualenv () {
     touch "$path_file"
     for pydir in "$@"
     do
-        absolute_path=$(python -c "import os; print os.path.abspath(\"$pydir\")")
+        absolute_path=$("$VIRTUALENVWRAPPER_PYTHON" -c "import os; print os.path.abspath(\"$pydir\")")
         if [ "$absolute_path" != "$pydir" ]
         then
             echo "Warning: Converting \"$pydir\" to \"$absolute_path\"" 1>&2
