@@ -6,5 +6,5 @@ Abstract: This is the user documentation for virtualenvwrapper, a set
 Section: Programming/Python
 
 Format: HTML
-Index: /usr/share/doc/virtualenvwrapper/html/index.html
-Files: /usr/share/doc/virtualenvwrapper/html/*.html
+Index: /usr/share/doc/virtualenvwrapper/en/html/index.html
+Files: /usr/share/doc/virtualenvwrapper/en/html/*.html
