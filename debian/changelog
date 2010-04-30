@@ -2,6 +2,7 @@ virtualenvwrapper (2.1.1-1) UNRELEASED; urgency=low
 
   * New upstream version.
   * refresh debian/patches/debianspecific-setup.py.patch
+  * fix documentation source paths in debian/rules
 
  -- Jan Dittberner <jandd@debian.org>  Fri, 30 Apr 2010 20:49:39 +0200
 

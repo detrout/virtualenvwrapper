@@ -5,17 +5,19 @@ override_dh_auto_clean:
 	find -name '._*' -delete
 
 override_dh_auto_install:
-	cp -R $(shell find docs/source/ -name '*.rst' -printf "%p ") \
-	  debian/virtualenvwrapper/usr/share/doc/virtualenvwrapper/
-	sphinx-build -b html -a -E -N -C -A project=virtualenvwrapper -D master_doc=index \
-	   debian/virtualenvwrapper/usr/share/doc/virtualenvwrapper \
-	   debian/virtualenvwrapper/usr/share/doc/virtualenvwrapper/html
-	rm -rf debian/virtualenvwrapper/usr/share/doc/virtualenvwrapper/history.rst \
-	  debian/virtualenvwrapper/usr/share/doc/virtualenvwrapper/html/.doctrees \
-	  debian/virtualenvwrapper/usr/share/doc/virtualenvwrapper/html/_sources \
-	  debian/virtualenvwrapper/usr/share/doc/virtualenvwrapper/html/_static/jquery.js
-	dh_link /usr/share/javascript/jquery.js \
-	  /usr/share/doc/virtualenvwrapper/html/_static/jquery.js
+	for lang in en es; do \
+		cp -R $(shell find docs/$$lang/ -name '*.rst' -printf "%p ") \
+		  debian/virtualenvwrapper/usr/share/doc/virtualenvwrapper/$$lang/ ; \
+		sphinx-build -b html -a -E -N -C -A project=virtualenvwrapper -D master_doc=index \
+		   debian/virtualenvwrapper/usr/share/doc/virtualenvwrapper/$$lang \
+		   debian/virtualenvwrapper/usr/share/doc/virtualenvwrapper/$$lang/html ; \
+		rm -rf \
+		  debian/virtualenvwrapper/usr/share/doc/virtualenvwrapper/$$lang/html/.doctrees \
+		  debian/virtualenvwrapper/usr/share/doc/virtualenvwrapper/$$lang/html/_sources \
+		  debian/virtualenvwrapper/usr/share/doc/virtualenvwrapper/$$lang/html/_static/jquery.js ; \
+		dh_link /usr/share/javascript/jquery.js \
+		  /usr/share/doc/virtualenvwrapper/$$lang/html/_static/jquery.js ; \
+	done
 	cp virtualenvwrapper.sh debian/virtualenvwrapper/etc/bash_completion.d/virtualenvwrapper
 	chmod 0644 debian/virtualenvwrapper/etc/bash_completion.d/virtualenvwrapper
 	dh_auto_install
@@ -24,7 +26,7 @@ override_dh_compress:
 	dh_compress -i -X.rst -X.js -X.html
 
 override_dh_installchangelogs:
-	dh_installchangelogs docs/source/history.rst
+	dh_installchangelogs docs/en/history.rst
 
 %:
 	dh $@

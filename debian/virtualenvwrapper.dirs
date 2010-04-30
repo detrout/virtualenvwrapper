@@ -1,2 +1,4 @@
 /etc/bash_completion.d
 /usr/share/doc/virtualenvwrapper
+/usr/share/doc/virtualenvwrapper/en
+/usr/share/doc/virtualenvwrapper/es
