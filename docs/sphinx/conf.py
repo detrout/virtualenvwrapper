@@ -13,6 +13,8 @@
 
 import sys, os
 
+building_web = int(os.environ.get('BUILDING_WEB', '0'))
+
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
@@ -22,10 +24,15 @@ import sys, os
 
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-extensions = []
+extensions = [ 'sphinxcontrib.bitbucket' ]
+
+bitbucket_project_url = 'http://bitbucket.org/dhellmann/virtualenvwrapper/'
 
 # Add any paths that contain templates here, relative to this directory.
-templates_path = ['templates']
+if building_web:
+    templates_path = ['web/templates']
+else:
+    templates_path = ['pkg/templates']
 
 # The suffix of source filenames.
 source_suffix = '.rst'
@@ -91,7 +98,10 @@ pygments_style = 'sphinx'
 
 # The theme to use for HTML and HTML Help pages.  Major themes that come with
 # Sphinx are currently 'default' and 'sphinxdoc'.
-html_theme = 'default'
+if building_web:
+    html_theme = 'default'
+else:
+    html_theme = 'sphinxdoc'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the

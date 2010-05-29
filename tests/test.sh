@@ -2,9 +2,9 @@
 
 #set -x
 
-test_dir=$(dirname $0)
+test_dir=$(cd $(dirname $0) && pwd)
 
-export WORKON_HOME="${TMPDIR:-/tmp}/WORKON_HOME"
+export WORKON_HOME="$(echo ${TMPDIR:-/tmp}/WORKON_HOME | sed 's|//|/|g')"
 
 oneTimeSetUp() {
     rm -rf "$WORKON_HOME"
@@ -67,8 +67,11 @@ test_python_interpreter_set_incorrectly() {
     return_to="$(pwd)"
     cd "$WORKON_HOME"
     mkvirtualenv --no-site-packages no_wrappers
-    output=`VIRTUALENVWRAPPER_PYTHON=$VIRTUAL_ENV/bin/python $SHELL $return_to/virtualenvwrapper.sh 2>&1`
-    assertTrue "Unexpected message: $output" "echo \"$output\" | grep 'Could not find Python module virtualenvwrapper.hook_loader'"
+    expected="ImportError: No module named virtualenvwrapper.hook_loader"
+    output=$(VIRTUALENVWRAPPER_PYTHON=$VIRTUAL_ENV/bin/python $SHELL $return_to/virtualenvwrapper.sh 2>&1)
+    echo "$output" | grep "$expected" 2>&1
+    found=$?
+    assertTrue "Expected \"$expected\", got: \"$output\"" "[ $found -eq 0 ]"
     assertFalse "Failed to detect invalid Python location" "VIRTUALENVWRAPPER_PYTHON=$VIRTUAL_ENV/bin/python $SHELL $return_to/virtualenvwrapper.sh >/dev/null 2>&1"
     cd "$return_to"
     deactivate
