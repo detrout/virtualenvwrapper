@@ -2,14 +2,17 @@
 
 #set -x
 
-test_dir=$(dirname $0)
+test_dir=$(cd $(dirname $0) && pwd)
 
-export WORKON_HOME="${TMPDIR:-/tmp}/WORKON_HOME"
+export WORKON_HOME="$(echo ${TMPDIR:-/tmp}/WORKON_HOME | sed 's|//|/|g')"
 
 oneTimeSetUp() {
     rm -rf "$WORKON_HOME"
     mkdir -p "$WORKON_HOME"
+    unset VIRTUAL_ENV
     source "$test_dir/../virtualenvwrapper.sh"
+    mkvirtualenv cd-test
+    deactivate
 }
 
 oneTimeTearDown() {
@@ -19,6 +22,11 @@ oneTimeTearDown() {
 setUp () {
     echo
     rm -f "$test_dir/catch_output"
+    workon cd-test
+}
+
+tearDown () {
+    deactivate
 }
 
 test_cdvirtual() {

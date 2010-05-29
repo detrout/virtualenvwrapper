@@ -89,10 +89,10 @@ docs/html/es/_static/plus.png
 docs/html/es/_static/pygments.css
 docs/html/es/_static/searchtools.js
 docs/html/es/_static/sphinxdoc.css
-docs/sphinx/pkg/conf.py
-docs/sphinx/web/conf.py
+docs/sphinx/conf.py
 docs/sphinx/web/templates/base.html
 docs/sphinx/web/templates/layout.html
+tests/logging.pyc
 tests/manual_test_install.sh
 tests/shunit2
 tests/test.sh

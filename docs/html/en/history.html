@@ -5,13 +5,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Release History &mdash; virtualenvwrapper v2.1.1 documentation</title>
+    <title>Release History &mdash; virtualenvwrapper v2.2 documentation</title>
     <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '#',
-        VERSION:     '2.1.1',
+        VERSION:     '2.2',
         COLLAPSE_MODINDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -19,7 +19,7 @@
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="virtualenvwrapper v2.1.1 documentation" href="index.html" />
+    <link rel="top" title="virtualenvwrapper v2.2 documentation" href="index.html" />
     <link rel="prev" title="Existing Extensions" href="extensions.html" /> 
   </head>
   <body>
@@ -29,7 +29,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="extensions.html" title="Existing Extensions"
              accesskey="P">previous</a></li>
-        <li><a href="index.html">virtualenvwrapper v2.1.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">virtualenvwrapper v2.2 documentation</a> &raquo;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar">
@@ -65,6 +65,17 @@
             
   <div class="section" id="release-history">
 <h1>Release History<a class="headerlink" href="#release-history" title="Permalink to this headline">¶</a></h1>
+<p>2.2</p>
+<blockquote>
+<ul class="simple">
+<li>Switched hook loader execution to a form that works with Python
+2.4 to resolve <a class="reference external" href="http://bitbucket.org/dhellmann/virtualenvwrapper/issue/43/">issue 43</a>.</li>
+<li>Tested under Python 2.7b1.  See <a class="reference external" href="http://bitbucket.org/dhellmann/virtualenvwrapper/issue/44/">issue 44</a>.</li>
+<li>Incorporated performance improvements from David Wolever.  See
+<a class="reference external" href="http://bitbucket.org/dhellmann/virtualenvwrapper/issue/38/">issue 38</a>.</li>
+<li>Added some debug instrumentation for <a class="reference external" href="http://bitbucket.org/dhellmann/virtualenvwrapper/issue/35/">issue 35</a>.</li>
+</ul>
+</blockquote>
 <p>2.1.1</p>
 <blockquote>
 <ul class="simple">
@@ -72,9 +83,9 @@
 Manuel Kaufmann&#8217;s fork at
 <a class="reference external" href="http://bitbucket.org/humitos/virtualenvwrapper-es-translation/">http://bitbucket.org/humitos/virtualenvwrapper-es-translation/</a></li>
 <li>Fixed improper use of python from <tt class="docutils literal"><span class="pre">$PATH</span></tt> instead of the
-location where the wrappers are installed.  See <a class="reference external" href="http://bitbucket.org/dhellmann/virtualenvwrapper/issue/41/">issue #41</a>.</li>
+location where the wrappers are installed.  See <a class="reference external" href="http://bitbucket.org/dhellmann/virtualenvwrapper/issue/41/">issue 41</a>.</li>
 <li>Quiet spurrious error/warning messages when deactivating a
-virtualenv under zsh.  See <a class="reference external" href="http://bitbucket.org/dhellmann/virtualenvwrapper/issue/42/">issue #42</a>.</li>
+virtualenv under zsh.  See <a class="reference external" href="http://bitbucket.org/dhellmann/virtualenvwrapper/issue/42/">issue 42</a>.</li>
 </ul>
 </blockquote>
 <p>2.1</p>
@@ -84,10 +95,10 @@ virtualenv under zsh.  See <a class="reference external" href="http://bitbucket.
 research on what needed to be changed.</li>
 <li>Test import of virtualenvwrapper.hook_loader on startup and report
 the error in a way that should help the user figure out how to fix
-it (issue #33).</li>
+it (<a class="reference external" href="http://bitbucket.org/dhellmann/virtualenvwrapper/issue/33/">issue 33</a>).</li>
 <li>Update <a class="reference external" href="command_ref.html#command-mkvirtualenv"><em>mkvirtualenv</em></a> documentation to include the
 fact that a new environment is activated immediately after it is
-created (issue #30).</li>
+created (<a class="reference external" href="http://bitbucket.org/dhellmann/virtualenvwrapper/issue/30/">issue 30</a>).</li>
 <li>Added hooks around <a class="reference external" href="command_ref.html#command-cpvirtualenv"><em>cpvirtualenv</em></a>.</li>
 <li>Made deactivation more robust, especially under ksh.</li>
 <li>Use Python&#8217;s <tt class="docutils literal"><span class="pre">tempfile</span></tt> module for creating temporary filenames
@@ -107,15 +118,15 @@ output of commands like virtualenvwrapper.project&#8217;s mkproject.</li>
 <p>2.0.2</p>
 <blockquote>
 <ul class="simple">
-<li>Fixed issue #32, making virtualenvwrapper.user_scripts compatible
+<li>Fixed <a class="reference external" href="http://bitbucket.org/dhellmann/virtualenvwrapper/issue/32/">issue 32</a>, making virtualenvwrapper.user_scripts compatible
 with Python 2.5 again.</li>
 </ul>
 </blockquote>
 <p>2.0.1</p>
 <blockquote>
 <ul class="simple">
-<li>Fixed issue #29, to use a default value for <tt class="docutils literal"><span class="pre">TMPDIR</span></tt> if it is
-not set in the user&#8217;s shell environment.</li>
+<li>Fixed <a class="reference external" href="http://bitbucket.org/dhellmann/virtualenvwrapper/issue/29/">issue 29</a>, to use a default value for <tt class="docutils literal"><span class="pre">TMPDIR</span></tt> if it
+is not set in the user&#8217;s shell environment.</li>
 </ul>
 </blockquote>
 <p>2.0</p>
@@ -136,7 +147,7 @@ easier to share extensions.</li>
 <ul class="simple">
 <li>Fix a problem with error messages showing up during init for users
 with the wrappers installed site-wide but who are not actually
-using them.  See issue #26.</li>
+using them.  See <a class="reference external" href="http://bitbucket.org/dhellmann/virtualenvwrapper/issue/26/">issue 26</a>.</li>
 <li>Split up the tests into multiple files.</li>
 <li>Run all tests with all supported shells.</li>
 </ul>
@@ -166,14 +177,15 @@ within site-packages.</li>
 <blockquote>
 <ul class="simple">
 <li>Resolve a bug with the preactivate hook not being run properly.
-Refer to issue #21 for complete details.</li>
+Refer to <a class="reference external" href="http://bitbucket.org/dhellmann/virtualenvwrapper/issue/21/">issue 21</a> for complete details.</li>
 </ul>
 </blockquote>
 <p>1.23</p>
 <blockquote>
 <ul class="simple">
 <li>Resolve a bug with the postmkvirtualenv hook not being run
-properly.  Refer to issues #19 and #20 for complete details.</li>
+properly.  Refer to <a class="reference external" href="http://bitbucket.org/dhellmann/virtualenvwrapper/issue/19/">issue 19</a> and <a class="reference external" href="http://bitbucket.org/dhellmann/virtualenvwrapper/issue/20/">issue 20</a> for complete
+details.</li>
 </ul>
 </blockquote>
 <p>1.22</p>
@@ -186,33 +198,40 @@ comments to expose the feature in case users are not aware of it.</li>
 <p>1.21</p>
 <blockquote>
 <ul class="simple">
-<li>Better protection of <tt class="docutils literal"><span class="pre">$WORKON_HOME</span></tt> does not exist when the wrapper script is sourced.</li>
+<li>Better protection of <tt class="docutils literal"><span class="pre">$WORKON_HOME</span></tt> does not exist when the
+wrapper script is sourced.</li>
 </ul>
 </blockquote>
 <p>1.20</p>
 <blockquote>
 <ul class="simple">
 <li>Incorporate lssitepackages feature from Sander Smits.</li>
-<li>Refactor some of the functions that were using copy-and-paste code to build path names.</li>
+<li>Refactor some of the functions that were using copy-and-paste code
+to build path names.</li>
 <li>Add a few tests.</li>
 </ul>
 </blockquote>
 <p>1.19</p>
 <blockquote>
 <ul class="simple">
-<li>Fix problem with add2virtualenv and relative paths. Thanks to Doug Latornell for the bug report James Bennett for the suggested fix.</li>
+<li>Fix problem with add2virtualenv and relative paths. Thanks to Doug
+Latornell for the bug report James Bennett for the suggested fix.</li>
 </ul>
 </blockquote>
 <p>1.18.1</p>
 <blockquote>
 <ul class="simple">
-<li>Incorporate patch from Sascha Brossmann to fix a issue #15. Directory normalization was causing <tt class="docutils literal"><span class="pre">WORKON_HOME</span></tt> to appear to be a missing directory if there were control characters in the output of <tt class="docutils literal"><span class="pre">pwd</span></tt>.</li>
+<li>Incorporate patch from Sascha Brossmann to fix a
+<a class="reference external" href="http://bitbucket.org/dhellmann/virtualenvwrapper/issue/15/">issue 15</a>. Directory normalization was causing <tt class="docutils literal"><span class="pre">WORKON_HOME</span></tt>
+to appear to be a missing directory if there were control
+characters in the output of <tt class="docutils literal"><span class="pre">pwd</span></tt>.</li>
 </ul>
 </blockquote>
 <p>1.18</p>
 <blockquote>
 <ul class="simple">
-<li>Remove warning during installation if sphinxcontrib.paverutils is not installed. (#10)</li>
+<li>Remove warning during installation if sphinxcontrib.paverutils is
+not installed. (<a class="reference external" href="http://bitbucket.org/dhellmann/virtualenvwrapper/issue/10/">issue 10</a>)</li>
 <li>Added some basic developer information to the documentation.</li>
 <li>Added documentation for deactivate command.</li>
 </ul>
@@ -226,8 +245,10 @@ comments to expose the feature in case users are not aware of it.</li>
 <p>1.16</p>
 <blockquote>
 <ul class="simple">
-<li>Merged in changes to <tt class="docutils literal"><span class="pre">cdvirtualenv</span></tt> from wam and added tests and docs.</li>
-<li>Merged in changes to make error messages go to stderr, also provided by wam.</li>
+<li>Merged in changes to <tt class="docutils literal"><span class="pre">cdvirtualenv</span></tt> from wam and added tests and
+docs.</li>
+<li>Merged in changes to make error messages go to stderr, also
+provided by wam.</li>
 </ul>
 </blockquote>
 <dl class="docutils">
@@ -239,62 +260,75 @@ comments to expose the feature in case users are not aware of it.</li>
 </dd>
 <dt>1.14</dt>
 <dd><ul class="first last simple">
-<li>Wrap the virtualenv version of deactivate() with one that lets us invoke
-the predeactivate hooks.</li>
-<li>Fix virtualenvwrapper_show_workon_options for colorized versions of ls and
-write myself a note so I don&#8217;t break it again later.</li>
+<li>Wrap the virtualenv version of deactivate() with one that lets us
+invoke the predeactivate hooks.</li>
+<li>Fix virtualenvwrapper_show_workon_options for colorized versions
+of ls and write myself a note so I don&#8217;t break it again later.</li>
 <li>Convert test.sh to use true tests with <a class="reference external" href="http://shunit2.googlecode.com/">shunit2</a></li>
 </ul>
 </dd>
-<dt>1.13</dt>
-<dd><ul class="first last simple">
-<li>Fix issue #5 by correctly handling symlinks and limiting the list of envs to things
-that look like they can be activated.</li>
+</dl>
+<p>1.13</p>
+<blockquote>
+<ul class="simple">
+<li>Fix <a class="reference external" href="http://bitbucket.org/dhellmann/virtualenvwrapper/issue/5/">issue 5</a> by correctly handling symlinks and limiting the
+list of envs to things that look like they can be activated.</li>
 </ul>
-</dd>
-<dt>1.12</dt>
-<dd><ul class="first last simple">
-<li>Check return value of virtualenvwrapper_verify_workon_home everywhere, thanks to
-Jeff Forcier for pointing out the errors.</li>
+</blockquote>
+<p>1.12</p>
+<blockquote>
+<ul class="simple">
+<li>Check return value of virtualenvwrapper_verify_workon_home
+everywhere, thanks to Jeff Forcier for pointing out the errors.</li>
 <li>Fix instructions at top of README, pointed out by Matthew Scott.</li>
 <li>Add cdvirtualenv and cdsitepackages, contributed by James Bennett.</li>
 <li>Enhance test.sh.</li>
 </ul>
-</dd>
-<dt>1.11</dt>
-<dd><ul class="first last simple">
+</blockquote>
+<p>1.11</p>
+<blockquote>
+<ul class="simple">
 <li>Optimize virtualenvwrapper_show_workon_options.</li>
 <li>Add global postactivate hook.</li>
 </ul>
-</dd>
-<dt>1.10</dt>
-<dd><ul class="first last simple">
-<li>Pull in fix for colorized ls from Jeff Forcier (b42a25f7b74a).</li>
+</blockquote>
+<p>1.10</p>
+<blockquote>
+<ul class="simple">
+<li>Pull in fix for colorized ls from Jeff Forcier
+(<a class="reference external" href="http://bitbucket.org/dhellmann/virtualenvwrapper/changeset/b42a25f7b74a/">changeset b42a25f7b74a</a>).</li>
 </ul>
-</dd>
-<dt>1.9</dt>
-<dd><ul class="first last simple">
-<li>Add more hooks for operations to run before and after creating or deleting environments based on changes from Chris Hasenpflug.</li>
+</blockquote>
+<p>1.9</p>
+<blockquote>
+<ul class="simple">
+<li>Add more hooks for operations to run before and after creating or
+deleting environments based on changes from Chris Hasenpflug.</li>
 </ul>
-</dd>
-<dt>1.8.1</dt>
-<dd><ul class="first last simple">
-<li>Corrected a problem with change to mkvirtualenv that lead to release 1.8 by using an alternate fix proposed by James in comments on release 1.4.</li>
+</blockquote>
+<p>1.8.1</p>
+<blockquote>
+<ul class="simple">
+<li>Corrected a problem with change to mkvirtualenv that lead to
+release 1.8 by using an alternate fix proposed by James in
+comments on release 1.4.</li>
 </ul>
-</dd>
-<dt>1.8</dt>
-<dd><ul class="first last simple">
-<li>Fix for processing the argument list in mkvirtualenv from jorgevargas (BitBucket issue #1)</li>
+</blockquote>
+<p>1.8</p>
+<blockquote>
+<ul class="simple">
+<li>Fix for processing the argument list in mkvirtualenv from
+jorgevargas (<a class="reference external" href="http://bitbucket.org/dhellmann/virtualenvwrapper/issue/1/">issue 1</a>)</li>
 </ul>
-</dd>
-<dt>1.7</dt>
-<dd><ul class="first last simple">
+</blockquote>
+<p>1.7</p>
+<blockquote>
+<ul class="simple">
 <li>Move to bitbucket.org for hosting</li>
 <li>clean up TODO list and svn keywords</li>
 <li>add license section below</li>
 </ul>
-</dd>
-</dl>
+</blockquote>
 <p>1.6.1</p>
 <blockquote>
 <ul class="simple">
@@ -310,14 +344,16 @@ Jeff Forcier for pointing out the errors.</li>
 <p>1.5</p>
 <blockquote>
 <ul class="simple">
-<li>Fix some issues with spaces in directory or env names.  They still don&#8217;t really work with virtualenv, though.</li>
+<li>Fix some issues with spaces in directory or env names.  They still
+don&#8217;t really work with virtualenv, though.</li>
 <li>Added documentation for the postactivate and predeactivate scripts.</li>
 </ul>
 </blockquote>
 <p>1.4</p>
 <blockquote>
 <ul class="simple">
-<li>Includes a new .pth management function based on work contributed by James Bennett and Jannis Leidel.</li>
+<li>Includes a new .pth management function based on work contributed
+by James Bennett and Jannis Leidel.</li>
 </ul>
 </blockquote>
 <p>1.3.x</p>
@@ -340,7 +376,7 @@ Jeff Forcier for pointing out the errors.</li>
         <li class="right" style="margin-right: 10px">
           <a href="extensions.html" title="Existing Extensions"
              >previous</a></li>
-        <li><a href="index.html">virtualenvwrapper v2.1.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">virtualenvwrapper v2.2 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
