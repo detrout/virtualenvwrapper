@@ -100,6 +100,7 @@ tests/test_add2virtualenv.sh
 tests/test_cd.sh
 tests/test_cp.sh
 tests/test_deactivate.sh
+tests/test_derive_workon_home.sh
 tests/test_ls.sh
 tests/test_mkvirtualenv.sh
 tests/test_rmvirtualenv.sh

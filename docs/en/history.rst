@@ -2,6 +2,15 @@
 Release History
 ===============
 
+2.2.1
+
+  - Escape ``which`` calls to avoid aliases. Resolves :bbissue:`46`.
+  - Integrate Manuel Kaufmann's patch to unset GREP_OPTIONS before
+    calling grep.  Resolves :bbissue:`51`.
+  - Escape ``$`` in regex to resolve :bbissue:`53`.
+  - Escape ``rm`` to avoid issues with aliases and resolve
+    :bbissue:`50`.
+
 2.2
 
   - Switched hook loader execution to a form that works with Python

@@ -202,6 +202,27 @@ Manuel Kaufmann has `translated this documentation into Spanish
 <http://www.doughellmann.com/docs/virtualenvwrapper/es/>`__.
 
 =======
+Support
+=======
+
+Join the `virtualenvwrapper Google Group
+<http://groups.google.com/group/virtualenvwrapper/>`__ to discuss
+issues and features.  
+
+Report bugs via the `bug tracker on BitBucket
+<http://bitbucket.org/dhellmann/virtualenvwrapper/>`__.
+
+Shell Aliases
+=============
+
+Since virtualenvwrapper is largely a shell script, it uses shell
+commands for a lot of its actions.  If your environment makes heavy
+use of shell aliases or other customizations, you may encounter
+issues.  Before reporting bugs in the bug tracker, please test
+*without* your aliases enabled.  If you can identify the alias causing
+the problem, that will help make virtualenvwrapper more robust.
+
+=======
 License
 =======
 
