@@ -2,6 +2,7 @@ virtualenvwrapper (2.2.1-1) UNRELEASED; urgency=low
 
   * New upstream version.
   * remove unnecessary dversionmangle from debian/watch
+  * refresh debian/patches/debianspecific-setup.py.patch
 
  -- Jan Dittberner <jandd@debian.org>  Wed, 23 Jun 2010 20:52:01 +0200
 
