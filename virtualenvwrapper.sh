@@ -44,39 +44,45 @@
 # 11. The virtual environment is activated.
 #
 
-# Make sure there is a default value for WORKON_HOME.
-# You can override this setting in your .bashrc.
-if [ "$WORKON_HOME" = "" ]
-then
-    export WORKON_HOME="$HOME/.virtualenvs"
-fi
-
 # Locate the global Python where virtualenvwrapper is installed.
 if [ "$VIRTUALENVWRAPPER_PYTHON" = "" ]
 then
-    VIRTUALENVWRAPPER_PYTHON="$(which python)"
+    VIRTUALENVWRAPPER_PYTHON="$(\which python)"
 fi
 
-# If the path is relative, prefix it with $HOME
-# (note: for compatibility)
-if echo "$WORKON_HOME" | grep -e '^[^/~]' > /dev/null
-then
-    export WORKON_HOME="$HOME/$WORKON_HOME"
-fi
+virtualenvwrapper_derive_workon_home() {
+    typeset workon_home_dir="$WORKON_HOME"
 
-# Only call on Python to fix the path if it looks like the
-# path might contain stuff to expand.
-# (it might be possible to do this in shell, but I don't know a
-# cross-shell-safe way of doing it -wolever)
-if echo "$WORKON_HOME" | egrep -e "([$~]|//)" >/dev/null
-then
-    # This will normalize the path by:
-    # - Removing extra slashes (e.g., when TMPDIR ends in a slash)
-    # - Expanding variables (e.g., $foo)
-    # - Converting ~s to complete paths (e.g., ~/ to /home/brian/ and ~arthur to /home/arthur)
-    WORKON_HOME=$("$VIRTUALENVWRAPPER_PYTHON" -c "import os; print os.path.expandvars(os.path.expanduser(\"$WORKON_HOME\"))")
-    export WORKON_HOME
-fi
+    # Make sure there is a default value for WORKON_HOME.
+    # You can override this setting in your .bashrc.
+    if [ "$workon_home_dir" = "" ]
+    then
+        workon_home_dir="$HOME/.virtualenvs"
+    fi
+
+    # If the path is relative, prefix it with $HOME
+    # (note: for compatibility)
+    if echo "$workon_home_dir" | (unset GREP_OPTIONS; grep -e '^[^/~]' > /dev/null)
+    then
+        workon_home_dir="$HOME/$WORKON_HOME"
+    fi
+
+    # Only call on Python to fix the path if it looks like the
+    # path might contain stuff to expand.
+    # (it might be possible to do this in shell, but I don't know a
+    # cross-shell-safe way of doing it -wolever)
+    if echo "$workon_home_dir" | (unset GREP_OPTIONS; egrep -e "([\$~]|//)" >/dev/null)
+    then
+        # This will normalize the path by:
+        # - Removing extra slashes (e.g., when TMPDIR ends in a slash)
+        # - Expanding variables (e.g., $foo)
+        # - Converting ~s to complete paths (e.g., ~/ to /home/brian/ and ~arthur to /home/arthur)
+        workon_home_dir=$("$VIRTUALENVWRAPPER_PYTHON" -c "import os; print os.path.expandvars(os.path.expanduser(\"$workon_home_dir\"))")
+    fi
+
+    echo "$workon_home_dir"
+    return 0
+}
 
 # Verify that the WORKON_HOME directory exists
 virtualenvwrapper_verify_workon_home () {
@@ -100,7 +106,7 @@ virtualenvwrapper_tempfile () {
         echo "ERROR: virtualenvwrapper could not create a temporary file name." 1>&2
         return 1
     fi
-    trap "rm '$file' >/dev/null 2>&1" EXIT
+    trap "\rm -f '$file' >/dev/null 2>&1" EXIT
     echo $file
     return 0
 }
@@ -125,12 +131,13 @@ virtualenvwrapper_run_hook () {
         fi
         source "$hook_script"
     fi
-    rm -f "$hook_script" >/dev/null 2>&1
+    \rm -f "$hook_script" >/dev/null 2>&1
     return $result
 }
 
 # Set up virtualenvwrapper properly
 virtualenvwrapper_initialize () {
+    export WORKON_HOME=$(virtualenvwrapper_derive_workon_home)
     virtualenvwrapper_verify_workon_home -q || return 1
     virtualenvwrapper_run_hook "initialize"
     if [ $? -ne 0 ]
@@ -142,7 +149,7 @@ virtualenvwrapper_initialize () {
 
 # Verify that virtualenv is installed and visible
 virtualenvwrapper_verify_virtualenv () {
-    typeset venv=$(which virtualenv | grep -v "not found")
+    typeset venv=$(\which virtualenv | (unset GREP_OPTIONS; grep -v "not found"))
     if [ "$venv" = "" ]
     then
         echo "ERROR: virtualenvwrapper could not find virtualenv in your path" >&2
@@ -216,7 +223,7 @@ rmvirtualenv () {
         return 1
     fi
     virtualenvwrapper_run_hook "pre_rmvirtualenv" "$env_name"
-    rm -rf "$env_dir"
+    \rm -rf "$env_dir"
     virtualenvwrapper_run_hook "post_rmvirtualenv" "$env_name"
 }
 
@@ -226,7 +233,7 @@ virtualenvwrapper_show_workon_options () {
     # NOTE: DO NOT use ls here because colorized versions spew control characters
     #       into the output list.
     # echo seems a little faster than find, even with -depth 3.
-    (cd "$WORKON_HOME"; for f in */bin/activate; do echo $f; done) 2>/dev/null | sed 's|^\./||' | sed 's|/bin/activate||' | sort | egrep -v '^\*$'
+    (cd "$WORKON_HOME"; for f in */bin/activate; do echo $f; done) 2>/dev/null | sed 's|^\./||' | sed 's|/bin/activate||' | sort | (unset GREP_OPTIONS; egrep -v '^\*$')
 #    (cd "$WORKON_HOME"; find -L . -depth 3 -path '*/bin/activate') | sed 's|^\./||' | sed 's|/bin/activate||' | sort
 }
 
@@ -445,7 +452,7 @@ cpvirtualenv() {
         echo "Please specify target virtualenv"
         return 1
     fi
-    if echo "$WORKON_HOME" | grep -e "/$" > /dev/null
+    if echo "$WORKON_HOME" | (unset GREP_OPTIONS; grep -e "/$" > /dev/null)
     then
         typset env_home="$WORKON_HOME"
     else
