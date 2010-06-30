@@ -2,6 +2,7 @@ virtualenvwrapper (2.2.2-1) UNRELEASED; urgency=low
 
   * New upstream version.
   * refresh debian/patches/debianspecific-setup.py.patch
+  * debian/control: bump Standards-Version to 3.9.0 (no changes needed)
 
  -- Jan Dittberner <jandd@debian.org>  Wed, 30 Jun 2010 16:05:45 +0200
 
