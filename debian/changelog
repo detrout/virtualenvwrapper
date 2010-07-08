@@ -1,10 +1,10 @@
-virtualenvwrapper (2.2.2-2) UNRELEASED; urgency=low
+virtualenvwrapper (2.2.2-2) unstable; urgency=low
 
   * add debian/README.Debian to document how virtualenvwrapper is integrated
     with bash-completion
   * add README.Debian to debian/virtualenvwrapper.docs
 
- -- Jan Dittberner <jandd@debian.org>  Thu, 08 Jul 2010 18:47:00 +0200
+ -- Jan Dittberner <jandd@debian.org>  Thu, 08 Jul 2010 18:59:54 +0200
 
 virtualenvwrapper (2.2.2-1) unstable; urgency=low
 
