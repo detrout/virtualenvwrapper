@@ -1,0 +1,13 @@
+In contrast to the information in
+/usr/share/doc/virtualenvwrapper/en/html/index.html this package installs
+virtualenvwrapper.sh as /etc/bash_completion.d/virtualenvwrapper.
+
+Virtualenvwrapper is enabled if you install the package bash-completion and
+enable bash completion support in /etc/bash.bashrc or your ~/.bashrc.
+
+If you only want to use virtualenvwrapper you may just add
+
+ source /etc/bash_completion.d/virtualenvwrapper
+
+to your ~/.bashrc.
+
