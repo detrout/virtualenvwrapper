@@ -2,6 +2,7 @@ virtualenvwrapper (2.3-1) experimental; urgency=low
 
   * New upstream version.
   * refresh debian/patches/debianspecific-setup.py.patch
+  * debian/control: bump Standards-Version to 3.9.1 (no changes needed)
 
  -- Jan Dittberner <jandd@debian.org>  Mon, 16 Aug 2010 17:33:22 +0200
 
