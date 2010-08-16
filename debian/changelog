@@ -1,3 +1,9 @@
+virtualenvwrapper (2.3-1) experimental; urgency=low
+
+  * New upstream version.
+
+ -- Jan Dittberner <jandd@debian.org>  Mon, 16 Aug 2010 17:33:22 +0200
+
 virtualenvwrapper (2.2.2-2) unstable; urgency=low
 
   * add debian/README.Debian to document how virtualenvwrapper is integrated
