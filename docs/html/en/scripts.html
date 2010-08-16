@@ -5,13 +5,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Per-User Customization &mdash; virtualenvwrapper v2.2 documentation</title>
+    <title>Per-User Customization &mdash; virtualenvwrapper v2.3 documentation</title>
     <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '#',
-        VERSION:     '2.2',
+        VERSION:     '2.3',
         COLLAPSE_MODINDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -19,7 +19,7 @@
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="virtualenvwrapper v2.2 documentation" href="index.html" />
+    <link rel="top" title="virtualenvwrapper v2.3 documentation" href="index.html" />
     <link rel="up" title="Customizing Virtualenvwrapper" href="hooks.html" />
     <link rel="next" title="Extending Virtualenvwrapper" href="plugins.html" />
     <link rel="prev" title="Customizing Virtualenvwrapper" href="hooks.html" /> 
@@ -34,7 +34,7 @@
         <li class="right" >
           <a href="hooks.html" title="Customizing Virtualenvwrapper"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">virtualenvwrapper v2.2 documentation</a> &raquo;</li>
+        <li><a href="index.html">virtualenvwrapper v2.3 documentation</a> &raquo;</li>
           <li><a href="hooks.html" accesskey="U">Customizing Virtualenvwrapper</a> &raquo;</li> 
       </ul>
     </div>
@@ -43,6 +43,7 @@
             <h3><a href="index.html">Table Of Contents</a></h3>
             <ul>
 <li><a class="reference external" href="#">Per-User Customization</a><ul>
+<li><a class="reference external" href="#get-env-details">get_env_details</a></li>
 <li><a class="reference external" href="#initialize">initialize</a></li>
 <li><a class="reference external" href="#premkvirtualenv">premkvirtualenv</a></li>
 <li><a class="reference external" href="#postmkvirtualenv">postmkvirtualenv</a></li>
@@ -95,6 +96,27 @@
 <p>The end-user customization scripts are either <em>sourced</em> (allowing them
 to modify your shell environment) or <em>run</em> as an external program at
 the appropriate trigger time.</p>
+<div class="section" id="get-env-details">
+<span id="scripts-get-env-details"></span><h2>get_env_details<a class="headerlink" href="#get-env-details" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Global/Local:</th><td class="field-body">both</td>
+</tr>
+<tr class="field"><th class="field-name">Argument(s):</th><td class="field-body">env name</td>
+</tr>
+<tr class="field"><th class="field-name">Sourced/Run:</th><td class="field-body">run</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p><tt class="docutils literal"><span class="pre">$WORKON_HOME/get_env_details</span></tt> is run when <tt class="docutils literal"><span class="pre">workon</span></tt> is run with no
+arguments and a list of the virtual environments is printed.  The hook
+is run once for each environment, after the name is printed, and can
+print additional information about that environment.</p>
+</div>
 <div class="section" id="initialize">
 <span id="scripts-initialize"></span><h2>initialize<a class="headerlink" href="#initialize" title="Permalink to this headline">¶</a></h2>
 <blockquote>
@@ -358,7 +380,7 @@ environment directory is passed as an argument to the script.</p>
         <li class="right" >
           <a href="hooks.html" title="Customizing Virtualenvwrapper"
              >previous</a> |</li>
-        <li><a href="index.html">virtualenvwrapper v2.2 documentation</a> &raquo;</li>
+        <li><a href="index.html">virtualenvwrapper v2.3 documentation</a> &raquo;</li>
           <li><a href="hooks.html" >Customizing Virtualenvwrapper</a> &raquo;</li> 
       </ul>
     </div>

@@ -2,12 +2,25 @@
 Release History
 ===============
 
-Dev
+2.3
+
+  - Added ``get_env_details`` hook.
+
+2.2.2
+
+  - Integrate Fred Palmer's patch to escape more shell commands to
+    avoid aliases.  Resolves :bbissue:`57`.
+  - Fix a problem with egrep argument escaping (:bbissue:`55`).
+  - Fix a problem with running mkvirtualenv without arguments (:bbissue:`56`).
+
+2.2.1
 
   - Escape ``which`` calls to avoid aliases. Resolves :bbissue:`46`.
   - Integrate Manuel Kaufmann's patch to unset GREP_OPTIONS before
     calling grep.  Resolves :bbissue:`51`.
   - Escape ``$`` in regex to resolve :bbissue:`53`.
+  - Escape ``rm`` to avoid issues with aliases and resolve
+    :bbissue:`50`.
 
 2.2
 

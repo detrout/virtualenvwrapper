@@ -34,3 +34,6 @@ user_scripts = virtualenvwrapper.user_scripts:post_mkvirtualenv_source
 [virtualenvwrapper.pre_cpvirtualenv]
 user_scripts = virtualenvwrapper.user_scripts:pre_cpvirtualenv
 
+[virtualenvwrapper.get_env_details]
+user_scripts = virtualenvwrapper.user_scripts:get_env_details
+

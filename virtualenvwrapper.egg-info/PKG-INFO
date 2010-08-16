@@ -1,12 +1,12 @@
 Metadata-Version: 1.1
 Name: virtualenvwrapper
-Version: 2.2.2
+Version: 2.3
 Summary: Enhancements to virtualenv
 Home-page: http://www.doughellmann.com/projects/virtualenvwrapper/
 Author: Doug Hellmann
 Author-email: doug.hellmann@gmail.com
 License: UNKNOWN
-Download-URL: http://www.doughellmann.com/downloads/virtualenvwrapper-2.2.2.tar.gz
+Download-URL: http://www.doughellmann.com/downloads/virtualenvwrapper-2.3.tar.gz
 Description: ..   -*- mode: rst -*-
         
         #################
@@ -27,12 +27,12 @@ Description: ..   -*- mode: rst -*-
         1.  Organizes all of your virtual environments in one place.
         
         2.  Wrappers for creating, copying and deleting environments, including
-        user-configurable hooks.
+            user-configurable hooks.
         
         3.  Use a single command to switch between environments.
         
         4.  Tab completion for commands that take a virtual environment as
-        argument.
+            argument.
         
         5. User-configurable hooks for all operations.
         
@@ -76,7 +76,7 @@ Description: ..   -*- mode: rst -*-
         
         Join the `virtualenvwrapper Google Group
         <http://groups.google.com/group/virtualenvwrapper/>`__ to discuss
-        issues and features.
+        issues and features.  
         
         Report bugs via the `bug tracker on BitBucket
         <http://bitbucket.org/dhellmann/virtualenvwrapper/>`__.

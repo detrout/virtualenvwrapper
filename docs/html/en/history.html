@@ -5,13 +5,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Release History &mdash; virtualenvwrapper v2.2 documentation</title>
+    <title>Release History &mdash; virtualenvwrapper v2.3 documentation</title>
     <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '#',
-        VERSION:     '2.2',
+        VERSION:     '2.3',
         COLLAPSE_MODINDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -19,7 +19,7 @@
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="virtualenvwrapper v2.2 documentation" href="index.html" />
+    <link rel="top" title="virtualenvwrapper v2.3 documentation" href="index.html" />
     <link rel="prev" title="Existing Extensions" href="extensions.html" /> 
   </head>
   <body>
@@ -29,7 +29,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="extensions.html" title="Existing Extensions"
              accesskey="P">previous</a></li>
-        <li><a href="index.html">virtualenvwrapper v2.2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">virtualenvwrapper v2.3 documentation</a> &raquo;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar">
@@ -65,13 +65,30 @@
             
   <div class="section" id="release-history">
 <h1>Release History<a class="headerlink" href="#release-history" title="Permalink to this headline">¶</a></h1>
-<p>Dev</p>
+<p>2.3</p>
+<blockquote>
+<ul class="simple">
+<li>Added <tt class="docutils literal"><span class="pre">get_env_details</span></tt> hook.</li>
+</ul>
+</blockquote>
+<p>2.2.2</p>
+<blockquote>
+<ul class="simple">
+<li>Integrate Fred Palmer&#8217;s patch to escape more shell commands to
+avoid aliases.  Resolves <a class="reference external" href="http://bitbucket.org/dhellmann/virtualenvwrapper/issue/57/">issue 57</a>.</li>
+<li>Fix a problem with egrep argument escaping (<a class="reference external" href="http://bitbucket.org/dhellmann/virtualenvwrapper/issue/55/">issue 55</a>).</li>
+<li>Fix a problem with running mkvirtualenv without arguments (<a class="reference external" href="http://bitbucket.org/dhellmann/virtualenvwrapper/issue/56/">issue 56</a>).</li>
+</ul>
+</blockquote>
+<p>2.2.1</p>
 <blockquote>
 <ul class="simple">
 <li>Escape <tt class="docutils literal"><span class="pre">which</span></tt> calls to avoid aliases. Resolves <a class="reference external" href="http://bitbucket.org/dhellmann/virtualenvwrapper/issue/46/">issue 46</a>.</li>
 <li>Integrate Manuel Kaufmann&#8217;s patch to unset GREP_OPTIONS before
 calling grep.  Resolves <a class="reference external" href="http://bitbucket.org/dhellmann/virtualenvwrapper/issue/51/">issue 51</a>.</li>
 <li>Escape <tt class="docutils literal"><span class="pre">$</span></tt> in regex to resolve <a class="reference external" href="http://bitbucket.org/dhellmann/virtualenvwrapper/issue/53/">issue 53</a>.</li>
+<li>Escape <tt class="docutils literal"><span class="pre">rm</span></tt> to avoid issues with aliases and resolve
+<a class="reference external" href="http://bitbucket.org/dhellmann/virtualenvwrapper/issue/50/">issue 50</a>.</li>
 </ul>
 </blockquote>
 <p>2.2</p>
@@ -385,7 +402,7 @@ by James Bennett and Jannis Leidel.</li>
         <li class="right" style="margin-right: 10px">
           <a href="extensions.html" title="Existing Extensions"
              >previous</a></li>
-        <li><a href="index.html">virtualenvwrapper v2.2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">virtualenvwrapper v2.3 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
