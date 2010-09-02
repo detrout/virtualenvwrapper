@@ -3,7 +3,7 @@ virtualenvwrapper (2.4-1) experimental; urgency=low
   * New upstream version.
   * refresh debian/patches/debianspecific-setup.py.patch
 
- -- Jan Dittberner <jandd@debian.org>  Thu, 02 Sep 2010 09:38:08 +0200
+ -- Jan Dittberner <jandd@debian.org>  Thu, 02 Sep 2010 09:42:18 +0200
 
 virtualenvwrapper (2.3-1) experimental; urgency=low
 
