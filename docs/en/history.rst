@@ -2,6 +2,12 @@
 Release History
 ===============
 
+2.4
+
+  - Add :ref:`command-lsvirtualenv` command with ``-l`` option to run
+    :ref:`scripts-get_env_details` hook instead of always running it
+    when :ref:`command-workon` has no arguments.
+
 2.3
 
   - Added ``get_env_details`` hook.
