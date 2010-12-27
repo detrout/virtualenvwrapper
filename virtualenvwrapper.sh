@@ -407,7 +407,7 @@ virtualenvwrapper_get_python_version () {
     # Uses the Python from the virtualenv because we're trying to
     # determine the version installed there so we can build
     # up the path to the site-packages directory.
-    python -c 'import sys; print ".".join(str(p) for p in sys.version_info[:2])'
+    python -V 2>&1 | cut -f2 -d' '
 }
 
 # Prints the path to the site-packages directory for the current environment.
@@ -501,7 +501,6 @@ lssitepackages () {
 
 # Duplicate the named virtualenv to make a new one.
 cpvirtualenv() {
-
     typeset env_name="$1"
     if [ "$env_name" = "" ]
     then
@@ -541,10 +540,10 @@ cpvirtualenv() {
     virtualenv "$target_env" --relocatable
     \sed "s/VIRTUAL_ENV\(.*\)$env_name/VIRTUAL_ENV\1$new_env/g" < "$source_env/bin/activate" > "$target_env/bin/activate"
 
-    (cd "$WORKON_HOME" && 
-        virtualenvwrapper_run_hook "pre_cpvirtualenv" "$env_name" "$new_env" &&
+    (cd "$WORKON_HOME" && ( 
+        virtualenvwrapper_run_hook "pre_cpvirtualenv" "$env_name" "$new_env";
         virtualenvwrapper_run_hook "pre_mkvirtualenv" "$new_env"
-        )
+        ))
     workon "$new_env"
     virtualenvwrapper_run_hook "post_mkvirtualenv"
     virtualenvwrapper_run_hook "post_cpvirtualenv"

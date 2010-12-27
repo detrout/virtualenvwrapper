@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -5,21 +7,22 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Referencia de comandos &mdash; virtualenvwrapper v2.5.2 documentation</title>
+    <title>Referencia de comandos &mdash; virtualenvwrapper v2.6 documentation</title>
     <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '#',
-        VERSION:     '2.5.2',
-        COLLAPSE_MODINDEX: false,
+        URL_ROOT:    '',
+        VERSION:     '2.6',
+        COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="virtualenvwrapper v2.5.2 documentation" href="index.html" />
+    <link rel="top" title="virtualenvwrapper v2.6 documentation" href="index.html" />
     <link rel="next" title="Personalizar Virtualenvwrapper" href="hooks.html" />
     <link rel="prev" title="Instalación" href="install.html" /> 
   </head>
@@ -33,63 +36,63 @@
         <li class="right" >
           <a href="install.html" title="Instalación"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">virtualenvwrapper v2.5.2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">virtualenvwrapper v2.6 documentation</a> &raquo;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-            <h3><a href="index.html">Table Of Contents</a></h3>
-            <ul>
-<li><a class="reference external" href="#">Referencia de comandos</a><ul>
-<li><a class="reference external" href="#administrar-entornos">Administrar entornos</a><ul>
-<li><a class="reference external" href="#mkvirtualenv">mkvirtualenv</a></li>
-<li><a class="reference external" href="#rmvirtualenv">rmvirtualenv</a></li>
-<li><a class="reference external" href="#cpvirtualenv">cpvirtualenv</a></li>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Referencia de comandos</a><ul>
+<li><a class="reference internal" href="#administrar-entornos">Administrar entornos</a><ul>
+<li><a class="reference internal" href="#mkvirtualenv">mkvirtualenv</a></li>
+<li><a class="reference internal" href="#rmvirtualenv">rmvirtualenv</a></li>
+<li><a class="reference internal" href="#cpvirtualenv">cpvirtualenv</a></li>
 </ul>
 </li>
-<li><a class="reference external" href="#controlar-los-entornos-activos">Controlar los entornos activos</a><ul>
-<li><a class="reference external" href="#workon">workon</a></li>
-<li><a class="reference external" href="#deactivate">deactivate</a></li>
+<li><a class="reference internal" href="#controlar-los-entornos-activos">Controlar los entornos activos</a><ul>
+<li><a class="reference internal" href="#workon">workon</a></li>
+<li><a class="reference internal" href="#deactivate">deactivate</a></li>
 </ul>
 </li>
-<li><a class="reference external" href="#rapida-navegacion-dentro-de-virtualenv">Rápida navegación dentro de virtualenv</a><ul>
-<li><a class="reference external" href="#cdvirtualenv">cdvirtualenv</a></li>
-<li><a class="reference external" href="#cdsitepackages">cdsitepackages</a></li>
-<li><a class="reference external" href="#lssitepackages">lssitepackages</a></li>
+<li><a class="reference internal" href="#rapida-navegacion-dentro-de-virtualenv">Rápida navegación dentro de virtualenv</a><ul>
+<li><a class="reference internal" href="#cdvirtualenv">cdvirtualenv</a></li>
+<li><a class="reference internal" href="#cdsitepackages">cdsitepackages</a></li>
+<li><a class="reference internal" href="#lssitepackages">lssitepackages</a></li>
 </ul>
 </li>
-<li><a class="reference external" href="#administracion-de-rutas">Administración de rutas</a><ul>
-<li><a class="reference external" href="#add2virtualenv">add2virtualenv</a></li>
+<li><a class="reference internal" href="#administracion-de-rutas">Administración de rutas</a><ul>
+<li><a class="reference internal" href="#add2virtualenv">add2virtualenv</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 
-            <h4>Previous topic</h4>
-            <p class="topless"><a href="install.html"
-                                  title="previous chapter">Instalación</a></p>
-            <h4>Next topic</h4>
-            <p class="topless"><a href="hooks.html"
-                                  title="next chapter">Personalizar Virtualenvwrapper</a></p>
-            <h3>This Page</h3>
-            <ul class="this-page-menu">
-              <li><a href="_sources/command_ref.txt"
-                     rel="nofollow">Show Source</a></li>
-            </ul>
-          <div id="searchbox" style="display: none">
-            <h3>Quick search</h3>
-              <form class="search" action="search.html" method="get">
-                <input type="text" name="q" size="18" />
-                <input type="submit" value="Go" />
-                <input type="hidden" name="check_keywords" value="yes" />
-                <input type="hidden" name="area" value="default" />
-              </form>
-              <p class="searchtip" style="font-size: 90%">
-              Enter search terms or a module, class or function name.
-              </p>
-          </div>
-          <script type="text/javascript">$('#searchbox').show(0);</script>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="install.html"
+                        title="previous chapter">Instalación</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="hooks.html"
+                        title="next chapter">Personalizar Virtualenvwrapper</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/command_ref.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
 
@@ -127,8 +130,8 @@ mynewenv
 <div class="admonition-see-also admonition seealso">
 <p class="first admonition-title">See also</p>
 <ul class="last simple">
-<li><a class="reference external" href="scripts.html#scripts-premkvirtualenv"><em>premkvirtualenv</em></a></li>
-<li><a class="reference external" href="scripts.html#scripts-postmkvirtualenv"><em>postmkvirtualenv</em></a></li>
+<li><a class="reference internal" href="scripts.html#scripts-premkvirtualenv"><em>premkvirtualenv</em></a></li>
+<li><a class="reference internal" href="scripts.html#scripts-postmkvirtualenv"><em>postmkvirtualenv</em></a></li>
 </ul>
 </div>
 </div>
@@ -147,8 +150,8 @@ $</pre>
 <div class="admonition-see-also admonition seealso">
 <p class="first admonition-title">See also</p>
 <ul class="last simple">
-<li><a class="reference external" href="scripts.html#scripts-prermvirtualenv"><em>prermvirtualenv</em></a></li>
-<li><a class="reference external" href="scripts.html#scripts-postrmvirtualenv"><em>postrmvirtualenv</em></a></li>
+<li><a class="reference internal" href="scripts.html#scripts-prermvirtualenv"><em>prermvirtualenv</em></a></li>
+<li><a class="reference internal" href="scripts.html#scripts-postrmvirtualenv"><em>postrmvirtualenv</em></a></li>
 </ul>
 </div>
 </div>
@@ -185,10 +188,10 @@ source
 <div class="admonition-see-also admonition seealso">
 <p class="first admonition-title">See also</p>
 <ul class="last simple">
-<li><a class="reference external" href="scripts.html#scripts-precpvirtualenv"><em>precpvirtualenv</em></a></li>
-<li><a class="reference external" href="scripts.html#scripts-postcpvirtualenv"><em>postcpvirtualenv</em></a></li>
-<li><a class="reference external" href="scripts.html#scripts-premkvirtualenv"><em>premkvirtualenv</em></a></li>
-<li><a class="reference external" href="scripts.html#scripts-postmkvirtualenv"><em>postmkvirtualenv</em></a></li>
+<li><a class="reference internal" href="scripts.html#scripts-precpvirtualenv"><em>precpvirtualenv</em></a></li>
+<li><a class="reference internal" href="scripts.html#scripts-postcpvirtualenv"><em>postcpvirtualenv</em></a></li>
+<li><a class="reference internal" href="scripts.html#scripts-premkvirtualenv"><em>premkvirtualenv</em></a></li>
+<li><a class="reference internal" href="scripts.html#scripts-postmkvirtualenv"><em>postmkvirtualenv</em></a></li>
 </ul>
 </div>
 </div>
@@ -231,10 +234,10 @@ env2
 <div class="admonition-see-also admonition seealso">
 <p class="first admonition-title">See also</p>
 <ul class="last simple">
-<li><a class="reference external" href="scripts.html#scripts-predeactivate"><em>predeactivate</em></a></li>
-<li><a class="reference external" href="scripts.html#scripts-postdeactivate"><em>postdeactivate</em></a></li>
-<li><a class="reference external" href="scripts.html#scripts-preactivate"><em>preactivate</em></a></li>
-<li><a class="reference external" href="scripts.html#scripts-postactivate"><em>postactivate</em></a></li>
+<li><a class="reference internal" href="scripts.html#scripts-predeactivate"><em>predeactivate</em></a></li>
+<li><a class="reference internal" href="scripts.html#scripts-postdeactivate"><em>postdeactivate</em></a></li>
+<li><a class="reference internal" href="scripts.html#scripts-preactivate"><em>preactivate</em></a></li>
+<li><a class="reference internal" href="scripts.html#scripts-postactivate"><em>postactivate</em></a></li>
 </ul>
 </div>
 </div>
@@ -269,8 +272,8 @@ $</pre>
 <div class="admonition-see-also admonition seealso">
 <p class="first admonition-title">See also</p>
 <ul class="last simple">
-<li><a class="reference external" href="scripts.html#scripts-predeactivate"><em>predeactivate</em></a></li>
-<li><a class="reference external" href="scripts.html#scripts-postdeactivate"><em>postdeactivate</em></a></li>
+<li><a class="reference internal" href="scripts.html#scripts-predeactivate"><em>predeactivate</em></a></li>
+<li><a class="reference internal" href="scripts.html#scripts-postdeactivate"><em>postdeactivate</em></a></li>
 </ul>
 </div>
 </div>
@@ -396,12 +399,12 @@ entorno.</p>
         <li class="right" >
           <a href="install.html" title="Instalación"
              >previous</a> |</li>
-        <li><a href="index.html">virtualenvwrapper v2.5.2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">virtualenvwrapper v2.6 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-      &copy; Copyright 2009, Doug Hellmann.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.4.
+        &copy; Copyright 2009, Doug Hellmann.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.5.
     </div>
   </body>
 </html>
