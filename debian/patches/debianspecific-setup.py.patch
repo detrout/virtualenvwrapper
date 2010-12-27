@@ -7,7 +7,7 @@ Author: Jan Dittberner <jandd@debian.org>
 +++ b/setup.py
 @@ -3,10 +3,6 @@
  PROJECT = 'virtualenvwrapper'
- VERSION = '2.5.2'
+ VERSION = '2.6'
  
 -# Bootstrap installation of Distribute
 -import distribute_setup
@@ -16,9 +16,9 @@ Author: Jan Dittberner <jandd@debian.org>
  from setuptools import setup, find_packages
  
  from distutils.util import convert_path
-@@ -132,9 +128,6 @@
+@@ -137,9 +133,6 @@
  
-     platforms = ('Any',),
+     platforms = ['Any'],
  
 -    scripts = ['virtualenvwrapper.sh', 
 -               ],
@@ -26,7 +26,7 @@ Author: Jan Dittberner <jandd@debian.org>
      provides=['virtualenvwrapper',
                'virtualenvwrapper.user_scripts',
                ],
-@@ -142,14 +135,7 @@
+@@ -147,14 +140,7 @@
  
      namespace_packages = [ 'virtualenvwrapper' ],
      packages = find_packages(),
