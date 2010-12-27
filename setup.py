@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 PROJECT = 'virtualenvwrapper'
-VERSION = '2.5.2'
+VERSION = '2.6'
 
 # Bootstrap installation of Distribute
 import distribute_setup
@@ -120,17 +120,22 @@ setup(
     author_email = 'doug.hellmann@gmail.com',
 
     url = 'http://www.doughellmann.com/projects/%s/' % PROJECT,
-    download_url = 'http://www.doughellmann.com/downloads/%s-%s.tar.gz' % \
-                    (PROJECT, VERSION),
+#     download_url = 'http://www.doughellmann.com/downloads/%s-%s.tar.gz' % \
+#                     (PROJECT, VERSION),
 
     classifiers = [ 'Development Status :: 5 - Production/Stable',
                     'License :: OSI Approved :: BSD License',
                     'Programming Language :: Python',
+                    'Programming Language :: Python :: 2',
+                    'Programming Language :: Python :: 2.4',
+                    'Programming Language :: Python :: 2.5',
+                    'Programming Language :: Python :: 2.6',
+                    'Programming Language :: Python :: 2.7',
                     'Intended Audience :: Developers',
                     'Environment :: Console',
                     ],
 
-    platforms = ('Any',),
+    platforms = ['Any'],
 
     scripts = ['virtualenvwrapper.sh', 
                ],
@@ -138,7 +143,7 @@ setup(
     provides=['virtualenvwrapper',
               'virtualenvwrapper.user_scripts',
               ],
-    requires=['virtualenv'],
+    install_requires=['virtualenv'],
 
     namespace_packages = [ 'virtualenvwrapper' ],
     packages = find_packages(),

@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -5,21 +7,22 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Release History &mdash; virtualenvwrapper v2.5.2 documentation</title>
+    <title>Release History &mdash; virtualenvwrapper v2.6 documentation</title>
     <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '#',
-        VERSION:     '2.5.2',
-        COLLAPSE_MODINDEX: false,
+        URL_ROOT:    '',
+        VERSION:     '2.6',
+        COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="virtualenvwrapper v2.5.2 documentation" href="index.html" />
+    <link rel="top" title="virtualenvwrapper v2.6 documentation" href="index.html" />
     <link rel="prev" title="Existing Extensions" href="extensions.html" /> 
   </head>
   <body>
@@ -29,32 +32,32 @@
         <li class="right" style="margin-right: 10px">
           <a href="extensions.html" title="Existing Extensions"
              accesskey="P">previous</a></li>
-        <li><a href="index.html">virtualenvwrapper v2.5.2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">virtualenvwrapper v2.6 documentation</a> &raquo;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-            <h4>Previous topic</h4>
-            <p class="topless"><a href="extensions.html"
-                                  title="previous chapter">Existing Extensions</a></p>
-            <h3>This Page</h3>
-            <ul class="this-page-menu">
-              <li><a href="_sources/history.txt"
-                     rel="nofollow">Show Source</a></li>
-            </ul>
-          <div id="searchbox" style="display: none">
-            <h3>Quick search</h3>
-              <form class="search" action="search.html" method="get">
-                <input type="text" name="q" size="18" />
-                <input type="submit" value="Go" />
-                <input type="hidden" name="check_keywords" value="yes" />
-                <input type="hidden" name="area" value="default" />
-              </form>
-              <p class="searchtip" style="font-size: 90%">
-              Enter search terms or a module, class or function name.
-              </p>
-          </div>
-          <script type="text/javascript">$('#searchbox').show(0);</script>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="extensions.html"
+                        title="previous chapter">Existing Extensions</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/history.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
 
@@ -65,33 +68,54 @@
             
   <div class="section" id="release-history">
 <h1>Release History<a class="headerlink" href="#release-history" title="Permalink to this headline">¶</a></h1>
+<p>2.6</p>
+<blockquote>
+<ul class="simple">
+<li>Fixed a problem with hook script line endings under Cygwin
+(<a class="reference external" href="http://bitbucket.org/dhellmann/virtualenvwrapper/issue/68/">issue 68</a>).</li>
+<li>Updated documentation to include a list of the compatible shells
+(<a class="reference internal" href="install.html#supported-shells"><em>Supported Shells</em></a>) and Python versions
+(<a class="reference internal" href="install.html#supported-versions"><em>Python Versions</em></a>) (<a class="reference external" href="http://bitbucket.org/dhellmann/virtualenvwrapper/issue/70/">issue 70</a>).</li>
+<li>Fixed installation dependency on virtualenv (<a class="reference external" href="http://bitbucket.org/dhellmann/virtualenvwrapper/issue/60/">issue 60</a>).</li>
+<li>Fixed the method for determining the Python version so it works
+under Python 2.4 (<a class="reference external" href="http://bitbucket.org/dhellmann/virtualenvwrapper/issue/61/">issue 61</a>).</li>
+<li>Converted the test infrastructure to use <a class="reference external" href="http://codespeak.net/tox/index.html">tox</a> instead of home-grown
+scripts in the Makefile.</li>
+</ul>
+</blockquote>
+<p>2.5.3</p>
+<blockquote>
+<ul class="simple">
+<li>Point release uploaded to PyPI during outage on doughellmann.com.</li>
+</ul>
+</blockquote>
 <p>2.5.2</p>
 <blockquote>
 <ul class="simple">
-<li>Apply patch from Zach Voase to fix <a class="reference external" href="command_ref.html#command-lsvirtualenv"><em>lsvirtualenv</em></a>
+<li>Apply patch from Zach Voase to fix <a class="reference internal" href="command_ref.html#command-lsvirtualenv"><em>lsvirtualenv</em></a>
 under zsh. Resolves <a class="reference external" href="http://bitbucket.org/dhellmann/virtualenvwrapper/issue/64/">issue 64</a>.</li>
 </ul>
 </blockquote>
 <p>2.5.1</p>
 <blockquote>
 <ul class="simple">
-<li>Make <em class="xref">command-workon</em> list brief environment details when run
+<li>Make <em class="xref std std-ref">command-workon</em> list brief environment details when run
 without argument, instead of full details.</li>
 </ul>
 </blockquote>
 <p>2.5</p>
 <blockquote>
 <ul class="simple">
-<li>Add <a class="reference external" href="command_ref.html#command-showvirtualenv"><em>showvirtualenv</em></a> command.  Modify
-<a class="reference external" href="command_ref.html#command-lsvirtualenv"><em>lsvirtualenv</em></a> to make verbose output the default.</li>
+<li>Add <a class="reference internal" href="command_ref.html#command-showvirtualenv"><em>showvirtualenv</em></a> command.  Modify
+<a class="reference internal" href="command_ref.html#command-lsvirtualenv"><em>lsvirtualenv</em></a> to make verbose output the default.</li>
 </ul>
 </blockquote>
 <p>2.4</p>
 <blockquote>
 <ul class="simple">
-<li>Add <a class="reference external" href="command_ref.html#command-lsvirtualenv"><em>lsvirtualenv</em></a> command with <tt class="docutils literal"><span class="pre">-l</span></tt> option to run
-<a class="reference external" href="scripts.html#scripts-get-env-details"><em>get_env_details</em></a> hook instead of always running it
-when <em class="xref">command-workon</em> has no arguments.</li>
+<li>Add <a class="reference internal" href="command_ref.html#command-lsvirtualenv"><em>lsvirtualenv</em></a> command with <tt class="docutils literal"><span class="pre">-l</span></tt> option to run
+<a class="reference internal" href="scripts.html#scripts-get-env-details"><em>get_env_details</em></a> hook instead of always running it
+when <em class="xref std std-ref">command-workon</em> has no arguments.</li>
 </ul>
 </blockquote>
 <p>2.3</p>
@@ -151,10 +175,10 @@ research on what needed to be changed.</li>
 <li>Test import of virtualenvwrapper.hook_loader on startup and report
 the error in a way that should help the user figure out how to fix
 it (<a class="reference external" href="http://bitbucket.org/dhellmann/virtualenvwrapper/issue/33/">issue 33</a>).</li>
-<li>Update <a class="reference external" href="command_ref.html#command-mkvirtualenv"><em>mkvirtualenv</em></a> documentation to include the
+<li>Update <a class="reference internal" href="command_ref.html#command-mkvirtualenv"><em>mkvirtualenv</em></a> documentation to include the
 fact that a new environment is activated immediately after it is
 created (<a class="reference external" href="http://bitbucket.org/dhellmann/virtualenvwrapper/issue/30/">issue 30</a>).</li>
-<li>Added hooks around <a class="reference external" href="command_ref.html#command-cpvirtualenv"><em>cpvirtualenv</em></a>.</li>
+<li>Added hooks around <a class="reference internal" href="command_ref.html#command-cpvirtualenv"><em>cpvirtualenv</em></a>.</li>
 <li>Made deactivation more robust, especially under ksh.</li>
 <li>Use Python&#8217;s <tt class="docutils literal"><span class="pre">tempfile</span></tt> module for creating temporary filenames
 safely and portably.</li>
@@ -218,8 +242,8 @@ within site-packages.</li>
 <p>1.24.2</p>
 <blockquote>
 <ul class="simple">
-<li>Add user provided <a class="reference external" href="tips.html#tips-and-tricks"><em>Tips and Tricks</em></a> section.</li>
-<li>Add link to Rich Leland&#8217;s screencast to <a class="reference external" href="index.html#references"><em>References</em></a> section.</li>
+<li>Add user provided <a class="reference internal" href="tips.html#tips-and-tricks"><em>Tips and Tricks</em></a> section.</li>
+<li>Add link to Rich Leland&#8217;s screencast to <a class="reference internal" href="index.html#references"><em>References</em></a> section.</li>
 </ul>
 </blockquote>
 <p>1.24.1</p>
@@ -431,12 +455,12 @@ by James Bennett and Jannis Leidel.</li>
         <li class="right" style="margin-right: 10px">
           <a href="extensions.html" title="Existing Extensions"
              >previous</a></li>
-        <li><a href="index.html">virtualenvwrapper v2.5.2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">virtualenvwrapper v2.6 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-      &copy; Copyright 2009, Doug Hellmann.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.4.
+        &copy; Copyright 2009, Doug Hellmann.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.5.
     </div>
   </body>
 </html>

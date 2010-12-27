@@ -56,6 +56,7 @@ docs/html/en/_static/plus.png
 docs/html/en/_static/pygments.css
 docs/html/en/_static/searchtools.js
 docs/html/en/_static/sphinxdoc.css
+docs/html/en/_static/underscore.js
 docs/html/es/command_ref.html
 docs/html/es/developers.html
 docs/html/es/extensions.html
@@ -89,11 +90,13 @@ docs/html/es/_static/plus.png
 docs/html/es/_static/pygments.css
 docs/html/es/_static/searchtools.js
 docs/html/es/_static/sphinxdoc.css
+docs/html/es/_static/underscore.js
 docs/sphinx/conf.py
 docs/sphinx/web/templates/base.html
 docs/sphinx/web/templates/layout.html
 tests/logging.pyc
 tests/manual_test_install.sh
+tests/run_tests
 tests/shunit2
 tests/test.sh
 tests/test_add2virtualenv.sh
@@ -105,6 +108,7 @@ tests/test_ls.sh
 tests/test_mkvirtualenv.sh
 tests/test_rmvirtualenv.sh
 tests/test_run_hook.sh
+tests/test_support.sh
 tests/test_tempfile.sh
 tests/test_workon.sh
 virtualenvwrapper/__init__.py
@@ -116,4 +120,5 @@ virtualenvwrapper.egg-info/dependency_links.txt
 virtualenvwrapper.egg-info/entry_points.txt
 virtualenvwrapper.egg-info/namespace_packages.txt
 virtualenvwrapper.egg-info/not-zip-safe
+virtualenvwrapper.egg-info/requires.txt
 virtualenvwrapper.egg-info/top_level.txt
