@@ -1,6 +1,7 @@
 virtualenvwrapper (2.6.1-1) experimental; urgency=low
 
   * New upstream version.
+  * refresh debian/patches/debianspecific-setup.py.patch
 
  -- Jan Dittberner <jandd@debian.org>  Tue, 28 Dec 2010 10:47:36 +0100
 
