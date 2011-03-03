@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -7,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Extending Virtualenvwrapper &mdash; virtualenvwrapper v2.6 documentation</title>
-    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <title>Extending Virtualenvwrapper &mdash; virtualenvwrapper v2.6.3 documentation</title>
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '2.6',
+        VERSION:     '2.6.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -22,7 +21,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="virtualenvwrapper v2.6 documentation" href="index.html" />
+    <link rel="top" title="virtualenvwrapper v2.6.3 documentation" href="index.html" />
     <link rel="up" title="Customizing Virtualenvwrapper" href="hooks.html" />
     <link rel="next" title="Tips and Tricks" href="tips.html" />
     <link rel="prev" title="Per-User Customization" href="scripts.html" /> 
@@ -37,72 +36,10 @@
         <li class="right" >
           <a href="scripts.html" title="Per-User Customization"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">virtualenvwrapper v2.6 documentation</a> &raquo;</li>
+        <li><a href="index.html">virtualenvwrapper v2.6.3 documentation</a> &raquo;</li>
           <li><a href="hooks.html" accesskey="U">Customizing Virtualenvwrapper</a> &raquo;</li> 
       </ul>
-    </div>
-      <div class="sphinxsidebar">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Extending Virtualenvwrapper</a><ul>
-<li><a class="reference internal" href="#defining-an-extension">Defining an Extension</a><ul>
-<li><a class="reference internal" href="#code-organization">Code Organization</a></li>
-<li><a class="reference internal" href="#extension-api">Extension API</a></li>
-<li><a class="reference internal" href="#extension-invocation">Extension Invocation</a><ul>
-<li><a class="reference internal" href="#direct-action">Direct Action</a></li>
-<li><a class="reference internal" href="#modifying-the-user-environment">Modifying the User Environment</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#registering-entry-points">Registering Entry Points</a></li>
-<li><a class="reference internal" href="#the-hook-loader">The Hook Loader</a></li>
-<li><a class="reference internal" href="#logging">Logging</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#extension-points">Extension Points</a></li>
-<li><a class="reference internal" href="#get-env-details">get_env_details</a><ul>
-<li><a class="reference internal" href="#initialize">initialize</a></li>
-<li><a class="reference internal" href="#pre-mkvirtualenv">pre_mkvirtualenv</a></li>
-<li><a class="reference internal" href="#post-mkvirtualenv">post_mkvirtualenv</a></li>
-<li><a class="reference internal" href="#pre-activate">pre_activate</a></li>
-<li><a class="reference internal" href="#post-activate">post_activate</a></li>
-<li><a class="reference internal" href="#pre-deactivate">pre_deactivate</a></li>
-<li><a class="reference internal" href="#post-deactivate">post_deactivate</a></li>
-<li><a class="reference internal" href="#pre-rmvirtualenv">pre_rmvirtualenv</a></li>
-<li><a class="reference internal" href="#post-rmvirtualenv">post_rmvirtualenv</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#adding-new-extension-points">Adding New Extension Points</a></li>
-</ul>
-</li>
-</ul>
-
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="scripts.html"
-                        title="previous chapter">Per-User Customization</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="tips.html"
-                        title="next chapter">Tips and Tricks</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/plugins.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
-  <h3>Quick search</h3>
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" size="18" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
-      </div>
+    </div>  
 
     <div class="document">
       <div class="documentwrapper">
@@ -472,6 +409,68 @@ with:</p>
           </div>
         </div>
       </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Extending Virtualenvwrapper</a><ul>
+<li><a class="reference internal" href="#defining-an-extension">Defining an Extension</a><ul>
+<li><a class="reference internal" href="#code-organization">Code Organization</a></li>
+<li><a class="reference internal" href="#extension-api">Extension API</a></li>
+<li><a class="reference internal" href="#extension-invocation">Extension Invocation</a><ul>
+<li><a class="reference internal" href="#direct-action">Direct Action</a></li>
+<li><a class="reference internal" href="#modifying-the-user-environment">Modifying the User Environment</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#registering-entry-points">Registering Entry Points</a></li>
+<li><a class="reference internal" href="#the-hook-loader">The Hook Loader</a></li>
+<li><a class="reference internal" href="#logging">Logging</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#extension-points">Extension Points</a></li>
+<li><a class="reference internal" href="#get-env-details">get_env_details</a><ul>
+<li><a class="reference internal" href="#initialize">initialize</a></li>
+<li><a class="reference internal" href="#pre-mkvirtualenv">pre_mkvirtualenv</a></li>
+<li><a class="reference internal" href="#post-mkvirtualenv">post_mkvirtualenv</a></li>
+<li><a class="reference internal" href="#pre-activate">pre_activate</a></li>
+<li><a class="reference internal" href="#post-activate">post_activate</a></li>
+<li><a class="reference internal" href="#pre-deactivate">pre_deactivate</a></li>
+<li><a class="reference internal" href="#post-deactivate">post_deactivate</a></li>
+<li><a class="reference internal" href="#pre-rmvirtualenv">pre_rmvirtualenv</a></li>
+<li><a class="reference internal" href="#post-rmvirtualenv">post_rmvirtualenv</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#adding-new-extension-points">Adding New Extension Points</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="scripts.html"
+                        title="previous chapter">Per-User Customization</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="tips.html"
+                        title="next chapter">Tips and Tricks</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/plugins.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
       <div class="clearer"></div>
     </div>
     <div class="related">
@@ -483,12 +482,12 @@ with:</p>
         <li class="right" >
           <a href="scripts.html" title="Per-User Customization"
              >previous</a> |</li>
-        <li><a href="index.html">virtualenvwrapper v2.6 documentation</a> &raquo;</li>
+        <li><a href="index.html">virtualenvwrapper v2.6.3 documentation</a> &raquo;</li>
           <li><a href="hooks.html" >Customizing Virtualenvwrapper</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2009, Doug Hellmann.
+        &copy; Copyright 2009-2011, Doug Hellmann.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.5.
     </div>
   </body>
