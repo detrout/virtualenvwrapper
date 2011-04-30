@@ -1,12 +1,11 @@
 Metadata-Version: 1.1
 Name: virtualenvwrapper
-Version: 2.6.3
+Version: 2.7.1
 Summary: Enhancements to virtualenv
 Home-page: http://www.doughellmann.com/projects/virtualenvwrapper/
 Author: Doug Hellmann
 Author-email: doug.hellmann@gmail.com
 License: UNKNOWN
-Download-URL: http://www.doughellmann.com/downloads/virtualenvwrapper-2.6.3.tar.gz
 Description: ..   -*- mode: rst -*-
         
         #################

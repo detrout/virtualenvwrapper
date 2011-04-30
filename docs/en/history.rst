@@ -2,6 +2,49 @@
 Release History
 ===============
 
+2.7.1
+
+  - When testing for WORKON_HOME during startup, dereference any
+    symlink to make sure it is a directory.
+  - Set VIRTUALENVWRAPPER_HOOK_DIR and VIRTUALENV_WRAPPER_LOG DIR in
+    virtualenvwrapper_initialize after WORKON_HOME is set
+    (:bbissue:`94`).
+  - Update the :ref:`install-basic` instructions to be more explicit
+    about needing to install virtualenvwrapper globally (or at least
+    outside of a virtualenv).
+
+2.7
+
+  - Fix problem with space in WORKON_HOME path (:bbissue:`79`).
+  - Fix problem with argument processing in lsvirtualenv under zsh
+    (:bbissue:`86`). Thanks to Nat Williams (:bbuser:`natw`) for the
+    bug report and patch.
+  - If WORKON_HOME does not exist, create it. Patch from Carl Karsten
+    (:bbuser:`CarlFK`). Test updates based on patches from Matt Austin
+    (:bbuser:`maafy6`) and Hugo Lopes Tavares (:bbuser:`hltbra`).
+  - Merge in contributions from Paul McLanahan (:bbuser:`pmclanahan`)
+    to fix the test harness to ensure that the test scripts are
+    actually running under the expected shell.
+  - Merge in new shell command :ref:`command-toggleglobalsitepackages`
+    from Paul McLanahan (:bbuser:`pmclanahan`). The new command
+    changes the configuration of the active virtualenv to enable or
+    disable the global ``site-packages`` directory.
+  - Fixed some tests that were failing under ksh on Ubuntu 10.10.
+  - Document the :ref:`VIRTUALENVWRAPPER_VIRTUALENV
+    <variable-VIRTUALENVWRAPPER_VIRTUALENV>` variable.
+  - Implement suggestion by Van Lindberg to have
+    :ref:`VIRTUALENVWRAPPER_HOOK_DIR
+    <variable-VIRTUALENVWRAPPER_HOOK_DIR>` and
+    :ref:`VIRTUALENVWRAPPER_LOG_DIR
+    <variable-VIRTUALENVWRAPPER_LOG_DIR>` variables to control the
+    locations of hooks and logs.
+  - Enabled tab completion for :ref:`command-showvirtualenv`
+    (:bbissue:`78`).
+  - Fixed a problem with running :ref:`command-rmvirtualenv` from
+    within the environment being removed (:bbissue:`83`).
+  - Removed use of -e option in calls to grep for better portability
+    (:bbissue:`85`).
+
 2.6.3
 
   - Hard-code the version information in the setup.py and conf.py
@@ -17,7 +60,7 @@ Release History
     Tetsuya Morimoto.
   - Incorporate a suggestion from Ales Zoulek to let the user specify
     the virtualenv binary through an environment variable
-    (``VIRTUALENVWRAPPER_VIRTUALENV``).
+    (:ref:`VIRTUALENVWRAPPER_VIRTUALENV <variable-VIRTUALENVWRAPPER_VIRTUALENV>`).
 
 2.6.1
 

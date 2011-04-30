@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>For Developers &mdash; virtualenvwrapper v2.6.3 documentation</title>
+    <title>For Developers &mdash; virtualenvwrapper v2.7 documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '2.6.3',
+        VERSION:     '2.7',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -21,7 +21,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="virtualenvwrapper v2.6.3 documentation" href="index.html" />
+    <link rel="top" title="virtualenvwrapper v2.7 documentation" href="index.html" />
     <link rel="next" title="Existing Extensions" href="extensions.html" />
     <link rel="prev" title="Tips and Tricks" href="tips.html" /> 
   </head>
@@ -35,7 +35,7 @@
         <li class="right" >
           <a href="tips.html" title="Tips and Tricks"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">virtualenvwrapper v2.6.3 documentation</a> &raquo;</li> 
+        <li><a href="index.html">virtualenvwrapper v2.7 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -103,10 +103,24 @@ cp -r docs/build/html virtualenvwrapper/docs</pre>
 </div>
 <div class="section" id="running-tests">
 <h2>Running Tests<a class="headerlink" href="#running-tests" title="Permalink to this headline">¶</a></h2>
-<p>The test suite for virtualenvwrapper uses <a class="reference external" href="http://shunit2.googlecode.com/">shunit2</a> and <a class="reference external" href="http://codespeak.net/tox">tox</a>.  To run the tests under bash, sh, and
-zsh, use <tt class="docutils literal"><span class="pre">make</span> <span class="pre">test</span></tt> or just <tt class="docutils literal"><span class="pre">tox</span></tt>.  In order to add new tests,
-you will need to modify or create an appropriate script in the
-<tt class="docutils literal"><span class="pre">tests</span></tt> directory.</p>
+<p>The test suite for virtualenvwrapper uses <a class="reference external" href="http://shunit2.googlecode.com/">shunit2</a> and <a class="reference external" href="http://codespeak.net/tox">tox</a>.  The
+shunit2 source is included in the <tt class="docutils literal"><span class="pre">tests</span></tt> directory, but tox must be
+installed separately (<tt class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">tox</span></tt>).</p>
+<p>To run the tests under bash, zsh, and ksh for Python 2.4 through 2.7,
+run <tt class="docutils literal"><span class="pre">tox</span></tt> from the top level directory of the hg repository.</p>
+<p>To run individual test scripts, use a command like:</p>
+<div class="highlight-python"><pre>$ tox tests/test_cd.sh</pre>
+</div>
+<p>To run tests under a single version of Python, specify the appropriate
+environment when running tox:</p>
+<div class="highlight-python"><pre>$ tox -e py27</pre>
+</div>
+<p>Combine the two modes to run specific tests with a single version of
+Python:</p>
+<div class="highlight-python"><pre>$ tox -e py27 tests/test_cd.sh</pre>
+</div>
+<p>Add new tests by modifying an existing file or creating new script in
+the <tt class="docutils literal"><span class="pre">tests</span></tt> directory.</p>
 </div>
 </div>
 
@@ -162,7 +176,7 @@ you will need to modify or create an appropriate script in the
         <li class="right" >
           <a href="tips.html" title="Tips and Tricks"
              >previous</a> |</li>
-        <li><a href="index.html">virtualenvwrapper v2.6.3 documentation</a> &raquo;</li> 
+        <li><a href="index.html">virtualenvwrapper v2.7 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

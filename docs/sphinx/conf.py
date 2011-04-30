@@ -13,8 +13,6 @@
 
 import sys, os
 
-building_web = int(os.environ.get('BUILDING_WEB', '0'))
-
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
@@ -49,7 +47,7 @@ copyright = u'2009-2011, Doug Hellmann'
 # built documents.
 #
 # The short X.Y version.
-version = '2.6.3'
+version = '2.7.1'
 # The full version, including alpha/beta/rc tags.
 release = version
 

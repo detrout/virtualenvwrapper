@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Per-User Customization &mdash; virtualenvwrapper v2.6.3 documentation</title>
+    <title>Per-User Customization &mdash; virtualenvwrapper v2.7 documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '2.6.3',
+        VERSION:     '2.7',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -21,7 +21,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="virtualenvwrapper v2.6.3 documentation" href="index.html" />
+    <link rel="top" title="virtualenvwrapper v2.7 documentation" href="index.html" />
     <link rel="up" title="Customizing Virtualenvwrapper" href="hooks.html" />
     <link rel="next" title="Extending Virtualenvwrapper" href="plugins.html" />
     <link rel="prev" title="Customizing Virtualenvwrapper" href="hooks.html" /> 
@@ -36,7 +36,7 @@
         <li class="right" >
           <a href="hooks.html" title="Customizing Virtualenvwrapper"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">virtualenvwrapper v2.6.3 documentation</a> &raquo;</li>
+        <li><a href="index.html">virtualenvwrapper v2.7 documentation</a> &raquo;</li>
           <li><a href="hooks.html" accesskey="U">Customizing Virtualenvwrapper</a> &raquo;</li> 
       </ul>
     </div>  
@@ -51,6 +51,9 @@
 <p>The end-user customization scripts are either <em>sourced</em> (allowing them
 to modify your shell environment) or <em>run</em> as an external program at
 the appropriate trigger time.</p>
+<p>The global scripts applied to all environments should be placed in the
+directory named by <a class="reference internal" href="install.html#variable-virtualenvwrapper-hook-dir"><em>VIRTUALENVWRAPPER_HOOK_DIR</em></a>. The local scripts should be
+placed in the <tt class="docutils literal"><span class="pre">bin</span></tt> directory of the virtualenv.</p>
 <div class="section" id="get-env-details">
 <span id="scripts-get-env-details"></span><h2>get_env_details<a class="headerlink" href="#get-env-details" title="Permalink to this headline">¶</a></h2>
 <blockquote>
@@ -67,7 +70,7 @@ the appropriate trigger time.</p>
 </tbody>
 </table>
 </blockquote>
-<p><tt class="docutils literal"><span class="pre">$WORKON_HOME/get_env_details</span></tt> is run when <tt class="docutils literal"><span class="pre">workon</span></tt> is run with no
+<p><tt class="docutils literal"><span class="pre">$VIRTUALENVWRAPPER_HOOK_DIR/get_env_details</span></tt> is run when <tt class="docutils literal"><span class="pre">workon</span></tt> is run with no
 arguments and a list of the virtual environments is printed.  The hook
 is run once for each environment, after the name is printed, and can
 print additional information about that environment.</p>
@@ -88,7 +91,7 @@ print additional information about that environment.</p>
 </tbody>
 </table>
 </blockquote>
-<p><tt class="docutils literal"><span class="pre">$WORKON_HOME/initialize</span></tt> is sourced when <tt class="docutils literal"><span class="pre">virtualenvwrapper.sh</span></tt>
+<p><tt class="docutils literal"><span class="pre">$VIRTUALENVWRAPPER_HOOK_DIR/initialize</span></tt> is sourced when <tt class="docutils literal"><span class="pre">virtualenvwrapper.sh</span></tt>
 is loaded into your environment.  Use it to adjust global settings
 when virtualenvwrapper is enabled.</p>
 </div>
@@ -108,7 +111,7 @@ when virtualenvwrapper is enabled.</p>
 </tbody>
 </table>
 </blockquote>
-<p><tt class="docutils literal"><span class="pre">$WORKON_HOME/premkvirtualenv</span></tt> is run as an external program after
+<p><tt class="docutils literal"><span class="pre">$VIRTUALENVWRAPPER_HOOK_DIR/premkvirtualenv</span></tt> is run as an external program after
 the virtual environment is created but before the current environment
 is switched to point to the new env. The current working directory for
 the script is <tt class="docutils literal"><span class="pre">$WORKON_HOME</span></tt> and the name of the new environment is
@@ -130,7 +133,7 @@ passed as an argument to the script.</p>
 </tbody>
 </table>
 </blockquote>
-<p><tt class="docutils literal"><span class="pre">$WORKON_HOME/postmkvirtualenv</span></tt> is sourced after the new environment
+<p><tt class="docutils literal"><span class="pre">$VIRTUALENVWRAPPER_HOOK_DIR/postmkvirtualenv</span></tt> is sourced after the new environment
 is created and activated.</p>
 </div>
 <div class="section" id="precpvirtualenv">
@@ -149,7 +152,7 @@ is created and activated.</p>
 </tbody>
 </table>
 </blockquote>
-<p><tt class="docutils literal"><span class="pre">$WORKON_HOME/precpvirtualenv</span></tt> is run as an external program after
+<p><tt class="docutils literal"><span class="pre">$VIRTUALENVWRAPPER_HOOK_DIR/precpvirtualenv</span></tt> is run as an external program after
 the source environment is duplicated and made relocatable, but before
 the <tt class="docutils literal"><span class="pre">premkvirtualenv</span></tt> hook is run or the current environment is
 switched to point to the new env. The current working directory for
@@ -172,7 +175,7 @@ environments are passed as arguments to the script.</p>
 </tbody>
 </table>
 </blockquote>
-<p><tt class="docutils literal"><span class="pre">$WORKON_HOME/postcpvirtualenv</span></tt> is sourced after the new environment
+<p><tt class="docutils literal"><span class="pre">$VIRTUALENVWRAPPER_HOOK_DIR/postcpvirtualenv</span></tt> is sourced after the new environment
 is created and activated.</p>
 </div>
 <div class="section" id="preactivate">
@@ -191,7 +194,7 @@ is created and activated.</p>
 </tbody>
 </table>
 </blockquote>
-<p>The global <tt class="docutils literal"><span class="pre">$WORKON_HOME/preactivate</span></tt> script is run before the new
+<p>The global <tt class="docutils literal"><span class="pre">$VIRTUALENVWRAPPER_HOOK_DIR/preactivate</span></tt> script is run before the new
 environment is enabled.  The environment name is passed as the first
 argument.</p>
 <p>The local <tt class="docutils literal"><span class="pre">$VIRTUAL_ENV/bin/preactivate</span></tt> hook is run before the new
@@ -214,7 +217,7 @@ argument.</p>
 </tbody>
 </table>
 </blockquote>
-<p>The global <tt class="docutils literal"><span class="pre">$WORKON_HOME/postactivate</span></tt> script is sourced after the
+<p>The global <tt class="docutils literal"><span class="pre">$VIRTUALENVWRAPPER_HOOK_DIR/postactivate</span></tt> script is sourced after the
 new environment is enabled. <tt class="docutils literal"><span class="pre">$VIRTUAL_ENV</span></tt> refers to the new
 environment at the time the script runs.</p>
 <p>This example script adds a space between the virtual environment name
@@ -253,7 +256,7 @@ PATH=$pymotw_root/bin:$PATH</pre>
 current environment is deactivated, and can be used to disable or
 clear settings in your environment. <tt class="docutils literal"><span class="pre">$VIRTUAL_ENV</span></tt> refers to the old
 environment at the time the script runs.</p>
-<p>The global <tt class="docutils literal"><span class="pre">$WORKON_HOME/predeactivate</span></tt> script is sourced before the
+<p>The global <tt class="docutils literal"><span class="pre">$VIRTUALENVWRAPPER_HOOK_DIR/predeactivate</span></tt> script is sourced before the
 current environment is deactivated.  <tt class="docutils literal"><span class="pre">$VIRTUAL_ENV</span></tt> refers to the
 old environment at the time the script runs.</p>
 </div>
@@ -294,7 +297,7 @@ deactivated is available in <tt class="docutils literal"><span class="pre">$VIRT
 </tbody>
 </table>
 </blockquote>
-<p>The <tt class="docutils literal"><span class="pre">$WORKON_HOME/prermvirtualenv</span></tt> script is run as an external
+<p>The <tt class="docutils literal"><span class="pre">$VIRTUALENVWRAPPER_HOOK_DIR/prermvirtualenv</span></tt> script is run as an external
 program before the environment is removed. The full path to the
 environment directory is passed as an argument to the script.</p>
 </div>
@@ -314,7 +317,7 @@ environment directory is passed as an argument to the script.</p>
 </tbody>
 </table>
 </blockquote>
-<p>The <tt class="docutils literal"><span class="pre">$WORKON_HOME/postrmvirtualenv</span></tt> script is run as an external
+<p>The <tt class="docutils literal"><span class="pre">$VIRTUALENVWRAPPER_HOOK_DIR/postrmvirtualenv</span></tt> script is run as an external
 program after the environment is removed. The full path to the
 environment directory is passed as an argument to the script.</p>
 </div>
@@ -382,7 +385,7 @@ environment directory is passed as an argument to the script.</p>
         <li class="right" >
           <a href="hooks.html" title="Customizing Virtualenvwrapper"
              >previous</a> |</li>
-        <li><a href="index.html">virtualenvwrapper v2.6.3 documentation</a> &raquo;</li>
+        <li><a href="index.html">virtualenvwrapper v2.7 documentation</a> &raquo;</li>
           <li><a href="hooks.html" >Customizing Virtualenvwrapper</a> &raquo;</li> 
       </ul>
     </div>

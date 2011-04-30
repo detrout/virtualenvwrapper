@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Release History &mdash; virtualenvwrapper v2.6.3 documentation</title>
+    <title>Release History &mdash; virtualenvwrapper v2.7 documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '2.6.3',
+        VERSION:     '2.7',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -21,7 +21,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="virtualenvwrapper v2.6.3 documentation" href="index.html" />
+    <link rel="top" title="virtualenvwrapper v2.7 documentation" href="index.html" />
     <link rel="prev" title="Existing Extensions" href="extensions.html" /> 
   </head>
   <body>
@@ -31,7 +31,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="extensions.html" title="Existing Extensions"
              accesskey="P">previous</a></li>
-        <li><a href="index.html">virtualenvwrapper v2.6.3 documentation</a> &raquo;</li> 
+        <li><a href="index.html">virtualenvwrapper v2.7 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -42,11 +42,44 @@
             
   <div class="section" id="release-history">
 <h1>Release History<a class="headerlink" href="#release-history" title="Permalink to this headline">¶</a></h1>
+<p>2.7</p>
+<blockquote>
+<ul class="simple">
+<li>Fix problem with space in WORKON_HOME path (<a class="reference external" href="http://bitbucket.org/dhellmann/virtualenvwrapper/issue/79/">issue 79</a>).</li>
+<li>Fix problem with argument processing in lsvirtualenv under zsh
+(<a class="reference external" href="http://bitbucket.org/dhellmann/virtualenvwrapper/issue/86/">issue 86</a>). Thanks to Nat Williams (<a class="reference external" href="https://bitbucket.org/natw">natw</a>) for the
+bug report and patch.</li>
+<li>If WORKON_HOME does not exist, create it. Patch from Carl Karsten
+(<a class="reference external" href="https://bitbucket.org/CarlFK">CarlFK</a>). Test updates based on patches from Matt Austin
+(<a class="reference external" href="https://bitbucket.org/maafy6">maafy6</a>) and Hugo Lopes Tavares (<a class="reference external" href="https://bitbucket.org/hltbra">hltbra</a>).</li>
+<li>Merge in contributions from Paul McLanahan (<a class="reference external" href="https://bitbucket.org/pmclanahan">pmclanahan</a>)
+to fix the test harness to ensure that the test scripts are
+actually running under the expected shell.</li>
+<li>Merge in new shell command <a class="reference internal" href="command_ref.html#command-toggleglobalsitepackages"><em>toggleglobalsitepackages</em></a>
+from Paul McLanahan (<a class="reference external" href="https://bitbucket.org/pmclanahan">pmclanahan</a>). The new command
+changes the configuration of the active virtualenv to enable or
+disable the global <tt class="docutils literal"><span class="pre">site-packages</span></tt> directory.</li>
+<li>Fixed some tests that were failing under ksh on Ubuntu 10.10.</li>
+<li>Document the <a class="reference internal" href="install.html#variable-virtualenvwrapper-virtualenv"><em>VIRTUALENVWRAPPER_VIRTUALENV</em></a> variable.</li>
+<li>Implement suggestion by Van Lindberg to have
+<a class="reference internal" href="install.html#variable-virtualenvwrapper-hook-dir"><em>VIRTUALENVWRAPPER_HOOK_DIR</em></a> and
+<a class="reference internal" href="install.html#variable-virtualenvwrapper-log-dir"><em>VIRTUALENVWRAPPER_LOG_DIR</em></a> variables to control the
+locations of hooks and logs.</li>
+<li>Enabled tab completion for <a class="reference internal" href="command_ref.html#command-showvirtualenv"><em>showvirtualenv</em></a>
+(<a class="reference external" href="http://bitbucket.org/dhellmann/virtualenvwrapper/issue/78/">issue 78</a>).</li>
+<li>Fixed a problem with running <em class="xref std std-ref">command-rmvirtualenv</em> from
+within the environment being removed (<a class="reference external" href="http://bitbucket.org/dhellmann/virtualenvwrapper/issue/83/">issue 83</a>).</li>
+<li>Removed use of -e option in calls to grep for better portability
+(<a class="reference external" href="http://bitbucket.org/dhellmann/virtualenvwrapper/issue/85/">issue 85</a>).</li>
+</ul>
+</blockquote>
 <p>2.6.3</p>
 <blockquote>
 <ul class="simple">
 <li>Hard-code the version information in the setup.py and conf.py
-scripts so it works for <a class="reference external" href="http://readthedocs.org">http://readthedocs.org</a>.</li>
+scripts. This still doesn&#8217;t work for <a class="reference external" href="http://readthedocs.org">http://readthedocs.org</a>, since
+the doc build needs the sphinxcontrib.bitbucket extension, but
+will make it easier to transition the docs to another site later.</li>
 </ul>
 </blockquote>
 <p>2.6.2</p>
@@ -57,7 +90,7 @@ scripts so it works for <a class="reference external" href="http://readthedocs.o
 Tetsuya Morimoto.</li>
 <li>Incorporate a suggestion from Ales Zoulek to let the user specify
 the virtualenv binary through an environment variable
-(<tt class="docutils literal"><span class="pre">VIRTUALENVWRAPPER_VIRTUALENV</span></tt>).</li>
+(<a class="reference internal" href="install.html#variable-virtualenvwrapper-virtualenv"><em>VIRTUALENVWRAPPER_VIRTUALENV</em></a>).</li>
 </ul>
 </blockquote>
 <p>2.6.1</p>
@@ -478,7 +511,7 @@ by James Bennett and Jannis Leidel.</li>
         <li class="right" style="margin-right: 10px">
           <a href="extensions.html" title="Existing Extensions"
              >previous</a></li>
-        <li><a href="index.html">virtualenvwrapper v2.6.3 documentation</a> &raquo;</li> 
+        <li><a href="index.html">virtualenvwrapper v2.7 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
