@@ -68,7 +68,7 @@ virtualenvwrapper_derive_workon_home() {
 
     # If the path is relative, prefix it with $HOME
     # (note: for compatibility)
-    if echo "$workon_home_dir" | (unset GREP_OPTIONS; \grep -e '^[^/~]' > /dev/null)
+    if echo "$workon_home_dir" | (unset GREP_OPTIONS; \grep '^[^/~]' > /dev/null)
     then
         workon_home_dir="$HOME/$WORKON_HOME"
     fi
@@ -77,7 +77,7 @@ virtualenvwrapper_derive_workon_home() {
     # path might contain stuff to expand.
     # (it might be possible to do this in shell, but I don't know a
     # cross-shell-safe way of doing it -wolever)
-    if echo "$workon_home_dir" | (unset GREP_OPTIONS; \egrep -e '([\$~]|//)' >/dev/null)
+    if echo "$workon_home_dir" | (unset GREP_OPTIONS; \egrep '([\$~]|//)' >/dev/null)
     then
         # This will normalize the path by:
         # - Removing extra slashes (e.g., when TMPDIR ends in a slash)
@@ -90,17 +90,25 @@ virtualenvwrapper_derive_workon_home() {
     return 0
 }
 
-# Verify that the WORKON_HOME directory exists
+# Check if the WORKON_HOME directory exists,
+# create it if it does not
+# seperate from creating the files in it because this used to just error
+# and maybe other things rely on the dir existing before that happens.
 virtualenvwrapper_verify_workon_home () {
-    if [ ! -d "$WORKON_HOME" ]
+    RC=0
+    if [ ! -d "$WORKON_HOME/" ]
     then
-        [ "$1" != "-q" ] && echo "ERROR: Virtual environments directory '$WORKON_HOME' does not exist.  Create it or set WORKON_HOME to an existing directory." 1>&2
-        return 1
+        if [ "$1" != "-q" ]
+        then
+            echo "NOTE: Virtual environments directory $WORKON_HOME does not exist. Creating..." 1>&2
+        fi
+        mkdir -p $WORKON_HOME
+        RC=$?
     fi
-    return 0
+    return $RC
 }
 
-#HOOK_VERBOSE_OPTION="-v"
+#HOOK_VERBOSE_OPTION="-q"
 
 # Expects 1 argument, the suffix for the new file.
 virtualenvwrapper_tempfile () {
@@ -143,8 +151,22 @@ virtualenvwrapper_run_hook () {
 
 # Set up virtualenvwrapper properly
 virtualenvwrapper_initialize () {
-    export WORKON_HOME=$(virtualenvwrapper_derive_workon_home)
+    export WORKON_HOME="$(virtualenvwrapper_derive_workon_home)"
+
     virtualenvwrapper_verify_workon_home -q || return 1
+
+    # Set the location of the hook scripts
+    if [ "$VIRTUALENVWRAPPER_HOOK_DIR" = "" ]
+    then
+        export VIRTUALENVWRAPPER_HOOK_DIR="$WORKON_HOME"
+    fi
+
+    # Set the location of the hook script logs
+    if [ "$VIRTUALENVWRAPPER_LOG_DIR" = "" ]
+    then
+        export VIRTUALENVWRAPPER_LOG_DIR="$WORKON_HOME"
+    fi
+
     virtualenvwrapper_run_hook "initialize"
     if [ $? -ne 0 ]
     then
@@ -200,7 +222,7 @@ mkvirtualenv () {
     virtualenvwrapper_verify_workon_home || return 1
     virtualenvwrapper_verify_virtualenv || return 1
     (cd "$WORKON_HOME" &&
-        "$VIRTUALENVWRAPPER_VIRTUALENV" "$@" &&
+        "$VIRTUALENVWRAPPER_VIRTUALENV" $VIRTUALENVWRAPPER_VIRTUALENV_ARGS "$@" &&
         [ -d "$WORKON_HOME/$envname" ] && \
             virtualenvwrapper_run_hook "pre_mkvirtualenv" "$envname"
         )
@@ -232,9 +254,21 @@ rmvirtualenv () {
         echo "Either switch to another environment, or run 'deactivate'." >&2
         return 1
     fi
+
+    # Move out of the current directory to one known to be
+    # safe, in case we are inside the environment somewhere.
+    typeset prior_dir="$(pwd)"
+    cd "$WORKON_HOME"
+
     virtualenvwrapper_run_hook "pre_rmvirtualenv" "$env_name"
     \rm -rf "$env_dir"
     virtualenvwrapper_run_hook "post_rmvirtualenv" "$env_name"
+
+    # If the directory we used to be in still exists, move back to it.
+    if [ -d "$prior_dir" ]
+    then
+        cd "$prior_dir"
+    fi
 }
 
 # List the available environments.
@@ -259,7 +293,8 @@ _lsvirtualenv_usage () {
 #
 # Usage: lsvirtualenv [-l]
 lsvirtualenv () {
-    typeset args="$(getopt blh "$@")"
+    typeset -a args
+    args=($(getopt blh "$@"))
     if [ $? != 0 ]
     then
         _lsvirtualenv_usage
@@ -390,6 +425,7 @@ if [ -n "$BASH" ] ; then
         COMPREPLY=( $(compgen -W "`virtualenvwrapper_show_workon_options`" -- ${cur}) )
     }
 
+
     _cdvirtualenv_complete ()
     {
         local cur="$2"
@@ -406,8 +442,9 @@ if [ -n "$BASH" ] ; then
     complete -o default -o nospace -F _virtualenvs workon
     complete -o default -o nospace -F _virtualenvs rmvirtualenv
     complete -o default -o nospace -F _virtualenvs cpvirtualenv
+    complete -o default -o nospace -F _virtualenvs showvirtualenv
 elif [ -n "$ZSH_VERSION" ] ; then
-    compctl -g "`virtualenvwrapper_show_workon_options`" workon rmvirtualenv cpvirtualenv
+    compctl -g "`virtualenvwrapper_show_workon_options`" workon rmvirtualenv cpvirtualenv showvirtualenv
 fi
 
 # Prints the Python version string for the current interpreter.
@@ -507,6 +544,21 @@ lssitepackages () {
     fi
 }
 
+# Toggles the currently-active virtualenv between having and not having
+# access to the global site-packages.
+toggleglobalsitepackages () {
+    virtualenvwrapper_verify_workon_home || return 1
+    virtualenvwrapper_verify_active_environment || return 1
+    typeset no_global_site_packages_file="`virtualenvwrapper_get_site_packages_dir`/../no-global-site-packages.txt"
+    if [ -f $no_global_site_packages_file ]; then
+        rm $no_global_site_packages_file
+        [ "$1" = "-q" ] || echo "Enabled global site-packages"
+    else
+        touch $no_global_site_packages_file
+        [ "$1" = "-q" ] || echo "Disabled global site-packages"
+    fi
+}
+
 # Duplicate the named virtualenv to make a new one.
 cpvirtualenv() {
     typeset env_name="$1"
@@ -521,9 +573,9 @@ cpvirtualenv() {
         echo "Please specify target virtualenv"
         return 1
     fi
-    if echo "$WORKON_HOME" | (unset GREP_OPTIONS; \grep -e "/$" > /dev/null)
+    if echo "$WORKON_HOME" | (unset GREP_OPTIONS; \grep "/$" > /dev/null)
     then
-        typset env_home="$WORKON_HOME"
+        typeset env_home="$WORKON_HOME"
     else
         typeset env_home="$WORKON_HOME/"
     fi
