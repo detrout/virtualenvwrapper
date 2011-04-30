@@ -1,10 +1,10 @@
-virtualenvwrapper (2.7.1-1) UNRELEASED; urgency=low
+virtualenvwrapper (2.7.1-1) unstable; urgency=low
 
   * New upstream version.
   * refresh debian/patches/debianspecific-setup.py.patch
   * debian/control: Bump Standards-Version to 3.9.2
 
- -- Jan Dittberner <jandd@debian.org>  Sat, 30 Apr 2011 22:59:51 +0200
+ -- Jan Dittberner <jandd@debian.org>  Sat, 30 Apr 2011 23:24:40 +0200
 
 virtualenvwrapper (2.6.3-1) unstable; urgency=low
 
