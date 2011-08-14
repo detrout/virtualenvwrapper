@@ -13,7 +13,7 @@ Vcs-Browser: http://git.debian.org/?p=collab-maint/virtualenvwrapper.git
 Package: virtualenvwrapper
 Architecture: all
 Depends: ${python:Depends}, ${misc:Depends}, ${spinxdoc:Depends},
- python-virtualenv, bash-completion
+ python-virtualenv, bash-completion, libjs-sphinxdoc
 Description: extension to virtualenv for managing multiple virtual Python environments
  virtualenvwrapper is a set of extensions to Ian Bicking's virtualenv
  tool. The extensions include wrappers for creating and deleting

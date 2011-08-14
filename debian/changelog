@@ -8,7 +8,7 @@ virtualenvwrapper (2.8-1) UNRELEASED; urgency=low
        - remove Build-Depends python-support
        - bump Build-Depends python to 2.6.6-3~
        - bump Build-Depends python-spinx to 1.0.7+dfsg-1~
-       - add ${sphinxdoc:Depends} to Depends
+       - add ${sphinxdoc:Depends} and libjs-sphinxdoc to Depends
        - remove libjs-jquery from Depends
     - debian/rules:
        - add --with python2,sphinxdoc in debian/rules
