@@ -20,6 +20,7 @@ virtualenvwrapper (2.8-1) UNRELEASED; urgency=low
     - add /usr/share/doc/virtualenvwrapper/ja to debian/virtualenvwrapper.dirs
   * debian/rules: replace copies of sphinx's _static directory in ja and
     es with symlinks to en
+  * simplify sphinx build
 
  -- Jan Dittberner <jandd@debian.org>  Sun, 14 Aug 2011 16:20:24 +0200
 
