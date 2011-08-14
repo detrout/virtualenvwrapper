@@ -1,4 +1,4 @@
-virtualenvwrapper (2.8-1) UNRELEASED; urgency=low
+virtualenvwrapper (2.8-1) unstable; urgency=low
 
   * New upstream version.
   * refresh debian/patches/debianspecific-setup.py.patch
@@ -26,7 +26,7 @@ virtualenvwrapper (2.8-1) UNRELEASED; urgency=low
     debian/patches/remove_bitbucket_support.patch
   * don't compress .txt files, to enable sphinx doc search
 
- -- Jan Dittberner <jandd@debian.org>  Sun, 14 Aug 2011 16:20:24 +0200
+ -- Jan Dittberner <jandd@debian.org>  Sun, 14 Aug 2011 19:54:16 +0200
 
 virtualenvwrapper (2.7.1-1) unstable; urgency=low
 
