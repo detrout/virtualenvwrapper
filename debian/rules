@@ -11,12 +11,6 @@ override_dh_auto_install:
 		sphinx-build -b html -a -E -N -C -A project=virtualenvwrapper -D master_doc=index \
 		   debian/virtualenvwrapper/usr/share/doc/virtualenvwrapper/$$lang \
 		   debian/virtualenvwrapper/usr/share/doc/virtualenvwrapper/$$lang/html ; \
-		rm -rf \
-		  debian/virtualenvwrapper/usr/share/doc/virtualenvwrapper/$$lang/html/.doctrees \
-		  debian/virtualenvwrapper/usr/share/doc/virtualenvwrapper/$$lang/html/_sources \
-		  debian/virtualenvwrapper/usr/share/doc/virtualenvwrapper/$$lang/html/_static/jquery.js ; \
-		dh_link /usr/share/javascript/jquery.js \
-		  /usr/share/doc/virtualenvwrapper/$$lang/html/_static/jquery.js ; \
 	done
 	cp virtualenvwrapper.sh debian/virtualenvwrapper/etc/bash_completion.d/virtualenvwrapper
 	chmod 0644 debian/virtualenvwrapper/etc/bash_completion.d/virtualenvwrapper
@@ -29,4 +23,4 @@ override_dh_installchangelogs:
 	dh_installchangelogs docs/en/history.rst
 
 %:
-	dh $@
+	dh --with python2,sphinxdoc $@

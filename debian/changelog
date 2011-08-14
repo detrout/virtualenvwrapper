@@ -2,6 +2,18 @@ virtualenvwrapper (2.8-1) UNRELEASED; urgency=low
 
   * New upstream version.
   * refresh debian/patches/debianspecific-setup.py.patch
+  * debian/control: get rid of Build-Depends-Indep
+  * switch to dh_python2 and dh_sphinxdoc
+    - debian/control:
+       - remove Build-Depends python-support
+       - bump Build-Depends python to 2.6.6-3~
+       - bump Build-Depends python-spinx to 1.0.7+dfsg-1~
+       - add ${sphinxdoc:Depends} to Depends
+       - remove libjs-jquery from Depends
+    - debian/rules:
+       - add --with python2,sphinxdoc in debian/rules
+       - don't dh_link jquery.js
+       - don't remove _sources, .doctrees and jquery.js manually
 
  -- Jan Dittberner <jandd@debian.org>  Sun, 14 Aug 2011 16:20:24 +0200
 

@@ -2,9 +2,9 @@ Source: virtualenvwrapper
 Section: python
 Priority: optional
 Maintainer: Jan Dittberner <jandd@debian.org>
-Build-Depends: debhelper (>= 7.0.50)
-Build-Depends-Indep: python (>= 2.5.4-1~), python-sphinx (>= 0.6.1),
- python-support (>= 0.6.4), python-setuptools (>= 0.6b3)
+Build-Depends: debhelper (>= 7.0.50~)
+Build-Depends-Indep: python (>= 2.5.4-1~), python-sphinx (>= 1.0.7+dfsg-1~),
+ python-setuptools (>= 0.6b3)
 Standards-Version: 3.9.2
 Homepage: http://www.doughellmann.com/projects/virtualenvwrapper/
 Vcs-Git: git://git.debian.org/collab-maint/virtualenvwrapper.git
@@ -12,8 +12,8 @@ Vcs-Browser: http://git.debian.org/?p=collab-maint/virtualenvwrapper.git
 
 Package: virtualenvwrapper
 Architecture: all
-Depends: ${python:Depends}, ${misc:Depends}, python-virtualenv,
- bash-completion, libjs-jquery
+Depends: ${python:Depends}, ${misc:Depends}, ${spinxdoc:Depends},
+ python-virtualenv, bash-completion
 Description: extension to virtualenv for managing multiple virtual Python environments
  virtualenvwrapper is a set of extensions to Ian Bicking's virtualenv
  tool. The extensions include wrappers for creating and deleting
