@@ -1,6 +1,7 @@
 virtualenvwrapper (2.8-1) UNRELEASED; urgency=low
 
   * New upstream version.
+  * refresh debian/patches/debianspecific-setup.py.patch
 
  -- Jan Dittberner <jandd@debian.org>  Sun, 14 Aug 2011 16:20:24 +0200
 
