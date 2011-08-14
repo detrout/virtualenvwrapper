@@ -17,6 +17,8 @@ virtualenvwrapper (2.8-1) UNRELEASED; urgency=low
   * add japanese sphinx documentation
     - debian/rules: add ja to lang for loop
     - add debian/virtualenvwrapper.doc-base.ja
+  * debian/rules: replace copies of sphinx's _static directory in ja and
+    es with symlinks to en
 
  -- Jan Dittberner <jandd@debian.org>  Sun, 14 Aug 2011 16:20:24 +0200
 
