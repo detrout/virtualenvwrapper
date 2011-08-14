@@ -13,11 +13,11 @@ override_dh_auto_install:
 		   debian/virtualenvwrapper/usr/share/doc/virtualenvwrapper/$$lang/html ; \
 	done
 	for lang in es ja; do \
-		currentdir=$(pwd); \
+		currentdir=$$(pwd); \
 		cd debian/virtualenvwrapper/usr/share/doc/virtualenvwrapper/$$lang/html; \
 		rm -rf _static; \
 		ln -s ../../en/_static _static; \
-		cd "$currentdir"; \
+		cd "$$currentdir"; \
 	done
 	cp virtualenvwrapper.sh debian/virtualenvwrapper/etc/bash_completion.d/virtualenvwrapper
 	chmod 0644 debian/virtualenvwrapper/etc/bash_completion.d/virtualenvwrapper
