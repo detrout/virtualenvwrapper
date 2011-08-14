@@ -12,9 +12,9 @@ override_dh_auto_install:
 	done
 	for lang in es ja; do \
 		currentdir=$$(pwd); \
-		cd debian/virtualenvwrapper/usr/share/doc/virtualenvwrapper/$$lang/html; \
-		rm -rf _static; \
-		ln -s ../../en/html/_static .; \
+		cd debian/virtualenvwrapper/usr/share/doc/virtualenvwrapper/$$lang/html/_static; \
+		rm -rf *.png *.css; \
+		ln -s ../../../en/html/_static/*.png ../../../en/html/_static/*.css .; \
 		cd "$$currentdir"; \
 	done
 	cp virtualenvwrapper.sh debian/virtualenvwrapper/etc/bash_completion.d/virtualenvwrapper
