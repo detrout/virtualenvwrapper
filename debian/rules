@@ -6,8 +6,7 @@ override_dh_auto_clean:
 
 override_dh_auto_install:
 	for lang in en es ja; do \
-		sphinx-build -b html -a -E -N -C -A project=virtualenvwrapper \
-		   -D language=$$lang -D master_doc=index \
+		sphinx-build -b html -a -c docs/sphinx -D language=$$lang \
 		   docs/$$lang debian/virtualenvwrapper/usr/share/doc/virtualenvwrapper/$$lang/html; \
 	done
 	for lang in es ja; do \

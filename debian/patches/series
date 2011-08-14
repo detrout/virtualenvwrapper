@@ -1,1 +1,2 @@
 debianspecific-setup.py.patch
+remove_bitbucket_support.patch
