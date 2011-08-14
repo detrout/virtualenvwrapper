@@ -6,11 +6,13 @@ override_dh_auto_clean:
 
 override_dh_auto_install:
 	for lang in en es ja; do \
+		currentdir=$$(pwd); \
 		cp -R $(shell find docs/$$lang/ -name '*.rst' -printf "%p ") \
 		  debian/virtualenvwrapper/usr/share/doc/virtualenvwrapper/$$lang/ ; \
+		cd debian/virtualenvwrapper/usr/share/doc/virtualenvwrapper/$$lang ; \
 		sphinx-build -b html -a -E -N -C -A project=virtualenvwrapper -D master_doc=index \
-		   debian/virtualenvwrapper/usr/share/doc/virtualenvwrapper/$$lang \
-		   debian/virtualenvwrapper/usr/share/doc/virtualenvwrapper/$$lang/html ; \
+		   . html ; \
+        cd "$$currentdir" ; \
 	done
 	for lang in es ja; do \
 		currentdir=$$(pwd); \
