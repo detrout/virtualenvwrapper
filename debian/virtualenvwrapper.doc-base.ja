@@ -1,0 +1,10 @@
+Document: virtualenvwrapper-ja
+Title: Documentation for virtualenvwrapper (Japanese)
+Author: Doug Hellmann
+Abstract: This is the Japanese user documentation for virtualenvwrapper, a set
+ of extensions to Ian Bicking's virtualenv tool.
+Section: Programming/Python
+
+Format: HTML
+Index: /usr/share/doc/virtualenvwrapper/ja/html/index.html
+Files: /usr/share/doc/virtualenvwrapper/ja/html/*.html

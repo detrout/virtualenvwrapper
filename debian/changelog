@@ -14,6 +14,9 @@ virtualenvwrapper (2.8-1) UNRELEASED; urgency=low
        - add --with python2,sphinxdoc in debian/rules
        - don't dh_link jquery.js
        - don't remove _sources, .doctrees and jquery.js manually
+  * add japanese sphinx documentation
+    - debian/rules: add ja to lang for loop
+    - add debian/virtualenvwrapper.doc-base.ja
 
  -- Jan Dittberner <jandd@debian.org>  Sun, 14 Aug 2011 16:20:24 +0200
 
