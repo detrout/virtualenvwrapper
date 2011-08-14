@@ -27,5 +27,9 @@ override_dh_compress:
 override_dh_installchangelogs:
 	dh_installchangelogs docs/en/history.rst
 
+override_dh_link:
+	rm -f debian/virtualenvwrapper/usr/share/doc/virtualenvwrapper/en/html/_sources/history.txt
+	dh_link
+
 %:
 	dh --with python2,sphinxdoc $@
