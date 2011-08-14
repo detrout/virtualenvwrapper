@@ -24,7 +24,8 @@ virtualenvwrapper (2.8-1) UNRELEASED; urgency=low
     - simplify sphinx build and set language
   * use upstream sphinx configuration and remove bitbucket usage via
     debian/patches/remove_bitbucket_support.patch
-  * don't compress command_ref.txt, to enable sphinx doc search
+  * don't compress .txt files and changelog (copied history.txt), to enable
+    sphinx doc search
 
  -- Jan Dittberner <jandd@debian.org>  Sun, 14 Aug 2011 16:20:24 +0200
 
