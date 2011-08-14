@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Installation &mdash; virtualenvwrapper v2.7 documentation</title>
+    <title>Installation &mdash; virtualenvwrapper v2.7.1 documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '2.7',
+        VERSION:     '2.7.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -21,9 +21,9 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="virtualenvwrapper v2.7 documentation" href="index.html" />
+    <link rel="top" title="virtualenvwrapper v2.7.1 documentation" href="index.html" />
     <link rel="next" title="Command Reference" href="command_ref.html" />
-    <link rel="prev" title="virtualenvwrapper 2.7" href="index.html" /> 
+    <link rel="prev" title="virtualenvwrapper 2.7.1" href="index.html" /> 
   </head>
   <body>
     <div class="related">
@@ -33,9 +33,9 @@
           <a href="command_ref.html" title="Command Reference"
              accesskey="N">next</a></li>
         <li class="right" >
-          <a href="index.html" title="virtualenvwrapper 2.7"
+          <a href="index.html" title="virtualenvwrapper 2.7.1"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">virtualenvwrapper v2.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">virtualenvwrapper v2.7.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -62,7 +62,7 @@ from this page.</p>
 <p>virtualenvwrapper is tested under Python 2.4 - 2.7.</p>
 </div>
 <div class="section" id="basic-installation">
-<h2>Basic Installation<a class="headerlink" href="#basic-installation" title="Permalink to this headline">¶</a></h2>
+<span id="install-basic"></span><h2>Basic Installation<a class="headerlink" href="#basic-installation" title="Permalink to this headline">¶</a></h2>
 <p>virtualenvwrapper should be installed into the same global
 site-packages area where virtualenv is installed. You may need
 administrative privileges to do that.  The easiest way to install it
@@ -198,6 +198,24 @@ supported.  In your startup file, change <tt class="docutils literal"><span clas
 <span class="pre">/usr/local/bin/virtualenvwrapper_bashrc</span></tt> to <tt class="docutils literal"><span class="pre">source</span>
 <span class="pre">/usr/local/bin/virtualenvwrapper.sh</span></tt>.</p>
 </div>
+<div class="section" id="using-virtualenvwrapper-under-msys">
+<h2>Using virtualenvwrapper Under MSys<a class="headerlink" href="#using-virtualenvwrapper-under-msys" title="Permalink to this headline">¶</a></h2>
+<p>It is possible to use virtualenv wrapper under <a class="reference external" href="http://www.mingw.org/wiki/MSYS">MSYS</a> with a native Windows Python
+installation.  In order to make it work, you need to define an extra
+environment variable named <tt class="docutils literal"><span class="pre">MSYS_HOME</span></tt> containing the root path to
+the MSYS installation.</p>
+<div class="highlight-python"><pre>export WORKON_HOME=$HOME/.virtualenvs
+export MSYS_HOME=/c/msys/1.0
+source /usr/local/bin/virtualenvwrapper.sh</pre>
+</div>
+<p>or:</p>
+<div class="highlight-python"><pre>export WORKON_HOME=$HOME/.virtualenvs
+export MSYS_HOME=C:\msys\1.0
+source /usr/local/bin/virtualenvwrapper.sh</pre>
+</div>
+<p>Depending on your MSYS setup, you may need to install the <a class="reference external" href="http://sourceforge.net/projects/mingw/files/MSYS/mktemp/">MSYS mktemp
+binary</a> in the <tt class="docutils literal"><span class="pre">MSYS_HOME/bin</span></tt> folder.</p>
+</div>
 </div>
 
 
@@ -225,13 +243,14 @@ supported.  In your startup file, change <tt class="docutils literal"><span clas
 </ul>
 </li>
 <li><a class="reference internal" href="#upgrading-from-1-x">Upgrading from 1.x</a></li>
+<li><a class="reference internal" href="#using-virtualenvwrapper-under-msys">Using virtualenvwrapper Under MSys</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="index.html"
-                        title="previous chapter">virtualenvwrapper 2.7</a></p>
+                        title="previous chapter">virtualenvwrapper 2.7.1</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="command_ref.html"
                         title="next chapter">Command Reference</a></p>
@@ -264,9 +283,9 @@ supported.  In your startup file, change <tt class="docutils literal"><span clas
           <a href="command_ref.html" title="Command Reference"
              >next</a></li>
         <li class="right" >
-          <a href="index.html" title="virtualenvwrapper 2.7"
+          <a href="index.html" title="virtualenvwrapper 2.7.1"
              >previous</a> |</li>
-        <li><a href="index.html">virtualenvwrapper v2.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">virtualenvwrapper v2.7.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

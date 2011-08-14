@@ -237,6 +237,7 @@ tests/test_cd.sh
 tests/test_cp.sh
 tests/test_deactivate.sh
 tests/test_derive_workon_home.sh
+tests/test_dir_stack.sh
 tests/test_hook_dir.sh
 tests/test_log_dir.sh
 tests/test_ls.sh

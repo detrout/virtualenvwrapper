@@ -56,6 +56,15 @@ then
     VIRTUALENVWRAPPER_VIRTUALENV="virtualenv"
 fi
 
+# Define script folder depending on the platorm (Win32/Unix)
+VIRTUALENVWRAPPER_ENV_BIN_DIR="bin"
+if [ "$OS" = "Windows_NT" ] && [ "$MSYSTEM" = "MINGW32" ]
+then
+	# Only assign this for msys, cygwin use standard Unix paths
+	# and its own python installation 
+	VIRTUALENVWRAPPER_ENV_BIN_DIR="Scripts"
+fi
+
 virtualenvwrapper_derive_workon_home() {
     typeset workon_home_dir="$WORKON_HOME"
 
@@ -133,6 +142,11 @@ virtualenvwrapper_run_hook () {
         echo "ERROR: Could not create temporary file name. Make sure TMPDIR is set." 1>&2
         return 1
     fi
+    if [ -z "$VIRTUALENVWRAPPER_LOG_DIR" ]
+    then
+        echo "ERROR: VIRTUALENVWRAPPER_LOG_DIR is not set." 1>&2
+        return 1
+    fi
     "$VIRTUALENVWRAPPER_PYTHON" -c 'from virtualenvwrapper.hook_loader import main; main()' $HOOK_VERBOSE_OPTION --script "$hook_script" "$@"
     result=$?
     
@@ -147,6 +161,44 @@ virtualenvwrapper_run_hook () {
     fi
     \rm -f "$hook_script" >/dev/null 2>&1
     return $result
+}
+
+# Set up tab completion.  (Adapted from Arthur Koziel's version at 
+# http://arthurkoziel.com/2008/10/11/virtualenvwrapper-bash-completion/)
+virtualenvwrapper_setup_tab_completion () {
+    if [ -n "$BASH" ] ; then
+        _virtualenvs () {
+            local cur="${COMP_WORDS[COMP_CWORD]}"
+            COMPREPLY=( $(compgen -W "`virtualenvwrapper_show_workon_options`" -- ${cur}) )
+        }
+        _cdvirtualenv_complete () {
+            local cur="$2"
+            COMPREPLY=( $(cdvirtualenv && compgen -d -- "${cur}" ) )
+        }
+        _cdsitepackages_complete () {
+            local cur="$2"
+            COMPREPLY=( $(cdsitepackages && compgen -d -- "${cur}" ) )
+        }
+        complete -o nospace -F _cdvirtualenv_complete -S/ cdvirtualenv
+        complete -o nospace -F _cdsitepackages_complete -S/ cdsitepackages
+        complete -o default -o nospace -F _virtualenvs workon
+        complete -o default -o nospace -F _virtualenvs rmvirtualenv
+        complete -o default -o nospace -F _virtualenvs cpvirtualenv
+        complete -o default -o nospace -F _virtualenvs showvirtualenv
+    elif [ -n "$ZSH_VERSION" ] ; then
+        _virtualenvs () {
+            reply=( $(virtualenvwrapper_show_workon_options) )
+        }
+        _cdvirtualenv_complete () {
+            reply=( $(cdvirtualenv && ls -d ${1}*) )
+        }
+        _cdsitepackages_complete () {
+            reply=( $(cdsitepackages && ls -d ${1}*) )
+        }
+        compctl -K _virtualenvs workon rmvirtualenv cpvirtualenv showvirtualenv 
+        compctl -K _cdvirtualenv_complete cdvirtualenv
+        compctl -K _cdsitepackages_complete cdsitepackages
+    fi
 }
 
 # Set up virtualenvwrapper properly
@@ -173,7 +225,11 @@ virtualenvwrapper_initialize () {
         echo "virtualenvwrapper.sh: There was a problem running the initialization hooks. If Python could not import the module virtualenvwrapper.hook_loader, check that virtualenv has been installed for VIRTUALENVWRAPPER_PYTHON=$VIRTUALENVWRAPPER_PYTHON and that PATH is set properly." 1>&2
         return 1
     fi
+
+    virtualenvwrapper_setup_tab_completion
+
 }
+
 
 # Verify that virtualenv is installed and visible
 virtualenvwrapper_verify_virtualenv () {
@@ -221,11 +277,13 @@ mkvirtualenv () {
     eval "envname=\$$#"
     virtualenvwrapper_verify_workon_home || return 1
     virtualenvwrapper_verify_virtualenv || return 1
-    (cd "$WORKON_HOME" &&
+    (
+        [ -n "$ZSH_VERSION" ] && setopt SH_WORD_SPLIT
+        \cd "$WORKON_HOME" &&
         "$VIRTUALENVWRAPPER_VIRTUALENV" $VIRTUALENVWRAPPER_VIRTUALENV_ARGS "$@" &&
         [ -d "$WORKON_HOME/$envname" ] && \
             virtualenvwrapper_run_hook "pre_mkvirtualenv" "$envname"
-        )
+    )
     typeset RC=$?
     [ $RC -ne 0 ] && return $RC
 
@@ -258,7 +316,7 @@ rmvirtualenv () {
     # Move out of the current directory to one known to be
     # safe, in case we are inside the environment somewhere.
     typeset prior_dir="$(pwd)"
-    cd "$WORKON_HOME"
+    \cd "$WORKON_HOME"
 
     virtualenvwrapper_run_hook "pre_rmvirtualenv" "$env_name"
     \rm -rf "$env_dir"
@@ -267,7 +325,7 @@ rmvirtualenv () {
     # If the directory we used to be in still exists, move back to it.
     if [ -d "$prior_dir" ]
     then
-        cd "$prior_dir"
+        \cd "$prior_dir"
     fi
 }
 
@@ -277,9 +335,9 @@ virtualenvwrapper_show_workon_options () {
     # NOTE: DO NOT use ls here because colorized versions spew control characters
     #       into the output list.
     # echo seems a little faster than find, even with -depth 3.
-    (cd "$WORKON_HOME"; for f in */bin/activate; do echo $f; done) 2>/dev/null | \sed 's|^\./||' | \sed 's|/bin/activate||' | \sort | (unset GREP_OPTIONS; \egrep -v '^\*$')
-    
-#    (cd "$WORKON_HOME"; find -L . -depth 3 -path '*/bin/activate') | sed 's|^\./||' | sed 's|/bin/activate||' | sort
+    (\cd "$WORKON_HOME"; for f in */$VIRTUALENVWRAPPER_ENV_BIN_DIR/activate; do echo $f; done) 2>/dev/null | \sed 's|^\./||' | \sed "s|/$VIRTUALENVWRAPPER_ENV_BIN_DIR/activate||" | \sort | (unset GREP_OPTIONS; \egrep -v '^\*$')
+
+#    (\cd "$WORKON_HOME"; find -L . -depth 3 -path '*/bin/activate') | sed 's|^\./||' | sed 's|/bin/activate||' | sort
 }
 
 _lsvirtualenv_usage () {
@@ -293,23 +351,43 @@ _lsvirtualenv_usage () {
 #
 # Usage: lsvirtualenv [-l]
 lsvirtualenv () {
-    typeset -a args
-    args=($(getopt blh "$@"))
-    if [ $? != 0 ]
-    then
-        _lsvirtualenv_usage
-        return 1
-    fi
+    
     typeset long_mode=true
-    for opt in $args
-    do
-        case "$opt" in
-            -l) long_mode=true;;
-            -b) long_mode=false;;
-            -h) _lsvirtualenv_usage;
-                return 1;;
-        esac
-    done
+    if command -v "getopts" &> /dev/null 
+    then
+		# Use getopts when possible
+    	OPTIND=1
+		while getopts ":blh" opt "$@"
+		do
+			case "$opt" in
+				l) long_mode=true;;
+				b) long_mode=false;;
+				h)  _lsvirtualenv_usage;
+					return 1;;
+				?) echo "Invalid option: -$OPTARG" >&2;
+					_lsvirtualenv_usage;
+					return 1;;
+			esac
+		done
+    else
+    	# fallback on getopt for other shell
+	    typeset -a args
+	    args=($(getopt blh "$@"))
+	    if [ $? != 0 ]
+	    then
+	        _lsvirtualenv_usage
+	        return 1
+	    fi
+	    for opt in $args
+	    do
+	        case "$opt" in
+	            -l) long_mode=true;;
+	            -b) long_mode=false;;
+	            -h) _lsvirtualenv_usage;
+	                return 1;;
+	        esac
+	    done
+    fi
 
     if $long_mode
     then
@@ -357,7 +435,7 @@ workon () {
     virtualenvwrapper_verify_workon_home || return 1
     virtualenvwrapper_verify_workon_environment $env_name || return 1
     
-    activate="$WORKON_HOME/$env_name/bin/activate"
+    activate="$WORKON_HOME/$env_name/$VIRTUALENVWRAPPER_ENV_BIN_DIR/activate"
     if [ ! -f "$activate" ]
     then
         echo "ERROR: Environment '$WORKON_HOME/$env_name' does not contain an activate script." >&2
@@ -390,7 +468,7 @@ workon () {
         # any settings made by the local postactivate first.
         virtualenvwrapper_run_hook "pre_deactivate"
         
-        env_postdeactivate_hook="$VIRTUAL_ENV/bin/postdeactivate"
+        env_postdeactivate_hook="$VIRTUAL_ENV/$VIRTUALENVWRAPPER_ENV_BIN_DIR/postdeactivate"
         old_env=$(basename "$VIRTUAL_ENV")
         
         # Call the original function.
@@ -412,40 +490,6 @@ workon () {
 	return 0
 }
 
-
-#
-# Set up tab completion.  (Adapted from Arthur Koziel's version at 
-# http://arthurkoziel.com/2008/10/11/virtualenvwrapper-bash-completion/)
-# 
-
-if [ -n "$BASH" ] ; then
-    _virtualenvs ()
-    {
-        local cur="${COMP_WORDS[COMP_CWORD]}"
-        COMPREPLY=( $(compgen -W "`virtualenvwrapper_show_workon_options`" -- ${cur}) )
-    }
-
-
-    _cdvirtualenv_complete ()
-    {
-        local cur="$2"
-        # COMPREPLY=( $(compgen -d -- "${VIRTUAL_ENV}/${cur}" | sed -e "s@${VIRTUAL_ENV}/@@" ) )
-        COMPREPLY=( $(cdvirtualenv && compgen -d -- "${cur}" ) )
-    }
-    _cdsitepackages_complete ()
-    {
-        local cur="$2"
-        COMPREPLY=( $(cdsitepackages && compgen -d -- "${cur}" ) )
-    }
-    complete -o nospace -F _cdvirtualenv_complete -S/ cdvirtualenv
-    complete -o nospace -F _cdsitepackages_complete -S/ cdsitepackages
-    complete -o default -o nospace -F _virtualenvs workon
-    complete -o default -o nospace -F _virtualenvs rmvirtualenv
-    complete -o default -o nospace -F _virtualenvs cpvirtualenv
-    complete -o default -o nospace -F _virtualenvs showvirtualenv
-elif [ -n "$ZSH_VERSION" ] ; then
-    compctl -g "`virtualenvwrapper_show_workon_options`" workon rmvirtualenv cpvirtualenv showvirtualenv
-fi
 
 # Prints the Python version string for the current interpreter.
 virtualenvwrapper_get_python_version () {
@@ -517,14 +561,14 @@ cdsitepackages () {
     virtualenvwrapper_verify_workon_home || return 1
     virtualenvwrapper_verify_active_environment || return 1
     typeset site_packages="`virtualenvwrapper_get_site_packages_dir`"
-    cd "$site_packages"/$1
+    \cd "$site_packages"/$1
 }
 
 # Does a ``cd`` to the root of the currently-active virtualenv.
 cdvirtualenv () {
     virtualenvwrapper_verify_workon_home || return 1
     virtualenvwrapper_verify_active_environment || return 1
-    cd $VIRTUAL_ENV/$1
+    \cd $VIRTUAL_ENV/$1
 }
 
 # Shows the content of the site-packages directory of the currently-active
@@ -589,7 +633,7 @@ cpvirtualenv() {
     fi
 
     \cp -r "$source_env" "$target_env"
-    for script in $( \ls $target_env/bin/* )
+    for script in $( \ls $target_env/$VIRTUALENVWRAPPER_ENV_BIN_DIR/* )
     do
         newscript="$script-new"
         \sed "s|$source_env|$target_env|g" < "$script" > "$newscript"
@@ -597,10 +641,10 @@ cpvirtualenv() {
         \chmod a+x "$script"
     done
 
-    virtualenv "$target_env" --relocatable
-    \sed "s/VIRTUAL_ENV\(.*\)$env_name/VIRTUAL_ENV\1$new_env/g" < "$source_env/bin/activate" > "$target_env/bin/activate"
+    "$VIRTUALENVWRAPPER_VIRTUALENV" "$target_env" --relocatable
+    \sed "s/VIRTUAL_ENV\(.*\)$env_name/VIRTUAL_ENV\1$new_env/g" < "$source_env/$VIRTUALENVWRAPPER_ENV_BIN_DIR/activate" > "$target_env/$VIRTUALENVWRAPPER_ENV_BIN_DIR/activate"
 
-    (cd "$WORKON_HOME" && ( 
+    (\cd "$WORKON_HOME" && ( 
         virtualenvwrapper_run_hook "pre_cpvirtualenv" "$env_name" "$new_env";
         virtualenvwrapper_run_hook "pre_mkvirtualenv" "$new_env"
         ))

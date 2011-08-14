@@ -43,6 +43,20 @@ test_virtual_env_variable () {
     assertTrue "$WORKON_HOME not in $VIRTUAL_ENV" "echo $VIRTUAL_ENV | grep -q $WORKON_HOME"
 }
 
+fake_virtualenv () {
+    typeset envname="$1"
+    touch "$envname/fake_virtualenv_was_here"
+    virtualenv $@
+}
+
+test_virtualenvwrapper_virtualenv_variable () {
+    mkvirtualenv "source"
+    export VIRTUALENVWRAPPER_VIRTUALENV=fake_virtualenv
+    cpvirtualenv "source" "destination"
+    unset VIRTUALENVWRAPPER_VIRTUALENV
+    assertTrue "wrapper was not run" "[ -f $VIRTUAL_ENV/fake_virtualenv_was_here ]"
+}
+
 test_source_relocatable () {
     mkvirtualenv "source"
     (cd tests/testpackage && python setup.py install) >/dev/null 2>&1
@@ -94,6 +108,25 @@ GLOBAL postcpvirtualenv"
 
     rm -f "$WORKON_HOME/premkvirtualenv"
     rm -f "$WORKON_HOME/postmkvirtualenv"
+}
+
+test_no_site_packages () {
+    # See issue #102
+    mkvirtualenv "source" --no-site-packages >/dev/null 2>&1
+    cpvirtualenv "source" "destination"
+    ngsp_file="`virtualenvwrapper_get_site_packages_dir`/../no-global-site-packages.txt"
+    assertTrue "$ngsp_file does not exist in copied env" "[ -f \"$ngsp_file\" ]"
+}
+
+test_no_site_packages_default_args () {
+    # See issue #102
+    VIRTUALENVWRAPPER_VIRTUALENV_ARGS="--no-site-packages"
+    # With the argument, verify that they are not copied.
+    mkvirtualenv "source" >/dev/null 2>&1
+    cpvirtualenv "source" "destination"
+    ngsp_file="`virtualenvwrapper_get_site_packages_dir`/../no-global-site-packages.txt"
+    assertTrue "$ngsp_file does not exist" "[ -f \"$ngsp_file\" ]"
+    unset VIRTUALENVWRAPPER_VIRTUALENV_ARGS
 }
 
 . "$test_dir/shunit2"

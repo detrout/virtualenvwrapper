@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Release History &mdash; virtualenvwrapper v2.7 documentation</title>
+    <title>Release History &mdash; virtualenvwrapper v2.7.1 documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '2.7',
+        VERSION:     '2.7.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -21,7 +21,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="virtualenvwrapper v2.7 documentation" href="index.html" />
+    <link rel="top" title="virtualenvwrapper v2.7.1 documentation" href="index.html" />
     <link rel="prev" title="Existing Extensions" href="extensions.html" /> 
   </head>
   <body>
@@ -31,7 +31,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="extensions.html" title="Existing Extensions"
              accesskey="P">previous</a></li>
-        <li><a href="index.html">virtualenvwrapper v2.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">virtualenvwrapper v2.7.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -42,6 +42,36 @@
             
   <div class="section" id="release-history">
 <h1>Release History<a class="headerlink" href="#release-history" title="Permalink to this headline">¶</a></h1>
+<p>dev</p>
+<blockquote>
+<ul class="simple">
+<li>Use VIRTUALENVWRAPPER_VIRTUALENV in <cite>cpvirtualenv</cite> (<a class="reference external" href="http://bitbucket.org/dhellmann/virtualenvwrapper/issue/104/">issue 104</a>).</li>
+<li>Add support for <a class="reference external" href="http://www.mingw.org/wiki/MSYS">MSYS</a>
+environment under Windows. Contributed by Axel
+H. (<a class="reference external" href="https://bitbucket.org/noirbizarre">noirbizarre</a>).</li>
+</ul>
+</blockquote>
+<p>2.7.2</p>
+<blockquote>
+<ul class="simple">
+<li>Move setup code for tab completion later in the startup code so
+all of the needed variables are configured. (<a class="reference external" href="http://bitbucket.org/dhellmann/virtualenvwrapper/issue/97/">issue 97</a>)</li>
+<li>Expand tab completion for zsh to work for all commands.</li>
+</ul>
+</blockquote>
+<p>2.7.1</p>
+<blockquote>
+<ul class="simple">
+<li>When testing for WORKON_HOME during startup, dereference any
+symlink to make sure it is a directory.</li>
+<li>Set VIRTUALENVWRAPPER_HOOK_DIR and VIRTUALENV_WRAPPER_LOG DIR in
+virtualenvwrapper_initialize after WORKON_HOME is set
+(<a class="reference external" href="http://bitbucket.org/dhellmann/virtualenvwrapper/issue/94/">issue 94</a>).</li>
+<li>Update the <a class="reference internal" href="install.html#install-basic"><em>Basic Installation</em></a> instructions to be more explicit
+about needing to install virtualenvwrapper globally (or at least
+outside of a virtualenv).</li>
+</ul>
+</blockquote>
 <p>2.7</p>
 <blockquote>
 <ul class="simple">
@@ -511,7 +541,7 @@ by James Bennett and Jannis Leidel.</li>
         <li class="right" style="margin-right: 10px">
           <a href="extensions.html" title="Existing Extensions"
              >previous</a></li>
-        <li><a href="index.html">virtualenvwrapper v2.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">virtualenvwrapper v2.7.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

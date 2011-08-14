@@ -2,6 +2,19 @@
 Release History
 ===============
 
+2.8
+
+  - Use VIRTUALENVWRAPPER_VIRTUALENV in `cpvirtualenv` (:bbissue:`104`).
+  - Add support for `MSYS <http://www.mingw.org/wiki/MSYS>`_
+    environment under Windows. Contributed by Axel
+    H. (:bbuser:`noirbizarre`).
+
+2.7.2
+
+  - Move setup code for tab completion later in the startup code so
+    all of the needed variables are configured. (:bbissue:`97`)
+  - Expand tab completion for zsh to work for all commands.
+
 2.7.1
 
   - When testing for WORKON_HOME during startup, dereference any
