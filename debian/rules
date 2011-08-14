@@ -21,14 +21,10 @@ override_dh_auto_install:
 	dh_auto_install
 
 override_dh_compress:
-	dh_compress -i -X.rst -X.js -X.html -X.txt -Xchangelog changelog.Debian
+	dh_compress -i -X.rst -X.js -X.html -X.txt
 
 override_dh_installchangelogs:
 	dh_installchangelogs docs/en/history.rst
-
-override_dh_link:
-	rm -f debian/virtualenvwrapper/usr/share/doc/virtualenvwrapper/en/html/_sources/history.txt
-	dh_link
 
 %:
 	dh --with python2,sphinxdoc $@
