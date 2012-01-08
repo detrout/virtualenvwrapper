@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Installation &mdash; virtualenvwrapper v2.7.1 documentation</title>
+    <title>Installation &mdash; virtualenvwrapper v2.11.1 documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '2.7.1',
+        VERSION:     '2.11.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -21,9 +21,9 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="virtualenvwrapper v2.7.1 documentation" href="index.html" />
+    <link rel="top" title="virtualenvwrapper v2.11.1 documentation" href="index.html" />
     <link rel="next" title="Command Reference" href="command_ref.html" />
-    <link rel="prev" title="virtualenvwrapper 2.7.1" href="index.html" /> 
+    <link rel="prev" title="virtualenvwrapper 2.11.1" href="index.html" /> 
   </head>
   <body>
     <div class="related">
@@ -33,9 +33,9 @@
           <a href="command_ref.html" title="Command Reference"
              accesskey="N">next</a></li>
         <li class="right" >
-          <a href="index.html" title="virtualenvwrapper 2.7.1"
+          <a href="index.html" title="virtualenvwrapper 2.11.1"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">virtualenvwrapper v2.7.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">virtualenvwrapper v2.11.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -49,13 +49,45 @@
 <div class="section" id="supported-shells">
 <span id="id1"></span><h2>Supported Shells<a class="headerlink" href="#supported-shells" title="Permalink to this headline">¶</a></h2>
 <p>virtualenvwrapper is a set of shell <em>functions</em> defined in Bourne
-shell compatible syntax.  It is tested under <cite>bash</cite>, <cite>ksh</cite>, and <cite>zsh</cite>.
-It may work with other shells, so if you find that it does work with a
+shell compatible syntax.  Its automated tests run under these
+shells on OS X and Linux:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">bash</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">ksh</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">zsh</span></tt></li>
+</ul>
+<p>It may work with other shells, so if you find that it does work with a
 shell not listed here please let me know.  If you can modify it to
-work with another shell, without completely rewriting it, send a pull
-request through the bitbucket project page.  If you write a clone to
+work with another shell without completely rewriting it, then send a pull
+request through the <a class="reference external" href="https://bitbucket.org/dhellmann/virtualenvwrapper/">bitbucket project page</a>.  If you write a clone to
 work with an incompatible shell, let me know and I will link to it
 from this page.</p>
+<div class="section" id="msys">
+<h3>MSYS<a class="headerlink" href="#msys" title="Permalink to this headline">¶</a></h3>
+<p>It is possible to use virtualenv wrapper under <a class="reference external" href="http://www.mingw.org/wiki/MSYS">MSYS</a> with a native Windows Python
+installation.  In order to make it work, you need to define an extra
+environment variable named <tt class="docutils literal"><span class="pre">MSYS_HOME</span></tt> containing the root path to
+the MSYS installation.</p>
+<div class="highlight-python"><pre>export WORKON_HOME=$HOME/.virtualenvs
+export MSYS_HOME=/c/msys/1.0
+source /usr/local/bin/virtualenvwrapper.sh</pre>
+</div>
+<p>or:</p>
+<div class="highlight-python"><pre>export WORKON_HOME=$HOME/.virtualenvs
+export MSYS_HOME=C:\msys\1.0
+source /usr/local/bin/virtualenvwrapper.sh</pre>
+</div>
+<p>Depending on your MSYS setup, you may need to install the <a class="reference external" href="http://sourceforge.net/projects/mingw/files/MSYS/mktemp/">MSYS mktemp
+binary</a> in the <tt class="docutils literal"><span class="pre">MSYS_HOME/bin</span></tt> folder.</p>
+</div>
+<div class="section" id="powershell">
+<h3>PowerShell<a class="headerlink" href="#powershell" title="Permalink to this headline">¶</a></h3>
+<p>Guillermo López-Anglada has ported virtualenvwrapper to run under
+Microsoft&#8217;s PowerShell. We have agreed that since it is not compatible
+with the rest of the extensions, and is largely a re-implementation
+(rather than an adaptation), it should be distributed separately. You
+can download <a class="reference external" href="http://pypi.python.org/pypi/virtualenvwrapper-powershell/2.7.1">virtualenvwrapper-powershell</a> from PyPI.</p>
+</div>
 </div>
 <div class="section" id="python-versions">
 <span id="supported-versions"></span><h2>Python Versions<a class="headerlink" href="#python-versions" title="Permalink to this headline">¶</a></h2>
@@ -88,10 +120,12 @@ add it to <a class="reference external" href="http://docs.python.org/install/ind
 </div>
 <div class="section" id="shell-startup-file">
 <span id="install-shell-config"></span><h2>Shell Startup File<a class="headerlink" href="#shell-startup-file" title="Permalink to this headline">¶</a></h2>
-<p>Add two lines to your shell startup file (<tt class="docutils literal"><span class="pre">.bashrc</span></tt>, <tt class="docutils literal"><span class="pre">.profile</span></tt>,
-etc.) to set the location where the virtual environments should live
-and the location of the script installed with this package:</p>
+<p>Add three lines to your shell startup file (<tt class="docutils literal"><span class="pre">.bashrc</span></tt>, <tt class="docutils literal"><span class="pre">.profile</span></tt>,
+etc.) to set the location where the virtual environments should live,
+the location of your development project directorkes, and the location
+of the script installed with this package:</p>
 <div class="highlight-python"><pre>export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Devel
 source /usr/local/bin/virtualenvwrapper.sh</pre>
 </div>
 <p>After editing it, reload the startup file (e.g., run <tt class="docutils literal"><span class="pre">source</span>
@@ -114,17 +148,47 @@ source /usr/local/bin/virtualenvwrapper.sh</pre>
 variables. Set the variables in your shell startup file <em>before</em>
 loading <tt class="docutils literal"><span class="pre">virtualenvwrapper.sh</span></tt>.</p>
 <div class="section" id="location-of-environments">
-<h3>Location of Environments<a class="headerlink" href="#location-of-environments" title="Permalink to this headline">¶</a></h3>
+<span id="variable-workon-home"></span><h3>Location of Environments<a class="headerlink" href="#location-of-environments" title="Permalink to this headline">¶</a></h3>
 <p>The variable <tt class="docutils literal"><span class="pre">WORKON_HOME</span></tt> tells virtualenvwrapper where to place
 your virtual environments.  The default is <tt class="docutils literal"><span class="pre">$HOME/.virtualenvs</span></tt>. If
 the directory does not exist when virtualenvwrapper is loaded, it will
 be created automatically.</p>
+</div>
+<div class="section" id="location-of-project-directories">
+<span id="variable-project-home"></span><h3>Location of Project Directories<a class="headerlink" href="#location-of-project-directories" title="Permalink to this headline">¶</a></h3>
+<p>The variable <tt class="docutils literal"><span class="pre">PROJECT_HOME</span></tt> tells virtualenvwrapper where to place
+your project working directories.  The variable must be set and the
+directory created before <a class="reference internal" href="command_ref.html#command-mkproject"><em>mkproject</em></a> is used.</p>
+<div class="admonition-see-also admonition seealso">
+<p class="first admonition-title">See also</p>
+<ul class="last simple">
+<li><a class="reference internal" href="projects.html#project-management"><em>Project Management</em></a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="project-linkage-filename">
+<span id="variable-virtualenvwrapper-project-filename"></span><h3>Project Linkage Filename<a class="headerlink" href="#project-linkage-filename" title="Permalink to this headline">¶</a></h3>
+<p>The variable <tt class="docutils literal"><span class="pre">VIRTUALENVWRAPPER_PROJECT_FILENAME</span></tt> tells
+virtualenvwrapper how to name the file linking a virtualenv to a
+project working directory. The default is <tt class="docutils literal"><span class="pre">.project</span></tt>.</p>
+<div class="admonition-see-also admonition seealso">
+<p class="first admonition-title">See also</p>
+<ul class="last simple">
+<li><a class="reference internal" href="projects.html#project-management"><em>Project Management</em></a></li>
+</ul>
+</div>
 </div>
 <div class="section" id="location-of-hook-scripts">
 <span id="variable-virtualenvwrapper-hook-dir"></span><h3>Location of Hook Scripts<a class="headerlink" href="#location-of-hook-scripts" title="Permalink to this headline">¶</a></h3>
 <p>The variable <tt class="docutils literal"><span class="pre">VIRTUALENVWRAPPER_HOOK_DIR</span></tt> tells virtualenvwrapper
 where the <a class="reference internal" href="scripts.html#scripts"><em>user-defined hooks</em></a> should be placed. The
 default is <tt class="docutils literal"><span class="pre">$WORKON_HOME</span></tt>.</p>
+<div class="admonition-see-also admonition seealso">
+<p class="first admonition-title">See also</p>
+<ul class="last simple">
+<li><a class="reference internal" href="scripts.html#scripts"><em>Per-User Customization</em></a></li>
+</ul>
+</div>
 </div>
 <div class="section" id="location-of-hook-logs">
 <span id="variable-virtualenvwrapper-log-dir"></span><h3>Location of Hook Logs<a class="headerlink" href="#location-of-hook-logs" title="Permalink to this headline">¶</a></h3>
@@ -190,6 +254,12 @@ cannot disable it. Refer to the documentation for the shell to
 identify the appropriate file to edit.</p>
 </div>
 </div>
+<div class="section" id="upgrading-to-2-9">
+<h2>Upgrading to 2.9<a class="headerlink" href="#upgrading-to-2-9" title="Permalink to this headline">¶</a></h2>
+<p>Version 2.9 includes the features previously delivered separately by
+<tt class="docutils literal"><span class="pre">virtualenvwrapper.project</span></tt>.  If you have an older verison of the
+project extensions installed, remove them before upgrading.</p>
+</div>
 <div class="section" id="upgrading-from-1-x">
 <h2>Upgrading from 1.x<a class="headerlink" href="#upgrading-from-1-x" title="Permalink to this headline">¶</a></h2>
 <p>The shell script containing the wrapper functions has been renamed in
@@ -209,13 +279,19 @@ supported.  In your startup file, change <tt class="docutils literal"><span clas
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Installation</a><ul>
-<li><a class="reference internal" href="#supported-shells">Supported Shells</a></li>
+<li><a class="reference internal" href="#supported-shells">Supported Shells</a><ul>
+<li><a class="reference internal" href="#msys">MSYS</a></li>
+<li><a class="reference internal" href="#powershell">PowerShell</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#python-versions">Python Versions</a></li>
 <li><a class="reference internal" href="#basic-installation">Basic Installation</a></li>
 <li><a class="reference internal" href="#shell-startup-file">Shell Startup File</a></li>
 <li><a class="reference internal" href="#quick-start">Quick-Start</a></li>
 <li><a class="reference internal" href="#configuration">Configuration</a><ul>
 <li><a class="reference internal" href="#location-of-environments">Location of Environments</a></li>
+<li><a class="reference internal" href="#location-of-project-directories">Location of Project Directories</a></li>
+<li><a class="reference internal" href="#project-linkage-filename">Project Linkage Filename</a></li>
 <li><a class="reference internal" href="#location-of-hook-scripts">Location of Hook Scripts</a></li>
 <li><a class="reference internal" href="#location-of-hook-logs">Location of Hook Logs</a></li>
 <li><a class="reference internal" href="#python-interpreter-virtualenv-and-path">Python Interpreter, virtualenv, and $PATH</a></li>
@@ -224,6 +300,7 @@ supported.  In your startup file, change <tt class="docutils literal"><span clas
 <li><a class="reference internal" href="#site-wide-configuration">Site-wide Configuration</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#upgrading-to-2-9">Upgrading to 2.9</a></li>
 <li><a class="reference internal" href="#upgrading-from-1-x">Upgrading from 1.x</a></li>
 </ul>
 </li>
@@ -231,7 +308,7 @@ supported.  In your startup file, change <tt class="docutils literal"><span clas
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="index.html"
-                        title="previous chapter">virtualenvwrapper 2.7.1</a></p>
+                        title="previous chapter">virtualenvwrapper 2.11.1</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="command_ref.html"
                         title="next chapter">Command Reference</a></p>
@@ -264,9 +341,9 @@ supported.  In your startup file, change <tt class="docutils literal"><span clas
           <a href="command_ref.html" title="Command Reference"
              >next</a></li>
         <li class="right" >
-          <a href="index.html" title="virtualenvwrapper 2.7.1"
+          <a href="index.html" title="virtualenvwrapper 2.11.1"
              >previous</a> |</li>
-        <li><a href="index.html">virtualenvwrapper v2.7.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">virtualenvwrapper v2.11.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

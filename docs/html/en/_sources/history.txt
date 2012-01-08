@@ -2,7 +2,53 @@
 Release History
 ===============
 
-dev
+2.11
+
+  - Add ``-a`` option to :ref:`command-mkvirtualenv` to associate a
+    new virtualenv with an existing project directory. Contributed by
+    Mike Fogel (:bbuser:`mfogel`).
+  - Drops support for Python 2.4 and 2.5. The tools may still work,
+    but I no longer have a development environment set up for testing
+    them, so I do not officially support them.
+  - Shortcut initialization if it has run before.
+  - Set hook log file permissions to be group-writable. (:bbissue:`62`
+    reported by :bbuser:`hedgeddown`)
+  - Add ``VIRTUALENVWRAPPER_PROJECT_FILENAME`` variable so the
+    ``.project`` file used to link a virtualenv to a project can be
+    renamed to avoid conflicts with other tools. (:bbissue:`120`
+    reported by :bbuser:`arthuralvim`)
+
+2.10.1
+
+  - Changed arguments to :ref:`command-mktmpenv` so it always creates
+    an environment name for you. (:bbissue:`114` reported by
+    :bbuser:`alex_gaynor`)
+
+2.10
+
+  - Incorporated patch to add ``-d`` option to
+    :ref:`command-add2virtualenv`, contributed by :bbuser:`miracle2k`.
+  - Add ``-i`` option to :ref:`command-mkvirtualenv`.
+  - Add :ref:`command-mktmpenv` command for creating temporary
+    environments that are automatically removed when they are
+    deactivated.
+  - Fixed a problem with hook_loader that prevented it from working
+    under Python 2.5 and 2.4.
+  - Fix a problem with the way template names were processed under
+    zsh. (:bbissue:`111`)
+
+2.9
+
+  - Change the shell function shell definition syntax so that ksh will
+    treat typeset-declared variables as local. No kidding.
+  - Merge the "project directory" features of the
+    ``virtualenvwrapper.project`` plugin into the main project, adding
+    :ref:`command-mkproject`, :ref:`command-cdproject`, and
+    :ref:`command-setvirtualenvproject` commands.
+  - Add ``-r`` option to :ref:`command-mkvirtualenv` to install
+    dependencies using a pip requirements file.
+
+2.8
 
   - Use VIRTUALENVWRAPPER_VIRTUALENV in `cpvirtualenv` (:bbissue:`104`).
   - Add support for `MSYS <http://www.mingw.org/wiki/MSYS>`_
