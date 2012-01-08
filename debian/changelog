@@ -1,11 +1,11 @@
-virtualenvwrapper (2.11.1-1) UNRELEASED; urgency=low
+virtualenvwrapper (2.11.1-1) unstable; urgency=low
 
   * New upstream version.
   * refresh debian/patches/debianspecific-setup.py.patch and
     debian/patches/remove_bitbucket_support.patch
   * update debian/copyright format and copyright years
 
- -- Jan Dittberner <jandd@debian.org>  Sun, 08 Jan 2012 17:50:39 +0100
+ -- Jan Dittberner <jandd@debian.org>  Sun, 08 Jan 2012 18:27:55 +0100
 
 virtualenvwrapper (2.8-1) unstable; urgency=low
 
