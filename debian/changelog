@@ -1,6 +1,8 @@
 virtualenvwrapper (2.11.1-1) UNRELEASED; urgency=low
 
   * New upstream version.
+  * refresh debian/patches/debianspecific-setup.py.patch and
+    debian/patches/remove_bitbucket_support.patch
 
  -- Jan Dittberner <jandd@debian.org>  Sun, 08 Jan 2012 17:50:39 +0100
 
