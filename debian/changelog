@@ -1,3 +1,9 @@
+virtualenvwrapper (2.11.1-1) UNRELEASED; urgency=low
+
+  * New upstream version.
+
+ -- Jan Dittberner <jandd@debian.org>  Sun, 08 Jan 2012 17:50:39 +0100
+
 virtualenvwrapper (2.8-1) unstable; urgency=low
 
   * New upstream version.
