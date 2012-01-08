@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Release History &mdash; virtualenvwrapper v2.7.1 documentation</title>
+    <title>Release History &mdash; virtualenvwrapper v2.11 documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '2.7.1',
+        VERSION:     '2.11',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -21,7 +21,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="virtualenvwrapper v2.7.1 documentation" href="index.html" />
+    <link rel="top" title="virtualenvwrapper v2.11 documentation" href="index.html" />
     <link rel="prev" title="Existing Extensions" href="extensions.html" /> 
   </head>
   <body>
@@ -31,7 +31,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="extensions.html" title="Existing Extensions"
              accesskey="P">previous</a></li>
-        <li><a href="index.html">virtualenvwrapper v2.7.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">virtualenvwrapper v2.11 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -42,7 +42,61 @@
             
   <div class="section" id="release-history">
 <h1>Release History<a class="headerlink" href="#release-history" title="Permalink to this headline">¶</a></h1>
-<p>dev</p>
+<p>2.11</p>
+<blockquote>
+<ul class="simple">
+<li>Add <tt class="docutils literal"><span class="pre">-a</span></tt> option to <a class="reference internal" href="command_ref.html#command-mkvirtualenv"><em>mkvirtualenv</em></a> to associate a
+new virtualenv with an existing project directory. Contributed by
+Mike Fogel (<a class="reference external" href="https://bitbucket.org/mfogel">mfogel</a>).</li>
+<li>Drops support for Python 2.4 and 2.5. The tools may still work,
+but I no longer have a development environment set up for testing
+them, so I do not officially support them.</li>
+<li>Shortcut initialization if it has run before.</li>
+<li>Set hook log file permissions to be group-writable. (<a class="reference external" href="http://bitbucket.org/dhellmann/virtualenvwrapper/issue/62/">issue 62</a>
+reported by <a class="reference external" href="https://bitbucket.org/hedgeddown">hedgeddown</a>)</li>
+<li>Add <tt class="docutils literal"><span class="pre">VIRTUALENVWRAPPER_PROJECT_FILENAME</span></tt> variable so the
+<tt class="docutils literal"><span class="pre">.project</span></tt> file used to link a virtualenv to a project can be
+renamed to avoid conflicts with other tools. (<a class="reference external" href="http://bitbucket.org/dhellmann/virtualenvwrapper/issue/120/">issue 120</a>
+reported by <a class="reference external" href="https://bitbucket.org/arthuralvim">arthuralvim</a>)</li>
+</ul>
+</blockquote>
+<p>2.10.1</p>
+<blockquote>
+<ul class="simple">
+<li>Changed arguments to <a class="reference internal" href="command_ref.html#command-mktmpenv"><em>mktmpenv</em></a> so it always creates
+an environment name for you. (<a class="reference external" href="http://bitbucket.org/dhellmann/virtualenvwrapper/issue/114/">issue 114</a> reported by
+<a class="reference external" href="https://bitbucket.org/alex_gaynor">alex_gaynor</a>)</li>
+</ul>
+</blockquote>
+<p>2.10</p>
+<blockquote>
+<ul class="simple">
+<li>Incorporated patch to add <tt class="docutils literal"><span class="pre">-d</span></tt> option to
+<em class="xref std std-ref">command-add2virtualenv</em>, contributed by <a class="reference external" href="https://bitbucket.org/miracle2k">miracle2k</a>.</li>
+<li>Add <tt class="docutils literal"><span class="pre">-i</span></tt> option to <a class="reference internal" href="command_ref.html#command-mkvirtualenv"><em>mkvirtualenv</em></a>.</li>
+<li>Add <a class="reference internal" href="command_ref.html#command-mktmpenv"><em>mktmpenv</em></a> command for creating temporary
+environments that are automatically removed when they are
+deactivated.</li>
+<li>Fixed a problem with hook_loader that prevented it from working
+under Python 2.5 and 2.4.</li>
+<li>Fix a problem with the way template names were processed under
+zsh. (<a class="reference external" href="http://bitbucket.org/dhellmann/virtualenvwrapper/issue/111/">issue 111</a>)</li>
+</ul>
+</blockquote>
+<p>2.9</p>
+<blockquote>
+<ul class="simple">
+<li>Change the shell function shell definition syntax so that ksh will
+treat typeset-declared variables as local. No kidding.</li>
+<li>Merge the &#8220;project directory&#8221; features of the
+<tt class="docutils literal"><span class="pre">virtualenvwrapper.project</span></tt> plugin into the main project, adding
+<a class="reference internal" href="command_ref.html#command-mkproject"><em>mkproject</em></a>, <a class="reference internal" href="command_ref.html#command-cdproject"><em>cdproject</em></a>, and
+<em class="xref std std-ref">command-setvirtualenvproject</em> commands.</li>
+<li>Add <tt class="docutils literal"><span class="pre">-r</span></tt> option to <a class="reference internal" href="command_ref.html#command-mkvirtualenv"><em>mkvirtualenv</em></a> to install
+dependencies using a pip requirements file.</li>
+</ul>
+</blockquote>
+<p>2.8</p>
 <blockquote>
 <ul class="simple">
 <li>Use VIRTUALENVWRAPPER_VIRTUALENV in <cite>cpvirtualenv</cite> (<a class="reference external" href="http://bitbucket.org/dhellmann/virtualenvwrapper/issue/104/">issue 104</a>).</li>
@@ -541,7 +595,7 @@ by James Bennett and Jannis Leidel.</li>
         <li class="right" style="margin-right: 10px">
           <a href="extensions.html" title="Existing Extensions"
              >previous</a></li>
-        <li><a href="index.html">virtualenvwrapper v2.7.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">virtualenvwrapper v2.11 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

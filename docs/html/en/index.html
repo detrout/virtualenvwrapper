@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>virtualenvwrapper 2.7.1 &mdash; virtualenvwrapper v2.7.1 documentation</title>
+    <title>virtualenvwrapper 2.11 &mdash; virtualenvwrapper v2.11 documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '2.7.1',
+        VERSION:     '2.11',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -21,7 +21,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="virtualenvwrapper v2.7.1 documentation" href="#" />
+    <link rel="top" title="virtualenvwrapper v2.11 documentation" href="#" />
     <link rel="next" title="Installation" href="install.html" /> 
   </head>
   <body>
@@ -31,7 +31,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="install.html" title="Installation"
              accesskey="N">next</a></li>
-        <li><a href="#">virtualenvwrapper v2.7.1 documentation</a> &raquo;</li> 
+        <li><a href="#">virtualenvwrapper v2.11 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -41,7 +41,7 @@
           <div class="body">
             
   <div class="section" id="virtualenvwrapper-release">
-<h1>virtualenvwrapper 2.7.1<a class="headerlink" href="#virtualenvwrapper-release" title="Permalink to this headline">¶</a></h1>
+<h1>virtualenvwrapper 2.11<a class="headerlink" href="#virtualenvwrapper-release" title="Permalink to this headline">¶</a></h1>
 <p>virtualenvwrapper is a set of extensions to Ian Bicking&#8217;s <a class="reference external" href="http://pypi.python.org/pypi/virtualenv">virtualenv</a> tool.  The extensions
 include wrappers for creating and deleting virtual environments and
 otherwise managing your development workflow, making it easier to work
@@ -191,8 +191,8 @@ automate repetitive operations.</p>
 <li class="toctree-l2"><a class="reference internal" href="install.html#shell-startup-file">Shell Startup File</a></li>
 <li class="toctree-l2"><a class="reference internal" href="install.html#quick-start">Quick-Start</a></li>
 <li class="toctree-l2"><a class="reference internal" href="install.html#configuration">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#upgrading-to-2-9">Upgrading to 2.9</a></li>
 <li class="toctree-l2"><a class="reference internal" href="install.html#upgrading-from-1-x">Upgrading from 1.x</a></li>
-<li class="toctree-l2"><a class="reference internal" href="install.html#using-virtualenvwrapper-under-msys">Using virtualenvwrapper Under MSys</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="command_ref.html">Command Reference</a><ul>
@@ -200,11 +200,16 @@ automate repetitive operations.</p>
 <li class="toctree-l2"><a class="reference internal" href="command_ref.html#controlling-the-active-environment">Controlling the Active Environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command_ref.html#quickly-navigating-to-a-virtualenv">Quickly Navigating to a virtualenv</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command_ref.html#path-management">Path Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command_ref.html#project-directory-management">Project Directory Management</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="hooks.html">Customizing Virtualenvwrapper</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="scripts.html">Per-User Customization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plugins.html">Extending Virtualenvwrapper</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="projects.html">Project Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="projects.html#using-templates">Using Templates</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="tips.html">Tips and Tricks</a><ul>
@@ -220,13 +225,14 @@ automate repetitive operations.</p>
 <li class="toctree-l1"><a class="reference internal" href="developers.html">For Developers</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="developers.html#building-documentation">Building Documentation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="developers.html#running-tests">Running Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developers.html#creating-a-new-template">Creating a New Template</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="extensions.html">Existing Extensions</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="extensions.html#project">project</a></li>
 <li class="toctree-l2"><a class="reference internal" href="extensions.html#emacs-desktop">emacs-desktop</a></li>
 <li class="toctree-l2"><a class="reference internal" href="extensions.html#user-scripts">user_scripts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="extensions.html#vim-virtualenv">vim-virtualenv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extensions.html#templates">Templates</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="history.html">Release History</a></li>
@@ -288,7 +294,7 @@ PERFORMANCE OF THIS SOFTWARE.</p>
         <div class="sphinxsidebarwrapper">
   <h3><a href="#">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">virtualenvwrapper 2.7.1</a><ul>
+<li><a class="reference internal" href="#">virtualenvwrapper 2.11</a><ul>
 <li><a class="reference internal" href="#features">Features</a></li>
 <li><a class="reference internal" href="#introduction">Introduction</a></li>
 <li><a class="reference internal" href="#details">Details</a><ul>
@@ -335,7 +341,7 @@ PERFORMANCE OF THIS SOFTWARE.</p>
         <li class="right" style="margin-right: 10px">
           <a href="install.html" title="Installation"
              >next</a></li>
-        <li><a href="#">virtualenvwrapper v2.7.1 documentation</a> &raquo;</li> 
+        <li><a href="#">virtualenvwrapper v2.11 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

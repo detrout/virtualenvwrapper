@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>For Developers &mdash; virtualenvwrapper v2.7.1 documentation</title>
+    <title>For Developers &mdash; virtualenvwrapper v2.11 documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '2.7.1',
+        VERSION:     '2.11',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -21,7 +21,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="virtualenvwrapper v2.7.1 documentation" href="index.html" />
+    <link rel="top" title="virtualenvwrapper v2.11 documentation" href="index.html" />
     <link rel="next" title="Existing Extensions" href="extensions.html" />
     <link rel="prev" title="Tips and Tricks" href="tips.html" /> 
   </head>
@@ -35,7 +35,7 @@
         <li class="right" >
           <a href="tips.html" title="Tips and Tricks"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">virtualenvwrapper v2.7.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">virtualenvwrapper v2.11 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -122,6 +122,27 @@ Python:</p>
 <p>Add new tests by modifying an existing file or creating new script in
 the <tt class="docutils literal"><span class="pre">tests</span></tt> directory.</p>
 </div>
+<div class="section" id="creating-a-new-template">
+<span id="developer-templates"></span><h2>Creating a New Template<a class="headerlink" href="#creating-a-new-template" title="Permalink to this headline">¶</a></h2>
+<p>virtualenvwrapper.project templates work like <a class="reference external" href="http://www.doughellmann.com/docs/virtualenvwrapper/plugins.html">virtualenvwrapper
+plugins</a>.
+The <em>entry point</em> group name is
+<tt class="docutils literal"><span class="pre">virtualenvwrapper.project.template</span></tt>.  Configure your entry point to
+refer to a function that will <strong>run</strong> (source hooks are not supported
+for templates).</p>
+<p>The argument to the template function is the name of the project being
+created.  The current working directory is the directory created to
+hold the project files (<tt class="docutils literal"><span class="pre">$PROJECT_HOME/$envname</span></tt>).</p>
+<div class="section" id="help-text">
+<h3>Help Text<a class="headerlink" href="#help-text" title="Permalink to this headline">¶</a></h3>
+<p>One difference between project templates and other virtualenvwrapper
+extensions is that only the templates specified by the user are run.
+The <tt class="docutils literal"><span class="pre">mkproject</span></tt> command has a help option to give the user a list of
+the available templates.  The names are taken from the registered
+entry point names, and the descriptions are taken from the docstrings
+for the template functions.</p>
+</div>
+</div>
 </div>
 
 
@@ -135,6 +156,10 @@ the <tt class="docutils literal"><span class="pre">tests</span></tt> directory.<
 <li><a class="reference internal" href="#">For Developers</a><ul>
 <li><a class="reference internal" href="#building-documentation">Building Documentation</a></li>
 <li><a class="reference internal" href="#running-tests">Running Tests</a></li>
+<li><a class="reference internal" href="#creating-a-new-template">Creating a New Template</a><ul>
+<li><a class="reference internal" href="#help-text">Help Text</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -176,7 +201,7 @@ the <tt class="docutils literal"><span class="pre">tests</span></tt> directory.<
         <li class="right" >
           <a href="tips.html" title="Tips and Tricks"
              >previous</a> |</li>
-        <li><a href="index.html">virtualenvwrapper v2.7.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">virtualenvwrapper v2.11 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

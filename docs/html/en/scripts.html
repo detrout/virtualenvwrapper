@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Per-User Customization &mdash; virtualenvwrapper v2.7.1 documentation</title>
+    <title>Per-User Customization &mdash; virtualenvwrapper v2.11 documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '2.7.1',
+        VERSION:     '2.11',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -21,7 +21,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="virtualenvwrapper v2.7.1 documentation" href="index.html" />
+    <link rel="top" title="virtualenvwrapper v2.11 documentation" href="index.html" />
     <link rel="up" title="Customizing Virtualenvwrapper" href="hooks.html" />
     <link rel="next" title="Extending Virtualenvwrapper" href="plugins.html" />
     <link rel="prev" title="Customizing Virtualenvwrapper" href="hooks.html" /> 
@@ -36,7 +36,7 @@
         <li class="right" >
           <a href="hooks.html" title="Customizing Virtualenvwrapper"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">virtualenvwrapper v2.7.1 documentation</a> &raquo;</li>
+        <li><a href="index.html">virtualenvwrapper v2.11 documentation</a> &raquo;</li>
           <li><a href="hooks.html" accesskey="U">Customizing Virtualenvwrapper</a> &raquo;</li> 
       </ul>
     </div>  
@@ -134,7 +134,8 @@ passed as an argument to the script.</p>
 </table>
 </blockquote>
 <p><tt class="docutils literal"><span class="pre">$VIRTUALENVWRAPPER_HOOK_DIR/postmkvirtualenv</span></tt> is sourced after the new environment
-is created and activated.</p>
+is created and activated. If the <tt class="docutils literal"><span class="pre">-a</span></tt> &lt;project_path&gt; flag was used,
+the link to the project directory is set up before this script is sourced.</p>
 </div>
 <div class="section" id="precpvirtualenv">
 <span id="scripts-precpvirtualenv"></span><h2>precpvirtualenv<a class="headerlink" href="#precpvirtualenv" title="Permalink to this headline">¶</a></h2>
@@ -321,6 +322,49 @@ environment directory is passed as an argument to the script.</p>
 program after the environment is removed. The full path to the
 environment directory is passed as an argument to the script.</p>
 </div>
+<div class="section" id="premkproject">
+<span id="scripts-premkproject"></span><h2>premkproject<a class="headerlink" href="#premkproject" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Global/Local:</th><td class="field-body">global</td>
+</tr>
+<tr class="field"><th class="field-name">Argument(s):</th><td class="field-body">name of new project</td>
+</tr>
+<tr class="field"><th class="field-name">Sourced/Run:</th><td class="field-body">run</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p><tt class="docutils literal"><span class="pre">$WORKON_HOME/premkproject</span></tt> is run as an external program after the
+virtual environment is created and after the current environment is
+switched to point to the new env, but before the new project directory
+is created. The current working directory for the script is
+<tt class="docutils literal"><span class="pre">$PROJECT_HOME</span></tt> and the name of the new project is passed as an
+argument to the script.</p>
+</div>
+<div class="section" id="postmkproject">
+<span id="scripts-postmkproject"></span><h2>postmkproject<a class="headerlink" href="#postmkproject" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Global/Local:</th><td class="field-body">global</td>
+</tr>
+<tr class="field"><th class="field-name">Argument(s):</th><td class="field-body">none</td>
+</tr>
+<tr class="field"><th class="field-name">Sourced/Run:</th><td class="field-body">sourced</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p><tt class="docutils literal"><span class="pre">$WORKON_HOME/postmkproject</span></tt> is sourced after the new environment
+and project directories are created and the virtualenv is activated.
+The current working directory is the project directory.</p>
+</div>
 </div>
 
 
@@ -344,6 +388,8 @@ environment directory is passed as an argument to the script.</p>
 <li><a class="reference internal" href="#postdeactivate">postdeactivate</a></li>
 <li><a class="reference internal" href="#prermvirtualenv">prermvirtualenv</a></li>
 <li><a class="reference internal" href="#postrmvirtualenv">postrmvirtualenv</a></li>
+<li><a class="reference internal" href="#premkproject">premkproject</a></li>
+<li><a class="reference internal" href="#postmkproject">postmkproject</a></li>
 </ul>
 </li>
 </ul>
@@ -385,7 +431,7 @@ environment directory is passed as an argument to the script.</p>
         <li class="right" >
           <a href="hooks.html" title="Customizing Virtualenvwrapper"
              >previous</a> |</li>
-        <li><a href="index.html">virtualenvwrapper v2.7.1 documentation</a> &raquo;</li>
+        <li><a href="index.html">virtualenvwrapper v2.11 documentation</a> &raquo;</li>
           <li><a href="hooks.html" >Customizing Virtualenvwrapper</a> &raquo;</li> 
       </ul>
     </div>
