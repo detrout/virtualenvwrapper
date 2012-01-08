@@ -1,9 +1,10 @@
-Format-Specification: http://svn.debian.org/wsvn/dep/web/deps/dep5.mdwn?op=file&rev=135
-Name: virtualenvwrapper
-Maintainer: Doug Hellmann
+Format: http://svn.debian.org/wsvn/dep/web/deps/dep5.mdwn?op=file&rev=166
+Upstream-Name: virtualenvwrapper
+Upstream-Contact: Doug Hellmann <doug.hellmann@gmail.com>
 Source: http://www.doughellmann.com/projects/virtualenvwrapper/
 
-Copyright: 2008-2010, Doug Hellmann <doug.hellmann@gmail.com>
+Files: *
+Copyright: 2008-2012, Doug Hellmann <doug.hellmann@gmail.com>
            2008 Alex Satrapa
            2008 Arthur Koziel
            2008 John Shimek
@@ -33,7 +34,7 @@ License: ISC
  USE OR PERFORMANCE OF THIS SOFTWARE.
 
 Files: debian/*
-Copyright: 2010 Jan Dittberner <jandd@debian.org>
+Copyright: 2010-2012 Jan Dittberner <jandd@debian.org>
 License: ISC
  Permission to use, copy, modify, and distribute this software and its
  documentation for any purpose and without fee is hereby granted,
