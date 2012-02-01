@@ -26,5 +26,9 @@ override_dh_compress:
 override_dh_installchangelogs:
 	dh_installchangelogs docs/en/history.rst
 
+override_dh_sphinxdoc:
+	dh_sphinxdoc -X searchtools.js -X translations.js
+	dh_sphinxdoc /usr/share/doc/virtualenvwrapper/en/html/
+
 %:
 	dh --with python2,sphinxdoc $@

@@ -1,3 +1,12 @@
+virtualenvwrapper (2.11.1-2) UNRELEASED; urgency=low
+
+  * (Closes: #651359: virtualenvwrapper: FTBFS with Sphinx 1.1.2: unknown
+    JavaScript code!!) thanks for the patch by Jakub Wilk
+    - debian/rules override dh_sphinxdoc invocation
+    - debian/control drop dependency on libjs-sphinxdoc
+
+ -- Jan Dittberner <jandd@debian.org>  Wed, 01 Feb 2012 13:01:05 +0100
+
 virtualenvwrapper (2.11.1-1) unstable; urgency=low
 
   * New upstream version.
