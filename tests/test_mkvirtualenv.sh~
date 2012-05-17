@@ -1,10 +1,8 @@
 #!/bin/sh
 
-#set -x
 
 test_dir=$(cd $(dirname $0) && pwd)
-
-export WORKON_HOME="$(echo ${TMPDIR:-/tmp}/WORKON_HOME | sed 's|//|/|g')"
+source "$test_dir/setup.sh"
 
 oneTimeSetUp() {
     rm -rf "$WORKON_HOME"
@@ -58,9 +56,11 @@ GLOBAL postmkvirtualenv"
 }
 
 test_no_virtualenv () {
+	# Find "which" before we change the path
+	which=$(which which)
     old_path="$PATH"
-    PATH="/usr/bin:/bin:/usr/sbin:/sbin"
-    assertFalse "Found virtualenv in $(which virtualenv)" "which virtualenv"
+    PATH="/usr/sbin:/sbin"
+    assertFalse "Found virtualenv in $($which virtualenv)" "which virtualenv"
     mkvirtualenv should_not_be_created 2>/dev/null
     RC=$?
     # Restore the path before testing because
@@ -81,7 +81,7 @@ test_no_workon_home () {
     export WORKON_HOME="$WORKON_HOME/not_there"
     mkvirtualenv should_be_created >"$old_home/output" 2>&1
     output=$(cat "$old_home/output")
-    assertTrue "Did not see expected message" "echo $output | grep 'does not exist'"
+    assertTrue "Did not see expected message in \"$output\"" "cat \"$old_home/output\" | grep 'does not exist'"
     assertTrue "Did not create environment" "[ -d \"$WORKON_HOME/should_be_created\" ]"
     WORKON_HOME="$old_home"
 }
@@ -140,17 +140,6 @@ test_virtualenv_fails () {
     rm -f "$WORKON_HOME/postmkvirtualenv"
 
     VIRTUALENVWRAPPER_VIRTUALENV=virtualenv
-}
-
-test_associate() {
-    # Verify that the -a option associates the new virtualenv
-    # with an existing project directory.
-    project="/dev/null"
-    env="env1"
-    ptrfile="$WORKON_HOME/$env/.project"
-    mkvirtualenv -a "$project" "$env" >/dev/null 2>&1
-    assertTrue ".project not found" "[ -f $ptrfile ]"
-    assertEquals "$ptrfile contains wrong content" "$project" "$(cat $ptrfile)"
 }
 
 

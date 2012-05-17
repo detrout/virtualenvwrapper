@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>コマンドリファレンス &mdash; virtualenvwrapper v2.11.1 documentation</title>
+    <title>コマンドリファレンス &mdash; virtualenvwrapper v3.2 documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '2.11.1',
+        VERSION:     '3.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -21,7 +21,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="virtualenvwrapper v2.11.1 documentation" href="index.html" />
+    <link rel="top" title="virtualenvwrapper v3.2 documentation" href="index.html" />
     <link rel="next" title="virtualenvwrapper をカスタマイズする" href="hooks.html" />
     <link rel="prev" title="インストール" href="install.html" /> 
   </head>
@@ -35,7 +35,7 @@
         <li class="right" >
           <a href="install.html" title="インストール"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">virtualenvwrapper v2.11.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">virtualenvwrapper v3.2 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -53,9 +53,9 @@
 <span id="command-mkvirtualenv"></span><h3>mkvirtualenv<a class="headerlink" href="#mkvirtualenv" title="Permalink to this headline">¶</a></h3>
 <p>WORKON_HOME に新たな仮想環境を作成します。</p>
 <p>構文:</p>
-<div class="highlight-python"><pre>mkvirtualenv [options] ENVNAME</pre>
+<div class="highlight-python"><pre>mkvirtualenv [-a project_path] [-i package] [-r requirements_file] [virtualenv options] ENVNAME</pre>
 </div>
-<p>全てのコマンドラインオプションは <tt class="docutils literal"><span class="pre">virtualenv</span></tt> へ直接渡されます。新しい仮想環境は初期化された後に自動的にアクティブ化されます。</p>
+<p><tt class="docutils literal"><span class="pre">-a</span></tt>, <tt class="docutils literal"><span class="pre">-i</span></tt>, <tt class="docutils literal"><span class="pre">-r</span></tt>, <tt class="docutils literal"><span class="pre">-h</span></tt> を除いた全てのコマンドラインオプションは <tt class="docutils literal"><span class="pre">virtualenv</span></tt> へ直接的に渡されます。新しい仮想環境は初期化された後に自動的にアクティブ化されます。</p>
 <div class="highlight-python"><pre>$ workon
 $ mkvirtualenv mynewenv
 New python executable in mynewenv/bin/python
@@ -67,12 +67,36 @@ done.
 mynewenv
 (mynewenv)$</pre>
 </div>
+<p><tt class="docutils literal"><span class="pre">-a</span></tt> オプションは、既存のプロジェクトディレクトリに新しい環境を関連付けるのに使います。</p>
+<p><tt class="docutils literal"><span class="pre">-i</span></tt> オプションは、その環境を作成した後に指定したパッケージをインストールできます (このオプションを繰り返し使うことで複数のパッケージもインストールできます) 。</p>
+<p><tt class="docutils literal"><span class="pre">-r</span></tt> オプションは、インストールしたいパッケージ一覧を保存したテキストファイルを指定するのに使います。この引数のファイル名は <tt class="docutils literal"><span class="pre">pip</span> <span class="pre">-r</span></tt> へ渡されてインストールが行われます。</p>
 <div class="admonition-see-also admonition seealso">
 <p class="first admonition-title">See also</p>
 <ul class="last simple">
 <li><a class="reference internal" href="scripts.html#scripts-premkvirtualenv"><em>premkvirtualenv</em></a></li>
 <li><a class="reference internal" href="scripts.html#scripts-postmkvirtualenv"><em>postmkvirtualenv</em></a></li>
+<li><a class="reference external" href="http://www.pip-installer.org/en/latest/requirements.html#the-requirements-file-format">requirements ファイルのフォーマット</a></li>
 </ul>
+</div>
+</div>
+<div class="section" id="mktmpenv">
+<span id="command-mktmpenv"></span><h3>mktmpenv<a class="headerlink" href="#mktmpenv" title="Permalink to this headline">¶</a></h3>
+<p><tt class="docutils literal"><span class="pre">WORKON_HOME</span></tt> ディレクトリに新しい環境を作成します。</p>
+<p>構文:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">mktmpenv</span> <span class="p">[</span><span class="n">VIRTUALENV_OPTIONS</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>一意な名前をもつ virtualenv 環境が生成されます。</p>
+<div class="highlight-python"><pre>$ mktmpenv
+Using real prefix '/Library/Frameworks/Python.framework/Versions/2.7'
+New python executable in 1e513ac6-616e-4d56-9aa5-9d0a3b305e20/bin/python
+Overwriting 1e513ac6-616e-4d56-9aa5-9d0a3b305e20/lib/python2.7/distutils/__init__.py
+with new content
+Installing distribute...............................................
+....................................................................
+.................................................................done.
+This is a temporary environment. It will be deleted when deactivated.
+(1e513ac6-616e-4d56-9aa5-9d0a3b305e20) $</pre>
 </div>
 </div>
 <div class="section" id="lsvirtualenv">
@@ -131,7 +155,7 @@ mynewenv
 </div>
 </div>
 <div class="section" id="rmvirtualenv">
-<h3>rmvirtualenv<a class="headerlink" href="#rmvirtualenv" title="Permalink to this headline">¶</a></h3>
+<span id="command-rmvirtualenv"></span><h3>rmvirtualenv<a class="headerlink" href="#rmvirtualenv" title="Permalink to this headline">¶</a></h3>
 <p>WORKON_HOME の仮想環境を削除します。</p>
 <p>構文:</p>
 <div class="highlight-python"><pre>rmvirtualenv ENVNAME</pre>
@@ -357,6 +381,97 @@ easy-install.pth                setuptools.pth</pre>
 <p>site-packages ディレクトリ内の <tt class="docutils literal"><span class="pre">virtualenv_path_extensions.pth</span></tt> と名付けられたパスファイルへそのディレクトリ名が追加されます。</p>
 <p><em>James Bennett と Jannis Leidel から提供されたものに基づいています。</em></p>
 </div>
+<div class="section" id="toggleglobalsitepackages">
+<span id="command-toggleglobalsitepackages"></span><h3>toggleglobalsitepackages<a class="headerlink" href="#toggleglobalsitepackages" title="Permalink to this headline">¶</a></h3>
+<p>アクティブな virtualenv が、グローバルの Python <tt class="docutils literal"><span class="pre">site-packages</span></tt> ディレクトリにあるパッケージにアクセスさせるかどうかを制御します。</p>
+<p>構文:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">toggleglobalsitepackages</span> <span class="p">[</span><span class="o">-</span><span class="n">q</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>実行すると virtualenv の更新後の状態を表示します。非表示にするには <tt class="docutils literal"><span class="pre">-q</span></tt> を指定してください。</p>
+<div class="highlight-python"><pre>$ mkvirtualenv env1
+New python executable in env1/bin/python
+Installing distribute.............................................
+..................................................................
+..................................................................
+done.
+(env1)$ toggleglobalsitepackages
+Disabled global site-packages
+(env1)$ toggleglobalsitepackages
+Enabled global site-packages
+(env1)$ toggleglobalsitepackages -q
+(env1)$</pre>
+</div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>プロジェクトディレクトリの管理<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-see-also admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="projects.html#project-management"><em>プロジェクト管理</em></a></p>
+</div>
+<div class="section" id="mkproject">
+<span id="command-mkproject"></span><h3>mkproject<a class="headerlink" href="#mkproject" title="Permalink to this headline">¶</a></h3>
+<p>PROJECT_HOME にプロジェクトディレクトリと WORKON_HOME に新しい virtualenv を作成します。</p>
+<p>構文:</p>
+<div class="highlight-python"><pre>mkproject [-t template] [virtualenv_options] ENVNAME</pre>
+</div>
+<p>テンプレートオプションは、新しいプロジェクトを作成するのに使うテンプレートを複数指定できます。テンプレートはコマンドラインで指定した順番で適用されます。その他の全てのオプションは、プロジェクトと同じ名前をもつ仮想環境を作成するために <tt class="docutils literal"><span class="pre">mkvirtualenv</span></tt> に渡されます。</p>
+<div class="highlight-python"><pre>$ mkproject myproj
+New python executable in myproj/bin/python
+Installing distribute.............................................
+..................................................................
+..................................................................
+done.
+Creating /Users/dhellmann/Devel/myproj
+(myproj)$ pwd
+/Users/dhellmann/Devel/myproj
+(myproj)$ echo $VIRTUAL_ENV
+/Users/dhellmann/Envs/myproj
+(myproj)$</pre>
+</div>
+<div class="admonition-see-also admonition seealso">
+<p class="first admonition-title">See also</p>
+<ul class="last simple">
+<li><a class="reference internal" href="scripts.html#scripts-premkproject"><em>premkproject</em></a></li>
+<li><a class="reference internal" href="scripts.html#scripts-postmkproject"><em>postmkproject</em></a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="setvirtualenvproject">
+<span id="command-setvirtualenvproject"></span><h3>setvirtualenvproject<a class="headerlink" href="#setvirtualenvproject" title="Permalink to this headline">¶</a></h3>
+<p>既存の virtualenv を既存のプロジェクトに束縛します。</p>
+<p>構文:</p>
+<div class="highlight-python"><pre>setvirtualenvproject [virtualenv_path project_path]</pre>
+</div>
+<p><tt class="docutils literal"><span class="pre">setvirtualenvproject</span></tt> への引数は、virtualenv とプロジェクトディレクトリへのフルパスです。仮想環境のアクティブ化を <tt class="docutils literal"><span class="pre">workon</span></tt> で行うときに、そのプロジェクトもアクティブ化されるように連携します。</p>
+<div class="highlight-python"><pre>$ mkproject myproj
+New python executable in myproj/bin/python
+Installing distribute.............................................
+..................................................................
+..................................................................
+done.
+Creating /Users/dhellmann/Devel/myproj
+(myproj)$ mkvirtualenv myproj_new_libs
+New python executable in myproj/bin/python
+Installing distribute.............................................
+..................................................................
+..................................................................
+done.
+Creating /Users/dhellmann/Devel/myproj
+(myproj_new_libs)$ setvirtualenvproject $VIRTUAL_ENV $(pwd)</pre>
+</div>
+<p>引数を指定しない場合は、カレントの virtualenv とカレントディレクトリが指定されたと見なします。</p>
+<p>任意の数の virtualenv が、Python またはその他のテスト向けの依存関係をもったバージョン間で切り替えやすいように、同じプロジェクトディレクトリを参照できます。</p>
+</div>
+<div class="section" id="cdproject">
+<span id="command-cdproject"></span><h3>cdproject<a class="headerlink" href="#cdproject" title="Permalink to this headline">¶</a></h3>
+<p>カレントのワークディレクトリから、アクティブな virtualenv のプロジェクトディレクトリとして指定したディレクトリに変更します。</p>
+<p>構文:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">cdproject</span>
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 
@@ -371,6 +486,7 @@ easy-install.pth                setuptools.pth</pre>
 <li><a class="reference internal" href="#">コマンドリファレンス</a><ul>
 <li><a class="reference internal" href="#id2">仮想環境を管理する</a><ul>
 <li><a class="reference internal" href="#mkvirtualenv">mkvirtualenv</a></li>
+<li><a class="reference internal" href="#mktmpenv">mktmpenv</a></li>
 <li><a class="reference internal" href="#lsvirtualenv">lsvirtualenv</a></li>
 <li><a class="reference internal" href="#showvirtualenv">showvirtualenv</a></li>
 <li><a class="reference internal" href="#rmvirtualenv">rmvirtualenv</a></li>
@@ -390,6 +506,13 @@ easy-install.pth                setuptools.pth</pre>
 </li>
 <li><a class="reference internal" href="#id5">パス管理</a><ul>
 <li><a class="reference internal" href="#add2virtualenv">add2virtualenv</a></li>
+<li><a class="reference internal" href="#toggleglobalsitepackages">toggleglobalsitepackages</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id6">プロジェクトディレクトリの管理</a><ul>
+<li><a class="reference internal" href="#mkproject">mkproject</a></li>
+<li><a class="reference internal" href="#setvirtualenvproject">setvirtualenvproject</a></li>
+<li><a class="reference internal" href="#cdproject">cdproject</a></li>
 </ul>
 </li>
 </ul>
@@ -433,7 +556,7 @@ easy-install.pth                setuptools.pth</pre>
         <li class="right" >
           <a href="install.html" title="インストール"
              >previous</a> |</li>
-        <li><a href="index.html">virtualenvwrapper v2.11.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">virtualenvwrapper v3.2 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

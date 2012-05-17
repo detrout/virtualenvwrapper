@@ -1,6 +1,6 @@
 Metadata-Version: 1.1
 Name: virtualenvwrapper
-Version: 2.11.1
+Version: 3.3
 Summary: Enhancements to virtualenv
 Home-page: http://www.doughellmann.com/projects/virtualenvwrapper/
 Author: Doug Hellmann
@@ -146,13 +146,13 @@ Description: ..   -*- mode: rst -*-
         
 Platform: Any
 Classifier: Development Status :: 5 - Production/Stable
-Classifier: License :: OSI Approved :: BSD License
+Classifier: License :: OSI Approved :: MIT License
 Classifier: Programming Language :: Python
 Classifier: Programming Language :: Python :: 2
-Classifier: Programming Language :: Python :: 2.4
-Classifier: Programming Language :: Python :: 2.5
 Classifier: Programming Language :: Python :: 2.6
 Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.2
 Classifier: Intended Audience :: Developers
 Classifier: Environment :: Console
 Provides: virtualenvwrapper
