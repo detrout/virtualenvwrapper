@@ -31,4 +31,4 @@ override_dh_sphinxdoc:
 	dh_sphinxdoc /usr/share/doc/virtualenvwrapper/en/html/
 
 %:
-	dh --with python2,python3,sphinxdoc $@
+	dh --with python2,python3,sphinxdoc $@ --buildsystem=python_distutils
