@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>virtualenvwrapper を拡張する &mdash; virtualenvwrapper v2.11.1 documentation</title>
+    <title>virtualenvwrapper を拡張する &mdash; virtualenvwrapper v3.2 documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '2.11.1',
+        VERSION:     '3.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -21,9 +21,9 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="virtualenvwrapper v2.11.1 documentation" href="index.html" />
+    <link rel="top" title="virtualenvwrapper v3.2 documentation" href="index.html" />
     <link rel="up" title="virtualenvwrapper をカスタマイズする" href="hooks.html" />
-    <link rel="next" title="Tips とトリック" href="tips.html" />
+    <link rel="next" title="プロジェクト管理" href="projects.html" />
     <link rel="prev" title="ユーザカスタマイズ" href="scripts.html" /> 
   </head>
   <body>
@@ -31,12 +31,12 @@
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="tips.html" title="Tips とトリック"
+          <a href="projects.html" title="プロジェクト管理"
              accesskey="N">next</a></li>
         <li class="right" >
           <a href="scripts.html" title="ユーザカスタマイズ"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">virtualenvwrapper v2.11.1 documentation</a> &raquo;</li>
+        <li><a href="index.html">virtualenvwrapper v3.2 documentation</a> &raquo;</li>
           <li><a href="hooks.html" accesskey="U">virtualenvwrapper をカスタマイズする</a> &raquo;</li> 
       </ul>
     </div>  
@@ -48,18 +48,18 @@
             
   <div class="section" id="virtualenvwrapper">
 <span id="plugins"></span><h1>virtualenvwrapper を拡張する<a class="headerlink" href="#virtualenvwrapper" title="Permalink to this headline">¶</a></h1>
-<p>開発環境をカスタマイズするために自作で解決してきた長い経験から、共通タスクを自動化して何度も繰り返す苛々する作業を取り除く機能はどれだけ価値があるかが分かりました。大工は治具を組み立て、ソフトウェア開発者はシェルスクリプトを書きます。virtualenvwrapper は逆になりますが、求める方法で動作するようにツールを修正する職人を励ます伝統を受け継いでいます。</p>
+<p>開発環境をカスタマイズするために自作で解決してきた長い経験から、共通タスクを自動化して、何度も繰り返す苛々するような作業を取り除く機能がどれほどの価値をもつか分かりました。大工は治具を組み立て、ソフトウェア開発者はシェルスクリプトを書きます。virtualenvwrapper は逆になりますが、求める方法で動作するようにツールを修正する職人を励ます伝統を受け継いでいます。</p>
 <p>繰り返し行う手動の操作を取り除いたり開発ワークフローを効率化するために提供されるフックを使用してください。例えば、最後に編集されたセッションからファイルを再読み込みするために IDE にプロジェクトファイルを読む込ませる、時間追跡記録を管理する、もしくはアプリケーションサーバの開発バージョンを起動・停止するために <a class="reference internal" href="#plugins-pre-activate"><em>pre_activate</em></a> や <a class="reference internal" href="#plugins-post-activate"><em>post_activate</em></a> フックを設定してください。 <a class="reference internal" href="#plugins-initialize"><em>initialize</em></a> は virtualenvwrapper に対するフックや完全に新しいコマンドを追加するためのフックです。そして <a class="reference internal" href="#plugins-pre-mkvirtualenv"><em>pre_mkvirtualenv</em></a> や <a class="reference internal" href="#plugins-post-mkvirtualenv"><em>post_mkvirtualenv</em></a> といったフックはそれぞれの新しい開発環境へ基本的な必需品をインストールする、ソースコードリポジトリの初期化、その他の新たなプロジェクトの設定を行うといった機会を与えます。</p>
-<p>virtualenvwrapper がそういったことを実行できるようにあなたのコードをアタッチする方法が2つあります。エンドユーザはシェルスクリプトか、個人的なカスタマイズを施したプログラムを使用することができます(<a class="reference internal" href="scripts.html#scripts"><em>ユーザカスタマイズ</em></a> を参照)。さらに拡張機能は、システムと開発者間で共通の振る舞いを共有できるようにする <a class="reference external" href="http://packages.python.org/distribute/">Distribute</a> <em>エントリポイント</em> を使用して Python で実装することもできます。</p>
+<p>virtualenvwrapper がそういったことを実行できるようにあなたのコードをアタッチする方法が2つあります。エンドユーザはシェルスクリプトか、個人的なカスタマイズを施したプログラムを使用できます(<a class="reference internal" href="scripts.html#scripts"><em>ユーザカスタマイズ</em></a> を参照)。さらに拡張機能は、システムと開発者間で共通の振る舞いを共有できるようにする <a class="reference external" href="http://packages.python.org/distribute/">Distribute</a> <em>エントリポイント</em> を使用して Python で実装することもできます。</p>
 <div class="section" id="id1">
 <h2>拡張機能を定義する<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">virtualenvwrapper はユーザのカスタムスクリプトを作成して実行することをプラグインで実現します(<a class="reference internal" href="extensions.html#extensions-user-scripts"><em>project</em></a>)。次のサンプルはそういったプラグインの実装を紹介します。</p>
+<p class="last">virtualenvwrapper はユーザのカスタムスクリプトを作成して実行することをプラグインで実現します(<a class="reference internal" href="extensions.html#extensions-user-scripts"><em>user_scripts</em></a>)。次のサンプルはそういったプラグインの実装を紹介します。</p>
 </div>
 <div class="section" id="id2">
 <h3>コードの構成<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<p><tt class="docutils literal"><span class="pre">virtualenvwrapper</span></tt> の Python パッケージは <em>名前空間パッケージ</em> です。複数のライブラリが一緒に配布されていなかったり同じディレクトリ内にインストールされていなかったとしても、そのパッケージ内へインストールすることができます。拡張機能は次のようにソースツリーを設定することで <tt class="docutils literal"><span class="pre">virtualenvwrapper</span></tt> の名前空間を(オプションで)使用することが出来ます。</p>
+<p><tt class="docutils literal"><span class="pre">virtualenvwrapper</span></tt> の Python パッケージは <em>名前空間パッケージ</em> です。複数のライブラリが一緒に配布されていなかったり同じディレクトリ内にインストールされていなかったとしても、そのパッケージ内へインストールできます。拡張機能は次のようにソースツリーを設定することで <tt class="docutils literal"><span class="pre">virtualenvwrapper</span></tt> の名前空間を(オプションで)使用することが出来ます。</p>
 <ul class="simple">
 <li>virtualenvwrapper/<ul>
 <li>__init__.py</li>
@@ -81,7 +81,7 @@
 </div>
 <div class="section" id="api">
 <h3>拡張 API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h3>
-<p>パッケージを作成した次のステップは拡張コードを保持するモジュールを作成することです。例えば <tt class="docutils literal"><span class="pre">virtualenvwrapper/user_scripts.py</span></tt> です。そのモジュールは実際の拡張機能のエントリポイントを含むべきです。サポートするコードが含められるか、標準の Python コードの構成テクニックを使用してどこかからインポートされます。</p>
+<p>パッケージを作成した後の次のステップとして、拡張コードを保持するモジュールを作成します。例えば <tt class="docutils literal"><span class="pre">virtualenvwrapper/user_scripts.py</span></tt> です。そのモジュールは実際の拡張機能のエントリポイントを含みます。サポートするコードが含められるか、標準の Python コードの構成テクニックを利用してインポートされます。</p>
 <p>API は全ての拡張ポイントで同じです。それぞれは1つの引数、つまりコマンドライン上でフックローダへ渡される文字列のリストを受け取る Python 関数を使用します。</p>
 <div class="highlight-python"><pre>def function_name(args):
     # args is a list of strings passed to the hook loader</pre>
@@ -125,7 +125,7 @@
 </div>
 <div class="section" id="id6">
 <h3>エントリポイントを登録する<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
-<p>プラグインで定義された関数は virtualenvwrapper のフックローダが見つけられるために <em>エントリポイント</em> として登録される必要があります。 <a class="reference external" href="http://packages.python.org/distribute/">Distribute</a> エントリポイントは関数を実装するパッケージでその関数に対するエントリポイントの名前をマッピングすることにより、そのパッケージの <tt class="docutils literal"><span class="pre">setup.py</span></tt> で設定されます。</p>
+<p>プラグインで定義された関数は virtualenvwrapper のフックローダが見つけられるために <em>エントリポイント</em> として登録する必要があります。 <a class="reference external" href="http://packages.python.org/distribute/">Distribute</a> エントリポイントは関数を実装するパッケージでその関数に対するエントリポイントの名前をマッピングすることにより、そのパッケージの <tt class="docutils literal"><span class="pre">setup.py</span></tt> で設定されます。</p>
 <p>この virtualenvwrapper の <tt class="docutils literal"><span class="pre">setup.py</span></tt> の一部は <tt class="docutils literal"><span class="pre">initialize()</span></tt> や <tt class="docutils literal"><span class="pre">initialize_source()</span></tt> エントリポイントの設定方法を説明します。</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># Bootstrap installation of Distribute</span>
 <span class="kn">import</span> <span class="nn">distribute_setup</span>
@@ -157,8 +157,7 @@
 </pre></div>
 </div>
 <p><tt class="docutils literal"><span class="pre">setup()</span></tt> への <tt class="docutils literal"><span class="pre">entry_points</span></tt> 引数はエントリポイントの指定子を表示するエントリポイント <em>グループ名</em> をマッピングするディクショナリです。違うグループ名はそれぞれの拡張ポイントのために virtualenvwrapper により定義されます(<a class="reference internal" href="#plugins-extension-points"><em>拡張ポイント</em></a> を参照)。</p>
-<p>エントリポイント指定子は <tt class="docutils literal"><span class="pre">name</span> <span class="pre">=</span> <span class="pre">package.module:function</span></tt> という構文の文字列です。
-慣例により、それぞれのエントリポイントの <em>名前</em> はプラグインの名前ですが、それが必要ではありません(その名前は使用されない)。</p>
+<p>エントリポイント指定子は <tt class="docutils literal"><span class="pre">name</span> <span class="pre">=</span> <span class="pre">package.module:function</span></tt> という構文の文字列です。慣例からエントリポイントの <em>名前</em> はプラグインの名前を付けますが、必須だというわけではありません (その名前を使わなくても構いません) 。</p>
 <div class="admonition-see-also admonition seealso">
 <p class="first admonition-title">See also</p>
 <ul class="last simple">
@@ -264,7 +263,7 @@ Options:
 </div>
 <div class="section" id="id10">
 <h2>新しい拡張ポイントを追加する<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
-<p>さらに新しい操作を定義するプラグインは新しい拡張ポイントを定義することもできます。フックローダが拡張機能を見つけるために行う設定は必要ありません。名前を記述して <tt class="docutils literal"><span class="pre">virtualenvwrapper_run_hook</span></tt> の呼び出しを追加することで、追加した拡張機能が実行されるようになります。</p>
+<p>さらに新しい操作を定義するプラグインは新しい拡張ポイントも定義できます。フックローダが拡張機能を見つけるために行う設定は必要ありません。名前を記述して <tt class="docutils literal"><span class="pre">virtualenvwrapper_run_hook</span></tt> の呼び出しを追加することで、追加した拡張機能が実行されるようになります。</p>
 <p>フックローダは全ての拡張ポイントの名前が <tt class="docutils literal"><span class="pre">virtualenvwrapper.</span></tt> で始まることを前提としています。そして、新しいプラグインは独自の名前空間の修飾語句をその接頭辞に追加したくなるでしょう。例えば <a class="reference external" href="http://www.doughellmann.com/projects/virtualenvwrapper.project/">project</a> 拡張はプロジェクトのディレクトリ作成(前後)に関連して新たなイベントを定義します。そこで <tt class="docutils literal"><span class="pre">virtualenvwrapper.project.pre_mkproject</span></tt> と <tt class="docutils literal"><span class="pre">virtualenvwrapper.project.post_mkproject</span></tt> が呼び出されます。それは次のように1つずつ実行されます。</p>
 <div class="highlight-python"><pre>virtualenvwrapper_run_hook project.pre_mkproject $project_name</pre>
 </div>
@@ -319,8 +318,8 @@ Options:
   <p class="topless"><a href="scripts.html"
                         title="previous chapter">ユーザカスタマイズ</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="tips.html"
-                        title="next chapter">Tips とトリック</a></p>
+  <p class="topless"><a href="projects.html"
+                        title="next chapter">プロジェクト管理</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/plugins.txt"
@@ -347,12 +346,12 @@ Options:
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="tips.html" title="Tips とトリック"
+          <a href="projects.html" title="プロジェクト管理"
              >next</a></li>
         <li class="right" >
           <a href="scripts.html" title="ユーザカスタマイズ"
              >previous</a> |</li>
-        <li><a href="index.html">virtualenvwrapper v2.11.1 documentation</a> &raquo;</li>
+        <li><a href="index.html">virtualenvwrapper v3.2 documentation</a> &raquo;</li>
           <li><a href="hooks.html" >virtualenvwrapper をカスタマイズする</a> &raquo;</li> 
       </ul>
     </div>

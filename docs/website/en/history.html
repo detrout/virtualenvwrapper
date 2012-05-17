@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Release History &mdash; virtualenvwrapper v2.11.1 documentation</title>
+    <title>Release History &mdash; virtualenvwrapper v3.2 documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '2.11.1',
+        VERSION:     '3.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -21,7 +21,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="virtualenvwrapper v2.11.1 documentation" href="index.html" />
+    <link rel="top" title="virtualenvwrapper v3.2 documentation" href="index.html" />
     <link rel="prev" title="Existing Extensions" href="extensions.html" /> 
   </head>
   <body>
@@ -31,7 +31,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="extensions.html" title="Existing Extensions"
              accesskey="P">previous</a></li>
-        <li><a href="index.html">virtualenvwrapper v2.11.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">virtualenvwrapper v3.2 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -42,6 +42,64 @@
             
   <div class="section" id="release-history">
 <h1>Release History<a class="headerlink" href="#release-history" title="Permalink to this headline">¶</a></h1>
+<p>dev</p>
+<blockquote>
+<ul class="simple">
+<li>Clean up file permissions and remove shebangs from scripts not
+intended to be executed on the command line. (contributed by
+<a class="reference external" href="https://bitbucket.org/ralphbean">ralphbean</a>)</li>
+<li>Worked on some brittle tests.</li>
+<li>Received updates to Japanese translation of the documentation from
+<a class="reference external" href="https://bitbucket.org/t2y">t2y</a>.</li>
+</ul>
+</blockquote>
+<p>3.2</p>
+<blockquote>
+<ul class="simple">
+<li>Make <tt class="docutils literal"><span class="pre">project_dir</span></tt> a local variable so that
+<a class="reference internal" href="command_ref.html#command-cdproject"><em>cdproject</em></a> does not interfere with other variables
+the user might have set. (contributed by <a class="reference external" href="https://bitbucket.org/slackorama">slackorama</a>)</li>
+<li>Fix typo in documentation reported by Nick Martin.</li>
+<li>Change trove classifier for license &#8220;MIT&#8221; to reflect the license
+text presented in the documentation. <em>This does not indicate a
+change in the license, just a correction to the expression of that
+intent. See :ref:`license`</em> (contributed by <a class="reference external" href="https://bitbucket.org/ralphbean">ralphbean</a> as
+fix for <a class="reference external" href="http://bitbucket.org/dhellmann/virtualenvwrapper/issue/134/">issue 134</a>)</li>
+<li>Extend <a class="reference internal" href="command_ref.html#command-rmvirtualenv"><em>rmvirtualenv</em></a> to allow removing more than one
+environment at a time. (contributed by <a class="reference external" href="https://bitbucket.org/ciberglo">ciberglo</a>)</li>
+<li>Change the definition of
+<tt class="docutils literal"><span class="pre">virtualenvwrapper_get_site_packages_dir</span></tt> to ask <tt class="docutils literal"><span class="pre">distutils</span></tt>
+for the <tt class="docutils literal"><span class="pre">site-packages</span></tt> directory instead of trying to build the
+path ourselves in the shell script. This should resolve
+<a class="reference external" href="http://bitbucket.org/dhellmann/virtualenvwrapper/issue/112/">issue 112</a> and improve support for Python interpreters other
+than C Python. Thanks to Carl Meyer and Dario Bertini for their
+contributions toward the fix.</li>
+</ul>
+</blockquote>
+<p>3.1</p>
+<blockquote>
+<ul class="simple">
+<li>Fix a problem with activation hooks when associating a new
+virtualenv with an existing project directory. (<a class="reference external" href="http://bitbucket.org/dhellmann/virtualenvwrapper/issue/122/">issue 122</a>)</li>
+<li>Fix a problem with <em class="xref std std-ref">command-add2virtualenv</em> and paths
+containing &#8220;special&#8221; characters such as <tt class="docutils literal"><span class="pre">&amp;</span></tt>. (<a class="reference external" href="http://bitbucket.org/dhellmann/virtualenvwrapper/issue/132/">issue 132</a>)</li>
+</ul>
+</blockquote>
+<p>3.0.1</p>
+<blockquote>
+<ul class="simple">
+<li>Fix some packaging issues that made it more difficult to run the
+tests directly from the sdist package. (<a class="reference external" href="http://bitbucket.org/dhellmann/virtualenvwrapper/issue/126/">issue 126</a>)</li>
+</ul>
+</blockquote>
+<p>3.0</p>
+<blockquote>
+<ul class="simple">
+<li>Add Python 3 support, thanks in large part to the efforts of
+Daniel Kraus (<a class="reference external" href="https://bitbucket.org/dakra">dakra</a>). Tested under Python 2.6, 2.7, and
+3.2.</li>
+</ul>
+</blockquote>
 <p>2.11.1</p>
 <blockquote>
 <ul class="simple">
@@ -159,7 +217,7 @@ disable the global <tt class="docutils literal"><span class="pre">site-packages<
 locations of hooks and logs.</li>
 <li>Enabled tab completion for <a class="reference internal" href="command_ref.html#command-showvirtualenv"><em>showvirtualenv</em></a>
 (<a class="reference external" href="http://bitbucket.org/dhellmann/virtualenvwrapper/issue/78/">issue 78</a>).</li>
-<li>Fixed a problem with running <em class="xref std std-ref">command-rmvirtualenv</em> from
+<li>Fixed a problem with running <a class="reference internal" href="command_ref.html#command-rmvirtualenv"><em>rmvirtualenv</em></a> from
 within the environment being removed (<a class="reference external" href="http://bitbucket.org/dhellmann/virtualenvwrapper/issue/83/">issue 83</a>).</li>
 <li>Removed use of -e option in calls to grep for better portability
 (<a class="reference external" href="http://bitbucket.org/dhellmann/virtualenvwrapper/issue/85/">issue 85</a>).</li>
@@ -603,7 +661,7 @@ by James Bennett and Jannis Leidel.</li>
         <li class="right" style="margin-right: 10px">
           <a href="extensions.html" title="Existing Extensions"
              >previous</a></li>
-        <li><a href="index.html">virtualenvwrapper v2.11.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">virtualenvwrapper v3.2 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

@@ -1,12 +1,7 @@
 #!/bin/sh
 
-#set -x
-
 test_dir=$(cd $(dirname $0) && pwd)
-
-export WORKON_HOME="$(echo ${TMPDIR:-/tmp}/WORKON_HOME | sed 's|//|/|g')"
-
-#unset HOOK_VERBOSE_OPTION
+source "$test_dir/setup.sh"
 
 setUp () {
     rm -rf "$WORKON_HOME"
