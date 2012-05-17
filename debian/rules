@@ -2,7 +2,7 @@
 
 override_dh_auto_clean:
 	rm -rf build
-	find -name '._*' -delete
+	find \( -name '._*' -o -name '*.pyc' \) -delete
 
 override_dh_auto_install:
 	for lang in en es ja; do \

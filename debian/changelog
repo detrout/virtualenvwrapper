@@ -7,6 +7,9 @@ virtualenvwrapper (3.3-1) UNRELEASED; urgency=low
   * add Python3 support
   * refresh debian/patches/debianspecific-setup.py.patch
   * use symlinks for duplicated ajax-loader.gif
+  * Fix "FTBFS if built twice in a row: virtualenvwrapper/__init__.pyc:
+    binary file contents changed" by removing *.pyc in clean target
+    (Closes: #641735)
 
  -- Jan Dittberner <jandd@debian.org>  Thu, 17 May 2012 12:58:54 +0200
 
