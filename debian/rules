@@ -18,7 +18,10 @@ override_dh_auto_install:
 	done
 	cp virtualenvwrapper.sh debian/virtualenvwrapper/etc/bash_completion.d/virtualenvwrapper
 	chmod 0644 debian/virtualenvwrapper/etc/bash_completion.d/virtualenvwrapper
-	dh_auto_install
+	python setup.py install --install-layout=deb \
+	    --root $(CURDIR)/debian/virtualenvwrapper
+	python3 setup.py install --install-layout=deb \
+	    --root $(CURDIR)/debian/virtualenvwrapper
 
 override_dh_compress:
 	dh_compress -i -X.rst -X.js -X.html -X.txt
