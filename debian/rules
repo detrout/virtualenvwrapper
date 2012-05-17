@@ -18,10 +18,12 @@ override_dh_auto_install:
 	done
 	cp virtualenvwrapper.sh debian/virtualenvwrapper/etc/bash_completion.d/virtualenvwrapper
 	chmod 0644 debian/virtualenvwrapper/etc/bash_completion.d/virtualenvwrapper
-	python setup.py install --install-layout=deb \
-	    --root $(CURDIR)/debian/virtualenvwrapper
-	python3 setup.py install --install-layout=deb \
-	    --root $(CURDIR)/debian/virtualenvwrapper
+	# python3 build disable because virtualenv3 is not yet available
+	#	python setup.py install --install-layout=deb \
+	#	    --root $(CURDIR)/debian/virtualenvwrapper
+	#	python3 setup.py install --install-layout=deb \
+	#	    --root $(CURDIR)/debian/virtualenvwrapper
+	dh_auto_install
 
 override_dh_compress:
 	dh_compress -i -X.rst -X.js -X.html -X.txt
@@ -34,4 +36,4 @@ override_dh_sphinxdoc:
 	dh_sphinxdoc /usr/share/doc/virtualenvwrapper/en/html/
 
 %:
-	dh --with python2,python3,sphinxdoc $@ --buildsystem=python_distutils
+	dh --with python2,sphinxdoc $@ --buildsystem=python_distutils

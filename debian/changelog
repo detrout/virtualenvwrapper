@@ -4,7 +4,6 @@ virtualenvwrapper (3.3-1) UNRELEASED; urgency=low
   * change Build-Depends for dh_sphinxdoc to python-sphinx (>=
     1.0.7+dfsg) | python3-sphinx
   * bump Standards-Version to 3.9.3 (no changes)
-  * add Python3 support
   * refresh debian/patches/debianspecific-setup.py.patch
   * use symlinks for duplicated ajax-loader.gif
   * Fix "FTBFS if built twice in a row: virtualenvwrapper/__init__.pyc:

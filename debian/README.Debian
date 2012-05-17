@@ -11,3 +11,5 @@ If you only want to use virtualenvwrapper you may just add
 
 to your ~/.bashrc.
 
+Python3 support is not enabled in the Debian package because it requires a
+Python3 compatible virtualenv version that is not packaged for Debian yet.
