@@ -1,4 +1,4 @@
-virtualenvwrapper (3.3-1) UNRELEASED; urgency=low
+virtualenvwrapper (3.3-1) unstable; urgency=low
 
   * New upstream version
   * change Build-Depends for dh_sphinxdoc to python-sphinx (>=
@@ -10,7 +10,7 @@ virtualenvwrapper (3.3-1) UNRELEASED; urgency=low
     binary file contents changed" by removing *.pyc in clean target
     (Closes: #641735)
 
- -- Jan Dittberner <jandd@debian.org>  Thu, 17 May 2012 12:58:54 +0200
+ -- Jan Dittberner <jandd@debian.org>  Thu, 17 May 2012 14:24:08 +0200
 
 virtualenvwrapper (2.11.1-2) unstable; urgency=low
 
