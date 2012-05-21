@@ -1,11 +1,11 @@
-virtualenvwrapper (3.4-1) UNRELEASED; urgency=low
+virtualenvwrapper (3.4-1) unstable; urgency=low
 
   * New upstream version
   * install virtualenvwrapper_lazy.sh in
     /usr/share/doc/virtualenvwrapper/examples
   * refresh debian/patches/debianspecific-setup.py.patch
 
- -- Jan Dittberner <jandd@debian.org>  Mon, 21 May 2012 22:59:48 +0200
+ -- Jan Dittberner <jandd@debian.org>  Mon, 21 May 2012 23:11:48 +0200
 
 virtualenvwrapper (3.3-1) unstable; urgency=low
 
