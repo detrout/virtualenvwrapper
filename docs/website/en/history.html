@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Release History &mdash; virtualenvwrapper v3.2 documentation</title>
+    <title>Release History &mdash; virtualenvwrapper v3.4 documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '3.2',
+        VERSION:     '3.4',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -21,7 +21,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="virtualenvwrapper v3.2 documentation" href="index.html" />
+    <link rel="top" title="virtualenvwrapper v3.4 documentation" href="index.html" />
     <link rel="prev" title="Existing Extensions" href="extensions.html" /> 
   </head>
   <body>
@@ -31,7 +31,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="extensions.html" title="Existing Extensions"
              accesskey="P">previous</a></li>
-        <li><a href="index.html">virtualenvwrapper v3.2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">virtualenvwrapper v3.4 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -42,7 +42,13 @@
             
   <div class="section" id="release-history">
 <h1>Release History<a class="headerlink" href="#release-history" title="Permalink to this headline">¶</a></h1>
-<p>dev</p>
+<p>3.4</p>
+<blockquote>
+<ul class="simple">
+<li>Add <a class="reference internal" href="install.html#install-lazy-loader"><em>Lazy Loading</em></a> option.</li>
+</ul>
+</blockquote>
+<p>3.3</p>
 <blockquote>
 <ul class="simple">
 <li>Clean up file permissions and remove shebangs from scripts not
@@ -51,6 +57,20 @@ intended to be executed on the command line. (contributed by
 <li>Worked on some brittle tests.</li>
 <li>Received updates to Japanese translation of the documentation from
 <a class="reference external" href="https://bitbucket.org/t2y">t2y</a>.</li>
+<li>Fix the test script and runner so the user&#8217;s <tt class="docutils literal"><span class="pre">$WORKON_HOME</span></tt> is
+not erased if they do not have some test shells installed.
+(big thanks to <a class="reference external" href="https://bitbucket.org/agriffis">agriffis</a>).</li>
+<li>If the hook loader is told to list plugins but is not given a hook
+name, it prints the list of core hooks.</li>
+<li>Merge several fixes for path and variable handling for MSYS users
+from <a class="reference external" href="https://bitbucket.org/bwanamarko">bwanamarko</a>. Includes a fix for <a class="reference external" href="http://bitbucket.org/dhellmann/virtualenvwrapper/issue/138/">issue 138</a>.</li>
+<li>Change <a class="reference internal" href="command_ref.html#command-mkvirtualenv"><em>mkvirtualenv</em></a> so it catches both <tt class="docutils literal"><span class="pre">-h</span></tt> and
+<tt class="docutils literal"><span class="pre">--help</span></tt>.</li>
+<li>Fix some issues with the way temporary files are used for hook
+scripts. (contributed by <a class="reference external" href="https://bitbucket.org/agriffis">agriffis</a>)</li>
+<li>Allow relative path to requirements file with
+<a class="reference internal" href="command_ref.html#command-mkvirtualenv"><em>mkvirtualenv</em></a> and <tt class="docutils literal"><span class="pre">-r</span></tt> option. (<a class="reference external" href="https://bitbucket.org/barberj">barberj</a>)</li>
+<li>Make whitespace consistent. (<a class="reference external" href="https://bitbucket.org/agriffis">agriffis</a>)</li>
 </ul>
 </blockquote>
 <p>3.2</p>
@@ -661,7 +681,7 @@ by James Bennett and Jannis Leidel.</li>
         <li class="right" style="margin-right: 10px">
           <a href="extensions.html" title="Existing Extensions"
              >previous</a></li>
-        <li><a href="index.html">virtualenvwrapper v3.2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">virtualenvwrapper v3.4 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

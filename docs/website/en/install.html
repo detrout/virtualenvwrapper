@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Installation &mdash; virtualenvwrapper v3.2 documentation</title>
+    <title>Installation &mdash; virtualenvwrapper v3.4 documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '3.2',
+        VERSION:     '3.4',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -21,9 +21,9 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="virtualenvwrapper v3.2 documentation" href="index.html" />
+    <link rel="top" title="virtualenvwrapper v3.4 documentation" href="index.html" />
     <link rel="next" title="Command Reference" href="command_ref.html" />
-    <link rel="prev" title="virtualenvwrapper 3.2" href="index.html" /> 
+    <link rel="prev" title="virtualenvwrapper 3.4" href="index.html" /> 
   </head>
   <body>
     <div class="related">
@@ -33,9 +33,9 @@
           <a href="command_ref.html" title="Command Reference"
              accesskey="N">next</a></li>
         <li class="right" >
-          <a href="index.html" title="virtualenvwrapper 3.2"
+          <a href="index.html" title="virtualenvwrapper 3.4"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">virtualenvwrapper v3.2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">virtualenvwrapper v3.4 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -130,6 +130,27 @@ source /usr/local/bin/virtualenvwrapper.sh</pre>
 </div>
 <p>After editing it, reload the startup file (e.g., run <tt class="docutils literal"><span class="pre">source</span>
 <span class="pre">~/.bashrc</span></tt>).</p>
+<div class="section" id="lazy-loading">
+<span id="install-lazy-loader"></span><h3>Lazy Loading<a class="headerlink" href="#lazy-loading" title="Permalink to this headline">¶</a></h3>
+<p>An alternative initialization script is provided for loading
+virtualenvwrapper lazily. Instead of sourcing <tt class="docutils literal"><span class="pre">virtualenvwrapper.sh</span></tt>
+directly, use <tt class="docutils literal"><span class="pre">virtualenvwrapper_lazy.sh</span></tt>. If
+<tt class="docutils literal"><span class="pre">virtualenvwrapper.sh</span></tt> is not on your <tt class="docutils literal"><span class="pre">$PATH</span></tt>, set
+<tt class="docutils literal"><span class="pre">VIRTUALENVWRAPPER_SCRIPT</span></tt> to point to it.</p>
+<div class="highlight-python"><pre>export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Devel
+export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
+source /usr/local/bin/virtualenvwrapper_lazy.sh</pre>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">When the lazy-loading version of the startup script is used,
+tab-completion of arguments to virtualenvwrapper commands (such as
+environment names) is not enabled until after the first command has
+been run. For example, tab completion of environments does not work
+for the first instance of <em class="xref std std-ref">command-workon</em>.</p>
+</div>
+</div>
 </div>
 <div class="section" id="quick-start">
 <h2>Quick-Start<a class="headerlink" href="#quick-start" title="Permalink to this headline">¶</a></h2>
@@ -286,7 +307,10 @@ supported.  In your startup file, change <tt class="docutils literal"><span clas
 </li>
 <li><a class="reference internal" href="#python-versions">Python Versions</a></li>
 <li><a class="reference internal" href="#basic-installation">Basic Installation</a></li>
-<li><a class="reference internal" href="#shell-startup-file">Shell Startup File</a></li>
+<li><a class="reference internal" href="#shell-startup-file">Shell Startup File</a><ul>
+<li><a class="reference internal" href="#lazy-loading">Lazy Loading</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#quick-start">Quick-Start</a></li>
 <li><a class="reference internal" href="#configuration">Configuration</a><ul>
 <li><a class="reference internal" href="#location-of-environments">Location of Environments</a></li>
@@ -308,7 +332,7 @@ supported.  In your startup file, change <tt class="docutils literal"><span clas
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="index.html"
-                        title="previous chapter">virtualenvwrapper 3.2</a></p>
+                        title="previous chapter">virtualenvwrapper 3.4</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="command_ref.html"
                         title="next chapter">Command Reference</a></p>
@@ -341,9 +365,9 @@ supported.  In your startup file, change <tt class="docutils literal"><span clas
           <a href="command_ref.html" title="Command Reference"
              >next</a></li>
         <li class="right" >
-          <a href="index.html" title="virtualenvwrapper 3.2"
+          <a href="index.html" title="virtualenvwrapper 3.4"
              >previous</a> |</li>
-        <li><a href="index.html">virtualenvwrapper v3.2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">virtualenvwrapper v3.4 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

@@ -4,6 +4,7 @@ distribute_setup.py
 setup.py
 tox.ini
 virtualenvwrapper.sh
+virtualenvwrapper_lazy.sh
 docs/requirements.txt
 docs/spelling_wordlist.txt
 docs/en/command_ref.rst
@@ -262,6 +263,8 @@ tests/test_dir_stack.sh~
 tests/test_expandpath.sh
 tests/test_hook_dir.sh
 tests/test_hook_dir.sh~
+tests/test_lazy.sh
+tests/test_lazy_loaded.sh
 tests/test_log_dir.sh
 tests/test_log_dir.sh~
 tests/test_ls.sh
