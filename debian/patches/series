@@ -1,2 +1,3 @@
 debianspecific-setup.py.patch
 remove_bitbucket_support.patch
+fix-python3-sphinx-build.patch
