@@ -1,7 +1,7 @@
 #!/usr/bin/make -f
 
 override_dh_auto_clean:
-	rm -rf build
+	rm -rf build *.egg-info
 	find \( -name '._*' -o -name '*.pyc' \) -delete
 
 override_dh_auto_install:

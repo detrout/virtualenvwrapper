@@ -3,8 +3,10 @@ virtualenvwrapper (3.4-2) unstable; urgency=low
   * Fix "FTBFS with python3-sphinx: TypeError: expecting str data, not
     bytes" with debian/patches/fix-python3-sphinx-build.patch (Closes:
     #680863)
+  * fix FTBFS twice in a row by removing *.egg-info in debian/rules
+    clean
 
- -- Jan Dittberner <jandd@debian.org>  Mon, 09 Jul 2012 21:09:34 +0200
+ -- Jan Dittberner <jandd@debian.org>  Mon, 09 Jul 2012 21:25:06 +0200
 
 virtualenvwrapper (3.4-1) unstable; urgency=low
 
