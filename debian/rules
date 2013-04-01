@@ -1,5 +1,8 @@
 #!/usr/bin/make -f
 
+%:
+	dh $@ --with python2,python3
+
 override_dh_auto_clean:
 	rm -rf build *.egg-info
 	find \( -name '._*' -o -name '*.pyc' \) -delete
@@ -18,11 +21,10 @@ override_dh_auto_install:
 	done
 	cp virtualenvwrapper.sh debian/virtualenvwrapper/etc/bash_completion.d/virtualenvwrapper
 	chmod 0644 debian/virtualenvwrapper/etc/bash_completion.d/virtualenvwrapper
-	# python3 build disable because virtualenv3 is not yet available
-	#	python setup.py install --install-layout=deb \
-	#	    --root $(CURDIR)/debian/virtualenvwrapper
-	#	python3 setup.py install --install-layout=deb \
-	#	    --root $(CURDIR)/debian/virtualenvwrapper
+	python setup.py install --install-layout=deb \
+	    --root $(CURDIR)/debian/virtualenvwrapper
+	python3 setup.py install --install-layout=deb \
+	    --root $(CURDIR)/debian/virtualenvwrapper
 	dh_auto_install
 
 override_dh_compress:
